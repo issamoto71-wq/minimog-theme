@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Minimog - OS 2.0",
-    "theme_version": "5.6.0",
-    "theme_author": "FoxEcom",
-    "theme_documentation_url": "https://docs.foxecom.com/minimog-theme/",
-    "theme_support_url": "https://foxecom.com"
+    "theme_name": "Hearth - Home, Kitchen & Outdoor Store",
+    "theme_version": "1.0.0",
+    "theme_author": "Hearth",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/"
   },
   {
     "name": "General settings",
@@ -680,6 +680,23 @@
       },
       {
         "type": "header",
+        "content": "Store accent"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent colour",
+        "default": "#D9531E",
+        "info": "Used for small labels, icons, highlights and stars across all store sections."
+      },
+      {
+        "type": "color",
+        "id": "color_accent_text",
+        "label": "Text on accent",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
         "content": "Count bubble"
       },
       {
@@ -772,9 +789,9 @@
     ]
   },
   {
-		"name": "Animations",
-		"settings": [
-			{
+    "name": "Animations",
+    "settings": [
+      {
         "type": "checkbox",
         "id": "page_transition",
         "default": true,
@@ -808,35 +825,50 @@
         "label": "Custom logo",
         "info": " Should use square sized images. Example: 64x64, 128x128"
       },
-			{
-				"type": "header",
-				"content": "Visible in the view"
-			},
-			{
-				"type": "select",
-				"id": "animations",
-				"label": "Animation",
-				"default": "none",
-				"options": [
-					{"value": "none", "label": "None"},
-					{"value": "fade-in", "label": "Fade in"},
-					{"value": "fade-in-up", "label": "Fade in up"},
-					{"value": "fade-in-left", "label": "Fade in left"},
-					{"value": "fade-in-right", "label": "Fade in right"}
-				]
-			},
-			{
-				"type": "range",
-				"id": "animation_duration",
-				"label": "Duration",
-				"default": 0.6,
-				"min": 0.1,
-				"max": 1,
-				"unit": "(s)",
-				"step": 0.1
-			}
-		]
-	},
+      {
+        "type": "header",
+        "content": "Visible in the view"
+      },
+      {
+        "type": "select",
+        "id": "animations",
+        "label": "Animation",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "fade-in",
+            "label": "Fade in"
+          },
+          {
+            "value": "fade-in-up",
+            "label": "Fade in up"
+          },
+          {
+            "value": "fade-in-left",
+            "label": "Fade in left"
+          },
+          {
+            "value": "fade-in-right",
+            "label": "Fade in right"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "animation_duration",
+        "label": "Duration",
+        "default": 0.6,
+        "min": 0.1,
+        "max": 1,
+        "unit": "(s)",
+        "step": 0.1
+      }
+    ]
+  },
   {
     "name": "Product card",
     "settings": [
@@ -2343,6 +2375,79 @@
     ]
   },
   {
+    "name": "Store details",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Your physical store details. These are used by the footer, product pages, cart, contact page and the \"Visit our store\" sections, so you only edit them once."
+      },
+      {
+        "type": "header",
+        "content": "Store"
+      },
+      {
+        "type": "text",
+        "id": "store_name",
+        "label": "Store name (for sections)",
+        "default": "Hearth Home & Kitchen",
+        "info": "Used in headings like \"Visit Hearth Home & Kitchen\". Leave blank to use your Shopify store name."
+      },
+      {
+        "type": "text",
+        "id": "store_tagline",
+        "label": "Tagline",
+        "default": "Kitchen, outdoor & home appliances - see them in store"
+      },
+      {
+        "type": "textarea",
+        "id": "store_address",
+        "label": "Store address",
+        "default": "12 High Street\nYour Town\nAB1 2CD",
+        "info": "One line per row."
+      },
+      {
+        "type": "url",
+        "id": "store_directions_url",
+        "label": "Directions link",
+        "info": "Paste a Google Maps / Apple Maps link to your store."
+      },
+      {
+        "type": "text",
+        "id": "store_map_query",
+        "label": "Map search text",
+        "default": "12 High Street, Your Town, AB1 2CD",
+        "info": "Used by the embedded map on \"Visit our store\" sections. Use your full address."
+      },
+      {
+        "type": "header",
+        "content": "Opening hours"
+      },
+      {
+        "type": "textarea",
+        "id": "store_opening_hours",
+        "label": "Opening hours",
+        "default": "Monday|9:00am - 6:00pm\nTuesday|9:00am - 6:00pm\nWednesday|9:00am - 6:00pm\nThursday|9:00am - 8:00pm\nFriday|9:00am - 6:00pm\nSaturday|9:00am - 5:30pm\nSunday|10:00am - 4:00pm",
+        "info": "One day per line, written as Day|Hours. Example: Monday|9:00am - 6:00pm. Write Closed for closed days."
+      },
+      {
+        "type": "header",
+        "content": "Click & Collect"
+      },
+      {
+        "type": "text",
+        "id": "click_collect_title",
+        "label": "Click & Collect headline",
+        "default": "Free Click & Collect"
+      },
+      {
+        "type": "text",
+        "id": "click_collect_text",
+        "label": "Click & Collect text",
+        "default": "Reserve online and collect in store - ready within 2 hours."
+      }
+    ]
+  },
+  {
     "name": "Cart settings",
     "settings": [
       {
@@ -2410,6 +2515,65 @@
         "type": "image_picker",
         "id": "cart_drawer_trust_badge",
         "label": "Trust badge"
+      }
+    ]
+  },
+  {
+    "name": "Cart & slide cart messaging",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Messages shown in the slide cart and on the cart page. Basic cart behaviour (slide cart on/off, notes, discount code) is under Cart settings."
+      },
+      {
+        "type": "header",
+        "content": "Free delivery progress bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_free_shipping_bar",
+        "label": "Show free delivery progress bar",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "free_shipping_threshold",
+        "label": "Free delivery threshold",
+        "min": 0,
+        "max": 1000,
+        "step": 10,
+        "default": 150,
+        "info": "In your store's main currency. Set 0 to hide the bar."
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_progress_text",
+        "label": "Progress message",
+        "default": "You're {amount} away from free delivery",
+        "info": "Use {amount} for the remaining amount."
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_success_text",
+        "label": "Success message",
+        "default": "Great news - your order qualifies for free delivery!"
+      },
+      {
+        "type": "header",
+        "content": "Reassurance"
+      },
+      {
+        "type": "textarea",
+        "id": "cart_assurance_lines",
+        "label": "Reassurance points",
+        "default": "Free Click & Collect from our store\nPrice match promise\nSecure checkout\nExpert help in store and by phone",
+        "info": "One point per line. Shown with a tick under the checkout button."
+      },
+      {
+        "type": "richtext",
+        "id": "cart_help_text",
+        "label": "Help text",
+        "default": "<p>Need a hand? Call our team or pop into the store.</p>"
       }
     ]
   },
@@ -2503,7 +2667,7 @@
         "type": "richtext",
         "id": "agree_text",
         "label": "Text",
-        "default": "<p>I agree with the <a href=\"#\" title=\"#\">Terms & conditions<\/a><\/p>"
+        "default": "<p>I agree with the <a href=\"#\" title=\"#\">Terms & conditions</a></p>"
       },
       {
         "type": "checkbox",

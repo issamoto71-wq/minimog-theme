@@ -1,0 +1,262 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+  assign fallback_title = page.title | default: collection.title | default: blog.title | default: article.title | escape
+  assign hero_heading = section.settings.heading | default: fallback_title
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-hero hth-hero--{{ section.settings.alignment }} m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --hth-min-height: {{ section.settings.min_height }}px; --hth-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+  data-section-id="{{ section.id }}"
+>
+  {%- if section.settings.image != blank -%}
+    <div class="hth-hero__bg">
+      {{ section.settings.image | image_url: width: 2200 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '800, 1200, 1600, 2200', sizes: '100vw', alt: '', class: 'hth-hero__img' }}
+    </div>
+  {%- endif -%}
+  <div class="{{ section.settings.container }} m-section-py hth-hero__inner">
+    {%- if section.settings.show_breadcrumb -%}
+      {%- render 'breadcrumb', container: 'hth-hero__crumb', justify: section.settings.alignment, class: 'hth-hero__breadcrumb' -%}
+    {%- endif -%}
+    <div class="hth-hero__content{{ anim }}">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="hth-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if hero_heading != blank -%}
+        <h1 class="hth-heading {{ section.settings.heading_size }}">{{ hero_heading }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="hth-lead">{{ section.settings.text | escape | newline_to_br }}</p>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <div class="hth-btn-row">
+          <a class="m-button {{ section.settings.button_style }}" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label | escape }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Page banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": ""
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "",
+      "info": "Leave blank to use the page title."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro text",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h1",
+          "label": "Extra large"
+        },
+        {
+          "value": "h2",
+          "label": "Large"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "Show breadcrumb",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": ""
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "m-button--primary",
+          "label": "Solid"
+        },
+        {
+          "value": "m-button--secondary",
+          "label": "Outline"
+        },
+        {
+          "value": "m-button--white",
+          "label": "White"
+        },
+        {
+          "value": "m-button--link",
+          "label": "Link"
+        }
+      ],
+      "default": "m-button--primary"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "default": 45,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum height",
+      "min": 160,
+      "max": 560,
+      "step": 20,
+      "default": 240,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "dark"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page banner",
+      "settings": {
+        "color_scheme": "dark"
+      }
+    }
+  ]
+}
+{% endschema %}

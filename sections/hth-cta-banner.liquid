@@ -1,0 +1,305 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+  assign phone = settings.contact_phone_number
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-cta hth-cta--{{ section.settings.alignment }} m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --hth-min-height: {{ section.settings.min_height }}px; --hth-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+  data-section-id="{{ section.id }}"
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    <div class="hth-cta__box{% if section.settings.image != blank %} hth-cta__box--image{% endif %}">
+      {%- if section.settings.image != blank -%}
+        <div class="hth-cta__bg">
+          {{ section.settings.image | image_url: width: 2000 | image_tag: loading: 'lazy', widths: '800, 1200, 1600, 2000', sizes: '100vw', alt: '', class: 'hth-cta__img' }}
+        </div>
+      {%- endif -%}
+      <div class="hth-cta__content{{ anim }}">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="hth-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="hth-heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="hth-lead">{{ section.settings.text | escape | newline_to_br }}</p>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank or section.settings.second_button_label != blank or section.settings.show_phone -%}
+          <div class="hth-btn-row">
+            {%- if section.settings.button_label != blank -%}
+              <a class="m-button {{ section.settings.button_style }}" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label | escape }}</a>
+            {%- endif -%}
+            {%- if section.settings.second_button_label != blank -%}
+              <a class="m-button {{ section.settings.second_button_style }}" href="{{ section.settings.second_button_link | default: '#' }}">{{ section.settings.second_button_label | escape }}</a>
+            {%- endif -%}
+            {%- if section.settings.show_phone and phone != blank -%}
+              <a class="hth-cta__phone" href="tel:{{ phone | replace: ' ', '' }}">
+                {%- render 'hth-icon', name: 'phone', size: 22 -%}
+                <span>{{ phone | escape }}</span>
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Call to action banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Need a hand?"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Talk to a real person before you buy"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Call the store or pop in - we'll help you choose the right appliance for your home."
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Visit the store"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "m-button--primary",
+          "label": "Solid"
+        },
+        {
+          "value": "m-button--secondary",
+          "label": "Outline"
+        },
+        {
+          "value": "m-button--white",
+          "label": "White"
+        },
+        {
+          "value": "m-button--link",
+          "label": "Link"
+        }
+      ],
+      "default": "m-button--primary"
+    },
+    {
+      "type": "text",
+      "id": "second_button_label",
+      "label": "Button label",
+      "default": "Contact us"
+    },
+    {
+      "type": "url",
+      "id": "second_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "second_button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "m-button--primary",
+          "label": "Solid"
+        },
+        {
+          "value": "m-button--secondary",
+          "label": "Outline"
+        },
+        {
+          "value": "m-button--white",
+          "label": "White"
+        },
+        {
+          "value": "m-button--link",
+          "label": "Link"
+        }
+      ],
+      "default": "m-button--white"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Show phone number",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "default": 45,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum height",
+      "min": 240,
+      "max": 700,
+      "step": 20,
+      "default": 340,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "dark"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Call to action banner",
+      "settings": {
+        "color_scheme": "dark"
+      }
+    }
+  ]
+}
+{% endschema %}

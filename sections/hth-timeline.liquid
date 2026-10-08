@@ -1,0 +1,244 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-timeline m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  data-section-id="{{ section.id }}"
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    {%- render 'hth-section-header',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text,
+      alignment: section.settings.header_alignment,
+      heading_size: section.settings.heading_size,
+      anim: anim
+    -%}
+    {%- if section.blocks.size > 0 -%}
+      <ol class="hth-timeline__list" role="list">
+        {%- for block in section.blocks -%}
+          <li
+            class="hth-timeline__item{{ anim }}"
+            {% if anim != blank %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <span class="hth-timeline__year">{{ block.settings.year | escape }}</span>
+            <span class="hth-timeline__dot" aria-hidden="true"></span>
+            <div class="hth-timeline__body">
+              {%- if block.settings.title != blank -%}
+                <h3 class="hth-timeline__title">{{ block.settings.title | escape }}</h3>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <p class="hth-timeline__text">{{ block.settings.text | escape }}</p>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ol>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Timeline",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Our journey"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How we got here"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro text",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "cream"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "milestone",
+      "name": "Milestone",
+      "settings": [
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Year",
+          "default": "2000"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Milestone"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Timeline",
+      "blocks": [
+        {
+          "type": "milestone",
+          "settings": {
+            "year": "2000",
+            "title": "The first shop",
+            "text": "We opened our doors with a handful of cookers and a lot of enthusiasm."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "year": "2012",
+            "title": "A bigger showroom",
+            "text": "More space for working displays of kitchen and outdoor appliances."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "year": "Today",
+            "title": "Online and in store",
+            "text": "Reserve online, collect in store - the best of both."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

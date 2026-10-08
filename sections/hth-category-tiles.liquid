@@ -1,0 +1,354 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-tiles-section m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --hth-cols: {{ section.settings.columns }}; --hth-ratio: {{ section.settings.image_ratio }}; --hth-gap: {{ section.settings.gap }}px;"
+  data-section-id="{{ section.id }}"
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    {%- render 'hth-section-header',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text,
+      alignment: section.settings.header_alignment,
+      heading_size: section.settings.heading_size,
+      anim: anim
+    -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="hth-tiles hth-tiles--{{ section.settings.text_position }}">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign col = block.settings.collection
+            assign tile_title = block.settings.title | default: col.title
+            assign tile_link = block.settings.link | default: col.url
+            assign tile_image = block.settings.image | default: col.featured_image
+            assign ph_index = forloop.index | modulo: 6 | plus: 1
+            assign ph_name = 'collection-' | append: ph_index
+            assign tag = 'div'
+            if tile_link != blank
+              assign tag = 'a'
+            endif
+          -%}
+          <{{ tag }}
+            class="hth-tile{{ anim }}"
+            {% if tag == 'a' %}
+              href="{{ tile_link }}"
+            {% endif %}
+            {% if anim != blank %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <span class="hth-tile__media">
+              {%- if tile_image != blank -%}
+                {{ tile_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400, 600, 900', sizes: '(min-width: 1024px) 33vw, 100vw', alt: tile_title, class: 'hth-tile__img' }}
+              {%- else -%}
+                {{ ph_name | placeholder_svg_tag: 'hth-tile__img hth-placeholder' }}
+              {%- endif -%}
+            </span>
+            <span class="hth-tile__body">
+              {%- if block.settings.tagline != blank -%}
+                <span class="hth-tile__tagline">{{ block.settings.tagline | escape }}</span>
+              {%- endif -%}
+              <span class="hth-tile__title">{{ tile_title | escape }}</span>
+              {%- if section.settings.show_count and col != blank -%}
+                <span class="hth-tile__count">{{ col.products_count }} {{ 'hearth.products' | t: count: col.products_count }}</span>
+              {%- endif -%}
+              {%- if block.settings.button_label != blank -%}
+                <span class="hth-tile__cta">
+                  {{- block.settings.button_label | escape -}}
+                  {%- render 'hth-icon', name: 'arrow-right', size: 18, stroke: 2 -%}
+                </span>
+              {%- endif -%}
+            </span>
+          </{{ tag }}>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Category tiles",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Shop by room"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Everything for your home"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro text",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "header",
+      "content": "Tiles"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Tiles per row (desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image shape",
+      "options": [
+        {
+          "value": "4/5",
+          "label": "Portrait"
+        },
+        {
+          "value": "1/1",
+          "label": "Square"
+        },
+        {
+          "value": "4/3",
+          "label": "Landscape"
+        },
+        {
+          "value": "3/4",
+          "label": "Tall portrait"
+        }
+      ],
+      "default": "4/5"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "overlay",
+          "label": "Over the image"
+        },
+        {
+          "value": "below",
+          "label": "Below the image"
+        }
+      ],
+      "default": "overlay"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_count",
+      "label": "Show product count",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "tagline",
+          "label": "Small label",
+          "default": "Kitchen"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Leave blank to use the collection image."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Leave blank to link to the collection."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button text",
+          "default": "Shop now"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Category tiles",
+      "blocks": [
+        {
+          "type": "tile",
+          "settings": {
+            "tagline": "Cook & brew",
+            "button_label": "Shop kitchen"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "tagline": "Grill & garden",
+            "button_label": "Shop outdoor"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "tagline": "Clean & cosy",
+            "button_label": "Shop home"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

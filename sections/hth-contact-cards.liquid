@@ -1,0 +1,515 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-contact m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --hth-cols: {{ section.settings.columns }};"
+  data-section-id="{{ section.id }}"
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    {%- render 'hth-section-header',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text,
+      alignment: section.settings.header_alignment,
+      heading_size: section.settings.heading_size,
+      anim: anim
+    -%}
+    {%- if section.blocks.size > 0 -%}
+      <ul class="hth-contact__list" role="list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign card_icon = block.settings.icon
+            assign card_title = block.settings.title
+            assign card_link = ''
+            assign card_link_label = block.settings.link_label
+            case block.type
+              when 'phone'
+                assign card_icon = 'phone'
+                assign card_title = card_title | default: 'Call us'
+                assign card_text = settings.contact_phone_number
+                assign card_link = 'tel:' | append: settings.contact_phone_number | replace: ' ', ''
+              when 'email'
+                assign card_icon = 'mail'
+                assign card_title = card_title | default: 'Email us'
+                assign card_text = settings.contact_email
+                assign card_link = 'mailto:' | append: settings.contact_email
+              when 'address'
+                assign card_icon = 'pin'
+                assign card_title = card_title | default: 'Visit the store'
+                assign card_text = settings.store_address
+                assign card_link = settings.store_directions_url
+                assign card_link_label = card_link_label | default: 'Get directions'
+              when 'hours'
+                assign card_icon = 'clock'
+                assign card_title = card_title | default: 'Opening hours'
+                assign card_text = settings.store_opening_hours
+              else
+                assign card_text = block.settings.text
+                assign card_link = block.settings.link
+            endcase
+            assign tag = 'div'
+            if card_link != blank
+              assign tag = 'a'
+            endif
+          -%}
+          <li
+            class="hth-contact__item{{ anim }}"
+            {% if anim != blank %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <{{ tag }}
+              class="hth-contact__inner"
+              {% if tag == 'a' %}
+                href="{{ card_link }}"
+              {% endif %}
+            >
+              <span class="hth-contact__icon">{%- render 'hth-icon', name: card_icon, size: 28 -%}</span>
+              <span class="hth-contact__title">{{ card_title | escape }}</span>
+              {%- if block.type == 'hours' -%}
+                {%- assign hours_lines = card_text | newline_to_br | split: '<br />' -%}
+                <span class="hth-contact__hours">
+                  {%- for line in hours_lines -%}
+                    {%- assign parts = line | strip | split: '|' -%}
+                    {%- if parts.size > 1 -%}
+                      <span class="hth-contact__hours-row"><span>{{ parts[0] | strip | escape }}</span><span>{{ parts[1] | strip | escape }}</span></span>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </span>
+              {%- elsif card_text != blank -%}
+                <span class="hth-contact__text">{{ card_text | escape | newline_to_br }}</span>
+              {%- endif -%}
+              {%- if card_link_label != blank and card_link != blank -%}
+                <span class="hth-link">
+                  {{- card_link_label | escape -}}
+                  {%- render 'hth-icon', name: 'arrow-right', size: 16, stroke: 2 -%}
+                </span>
+              {%- endif -%}
+            </{{ tag }}>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Contact cards",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Get in touch"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We'd love to hear from you"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro text",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "paragraph",
+      "content": "Phone, email, address and hours come from Theme settings > Store contact / Store details."
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Cards per row (desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "phone",
+      "name": "Phone",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title override",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link text",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "type": "email",
+      "name": "Email",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title override",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link text",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "type": "address",
+      "name": "Address",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title override",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link text",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "type": "hours",
+      "name": "Opening hours",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title override",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link text",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "name": "Custom card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Delivery van"
+            },
+            {
+              "value": "store",
+              "label": "Store front"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / warranty"
+            },
+            {
+              "value": "tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "wrench",
+              "label": "Wrench / installation"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle / refresh"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "mail",
+              "label": "Email"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "check",
+              "label": "Tick"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "card",
+              "label": "Payment card"
+            },
+            {
+              "value": "chat",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "users",
+              "label": "People"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "box",
+              "label": "Parcel"
+            },
+            {
+              "value": "thumbs-up",
+              "label": "Thumbs up"
+            },
+            {
+              "value": "flame",
+              "label": "Flame / BBQ"
+            },
+            {
+              "value": "utensils",
+              "label": "Knife & fork"
+            },
+            {
+              "value": "home",
+              "label": "Home"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "percent",
+              "label": "Percent"
+            },
+            {
+              "value": "calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "lock",
+              "label": "Padlock"
+            },
+            {
+              "value": "return",
+              "label": "Returns arrow"
+            },
+            {
+              "value": "coffee",
+              "label": "Coffee cup"
+            },
+            {
+              "value": "sparkle",
+              "label": "Sparkle"
+            }
+          ],
+          "default": "chat"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": ""
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link text",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Contact cards",
+      "blocks": [
+        {
+          "type": "phone",
+          "settings": {
+            "link_label": "Call now"
+          }
+        },
+        {
+          "type": "email",
+          "settings": {
+            "link_label": "Send an email"
+          }
+        },
+        {
+          "type": "address",
+          "settings": {}
+        },
+        {
+          "type": "hours",
+          "settings": {}
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

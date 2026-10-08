@@ -785,6 +785,8 @@
             {{ block.settings.custom_liquid }}
           </div>
         {% endif %}
+      {%- when 'hth_perk', 'hth_pickup', 'hth_help' -%}
+        {% render 'hth-product-block', block: block %}
       {%- when 'trust_badge' -%}
         {% if block.settings.trust_badges_image != blank %}
           {% assign position = block.settings.position %}

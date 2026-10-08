@@ -155,6 +155,9 @@
    --arrow-down-white-url: url({{ 'arrow-down-white.svg' | asset_url }});
    --product-title-line-clamp: {{ settings.pcard_title_line_clamp }};
 
+  	--hth-accent: {{ settings.color_accent.red }},{{ settings.color_accent.green }},{{ settings.color_accent.blue }};
+  	--hth-accent-text: {{ settings.color_accent_text.red }},{{ settings.color_accent_text.green }},{{ settings.color_accent_text.blue }};
+
   	--spacing-sections-desktop: {{ settings.spacing_sections }}px;
    --spacing-sections-laptop: {{ settings.spacing_sections | times: 0.8 | round: 0 }}px;
    --spacing-sections-tablet: {{ settings.spacing_sections | times: 0.6 | round: 0 }}px;
@@ -181,9 +184,6 @@
   echo 'vendor.css' | asset_url | stylesheet_tag
   if template contains 'customers/'
     echo 'customer.css' | asset_url | stylesheet_tag
-  endif
-  if template.suffix == 'about-us'
-    echo 'about-us.css' | asset_url | stylesheet_tag
   endif
   if enable_rtl
     echo 'rtl.css' | asset_url | stylesheet_tag

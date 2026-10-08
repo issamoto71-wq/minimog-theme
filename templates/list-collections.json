@@ -1,27 +1,132 @@
 {
   "sections": {
+    "hero": {
+      "type": "hth-page-hero",
+      "settings": {
+        "eyebrow": "Shop",
+        "heading": "",
+        "text": "Browse every category - then see it in store or reserve online.",
+        "heading_size": "h2",
+        "alignment": "left",
+        "show_breadcrumb": true,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "overlay_opacity": 45,
+        "min_height": 240,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "animations": "inherit"
+      }
+    },
     "main": {
       "type": "collection-list-template",
       "settings": {
-        "container": "container-fluid",
+        "container": "container",
         "display_type": "all",
-        "title": "All collection",
-        "description": "<p>Here is your chance to upgrade your wardrobe <br\/>with a variation of styles and fits that are both feminine and relaxed.<\/p>",
+        "title": "",
+        "description": "",
         "header_alignment": "left",
-        "items_per_row": 4,
-        "item_gap": 30,
-        "mobile_columns": "2",
+        "items_per_row": 3,
+        "item_gap": 24,
+        "mobile_columns": "1",
         "mobile_gap": 16,
         "card_style": "inside-2",
-        "text_alignment": "center",
+        "text_alignment": "left",
         "hover_effect": "scaling-up",
         "show_product_count": true,
-        "count_inline_title": true,
+        "count_inline_title": false,
         "image_rounded": false
+      }
+    },
+    "trust_badges": {
+      "type": "hth-trust-badges",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "icon": "truck",
+            "title": "Free delivery",
+            "text": "On orders over £150"
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "icon": "store",
+            "title": "Free Click & Collect",
+            "text": "Ready in 2 hours"
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "icon": "tag",
+            "title": "Price match promise",
+            "text": "We'll match local prices"
+          }
+        },
+        "badge_4": {
+          "type": "badge",
+          "settings": {
+            "icon": "shield",
+            "title": "Expert advice",
+            "text": "Friendly help in store"
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4"
+      ],
+      "settings": {
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "animations": "inherit",
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "style": "bar",
+        "columns": 4
+      }
+    },
+    "cta": {
+      "type": "hth-cta-banner",
+      "settings": {
+        "eyebrow": "Need a hand?",
+        "heading": "Talk to a real person before you buy",
+        "text": "Call the store or pop in - we'll help you choose the right appliance for your home.",
+        "heading_size": "h3",
+        "alignment": "center",
+        "button_label": "Visit the store",
+        "button_link": "/pages/find-a-store",
+        "button_style": "m-button--primary",
+        "second_button_label": "Contact us",
+        "second_button_link": "/pages/contact",
+        "second_button_style": "m-button--white",
+        "show_phone": true,
+        "overlay_opacity": 45,
+        "min_height": 320,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "animations": "inherit"
       }
     }
   },
   "order": [
-    "main"
+    "hero",
+    "main",
+    "trust_badges",
+    "cta"
   ]
 }

@@ -1,0 +1,256 @@
+{
+  "name": "Click & Collect",
+  "sections": {
+    "hero": {
+      "type": "hth-page-hero",
+      "settings": {
+        "eyebrow": "Free service",
+        "heading": "Click & Collect",
+        "text": "Reserve online, collect in store - it couldn't be easier.",
+        "heading_size": "h2",
+        "alignment": "left",
+        "show_breadcrumb": true,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "overlay_opacity": 45,
+        "min_height": 240,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "animations": "inherit"
+      }
+    },
+    "steps": {
+      "type": "hth-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon": "card",
+            "title": "Reserve online",
+            "text": "Choose your products and reserve them in a couple of clicks."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon": "mail",
+            "title": "We get it ready",
+            "text": "We'll email you as soon as your order is picked and ready to go."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon": "store",
+            "title": "Collect in store",
+            "text": "Bring your confirmation and we'll help you load up."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Click & Collect in three simple steps",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "button_label": "Start shopping",
+        "button_link": "/collections/all",
+        "button_style": "m-button--primary",
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 72,
+        "padding_bottom": 56,
+        "animations": "inherit"
+      }
+    },
+    "why": {
+      "type": "hth-why-choose-us",
+      "blocks": {
+        "reason_1": {
+          "type": "reason",
+          "settings": {
+            "icon": "tag",
+            "title": "Always free",
+            "text": "No fee to reserve and collect from our store."
+          }
+        },
+        "reason_2": {
+          "type": "reason",
+          "settings": {
+            "icon": "clock",
+            "title": "Ready fast",
+            "text": "Most orders are ready within two hours of our email."
+          }
+        },
+        "reason_3": {
+          "type": "reason",
+          "settings": {
+            "icon": "users",
+            "title": "Help on hand",
+            "text": "Ask our team anything when you arrive."
+          }
+        },
+        "reason_4": {
+          "type": "reason",
+          "settings": {
+            "icon": "box",
+            "title": "Help loading up",
+            "text": "We'll carry big items to your car."
+          }
+        }
+      },
+      "block_order": [
+        "reason_1",
+        "reason_2",
+        "reason_3",
+        "reason_4"
+      ],
+      "settings": {
+        "eyebrow": "Why collect?",
+        "heading": "Fast, free and flexible",
+        "text": "Pick up when it suits you - and get a chat with our team while you're here.",
+        "heading_size": "h3",
+        "layout": "image-left",
+        "badge_value": "2hrs",
+        "badge_label": "usual preparation time",
+        "button_label": "Browse the range",
+        "button_link": "/collections/all",
+        "button_style": "m-button--primary",
+        "second_button_label": "",
+        "second_button_link": "",
+        "second_button_style": "m-button--secondary",
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "animations": "inherit"
+      }
+    },
+    "visit": {
+      "type": "hth-visit-store",
+      "settings": {
+        "eyebrow": "Collection point",
+        "heading": "Where to collect",
+        "text": "Our showroom is full of working displays. Pop in, ask questions and see the difference for yourself.",
+        "heading_size": "h3",
+        "show_address": true,
+        "show_phone": true,
+        "show_email": false,
+        "show_click_collect": true,
+        "show_hours": true,
+        "button_label": "Get directions",
+        "button_style": "m-button--primary",
+        "directions_link": "",
+        "second_button_label": "Call the store",
+        "second_button_style": "m-button--secondary",
+        "media_type": "map",
+        "media_position": "media-right",
+        "map_zoom": 15,
+        "map_height": 480,
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "animations": "inherit"
+      }
+    },
+    "faq": {
+      "type": "hth-faq",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "How does Click & Collect work?",
+            "answer": "<p>Reserve your items online, wait for our confirmation email, then collect from the store during opening hours. Please bring your order confirmation and a form of ID.</p>",
+            "open": true
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "Is this available to collect today?",
+            "answer": "<p>Reserve it online with Click & Collect and we'll email you when it's ready - usually within 2 hours during opening times.</p>",
+            "open": false
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "What if I find it cheaper somewhere else?",
+            "answer": "<p>Tell us - we're happy to look at matching a comparable local price on the same product. Speak to our team in store or on the phone.</p>",
+            "open": false
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "What warranty do products come with?",
+            "answer": "<p>Every product comes with the manufacturer's warranty. If something goes wrong, bring it back to us and we'll help you get it sorted.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4"
+      ],
+      "settings": {
+        "eyebrow": "Help",
+        "heading": "Click & Collect FAQs",
+        "text": "",
+        "header_alignment": "left",
+        "heading_size": "h3",
+        "layout": "split",
+        "help_text": "<p><strong>Still need help?</strong> Call or visit the store and our team will happily sort it out.</p>",
+        "enable_schema": true,
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "animations": "inherit"
+      }
+    },
+    "cta": {
+      "type": "hth-cta-banner",
+      "settings": {
+        "eyebrow": "Need a hand?",
+        "heading": "Talk to a real person before you buy",
+        "text": "Call the store or pop in - we'll help you choose the right appliance for your home.",
+        "heading_size": "h3",
+        "alignment": "center",
+        "button_label": "Visit the store",
+        "button_link": "/pages/find-a-store",
+        "button_style": "m-button--primary",
+        "second_button_label": "Contact us",
+        "second_button_link": "/pages/contact",
+        "second_button_style": "m-button--white",
+        "show_phone": true,
+        "overlay_opacity": 45,
+        "min_height": 320,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 24,
+        "padding_bottom": 48,
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "steps",
+    "why",
+    "visit",
+    "faq",
+    "cta"
+  ]
+}

@@ -4,81 +4,194 @@
       "type": "collection-page-header",
       "settings": {
         "color_scheme": "dark",
-        "container": "container-fluid",
+        "container": "container",
         "layout": "inside",
+        "bg_image": null,
         "image_position": "background",
         "enable_parallax": false,
         "parallax_direction": "vertical",
-        "text_alignment": "center",
+        "text_alignment": "left",
         "text_color": "inherit",
         "upper_title": false,
         "show_desc": true,
-        "collection_all_desc": "",
-        "padding_top": 36,
-        "padding_bottom": 50,
-        "enable_bg_zoom_effect": true
+        "collection_all_desc": "<p>Browse the full range - see it all in store, or reserve online and collect.</p>",
+        "padding_top": 44,
+        "padding_bottom": 52,
+        "enable_bg_zoom_effect": false
       }
     },
-    "main": {
-      "type": "main-collection-product-grid",
+    "trust_badges": {
+      "type": "hth-trust-badges",
       "blocks": {
-        "banner_promotion_KppNc9": {
-          "type": "banner_promotion",
+        "badge_1": {
+          "type": "badge",
           "settings": {
-            "color_scheme": "dark",
-            "text_size": "medium",
-            "text_color": "white",
-            "link": "",
-            "content_position": "bottom_center",
-            "content_alignment": "center",
-            "title": "SALE UP TO 25% OFF",
-            "subtitle": "Online Exclusive",
-            "button_label": "Shop The Sale",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "button_fixed": false
+            "icon": "truck",
+            "title": "Free delivery over £150",
+            "text": ""
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "icon": "store",
+            "title": "Free Click & Collect",
+            "text": ""
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "icon": "tag",
+            "title": "Price match promise",
+            "text": ""
+          }
+        },
+        "badge_4": {
+          "type": "badge",
+          "settings": {
+            "icon": "users",
+            "title": "Expert in-store advice",
+            "text": ""
           }
         }
       },
       "block_order": [
-        "banner_promotion_KppNc9"
-      ],
-      "custom_css": [
-        ".m-banner-promotion {order: 3 !important; margin-top: 30px; margin-bottom: 0;}",
-        ".m-collection-filters-form {margin-bottom: 0;}"
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4"
       ],
       "settings": {
-        "container": "container-fluid",
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "animations": "inherit",
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "style": "bar",
+        "columns": 4
+      }
+    },
+    "main": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "container": "container",
         "grid_layout": "grid",
-        "grid_columns": "4",
+        "grid_columns": "3",
         "show_columns_switcher": true,
-        "pagination_limit": 12,
+        "pagination_limit": 24,
         "paginate_type": "paginate",
         "show_sorting": true,
         "show_filter": true,
         "filters_type": "storefront_filters",
         "sidebar": "leftColumn",
-        "sidebar_title": "Filters",
+        "sidebar_title": "Filter",
         "limit_height_widget": true,
         "limit_height": 300,
         "change_product_variant_on_fitlering": true,
         "show_product_count": true,
-        "collapsed_groups": "Product type, Brand, Vendor, Size",
+        "collapsed_groups": "Vendor, Product type",
         "color_swatches": "color,colour,couleur,farbe",
         "color_swatches_design": "list"
+      }
+    },
+    "services": {
+      "type": "hth-services",
+      "blocks": {
+        "service_1": {
+          "type": "service",
+          "settings": {
+            "icon": "truck",
+            "title": "Delivery & installation",
+            "text": "Careful delivery to your door, with installation available on large appliances.",
+            "link_label": "Delivery details",
+            "link": "/pages/delivery"
+          }
+        },
+        "service_2": {
+          "type": "service",
+          "settings": {
+            "icon": "recycle",
+            "title": "Appliance recycling",
+            "text": "We'll take your old appliance away responsibly when we deliver the new one.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "service_3": {
+          "type": "service",
+          "settings": {
+            "icon": "shield",
+            "title": "Warranty & aftercare",
+            "text": "Straightforward help if something goes wrong - just bring it back to us.",
+            "link_label": "Warranty info",
+            "link": "/pages/delivery"
+          }
+        }
+      },
+      "block_order": [
+        "service_1",
+        "service_2",
+        "service_3"
+      ],
+      "settings": {
+        "eyebrow": "Our services",
+        "heading": "Need it delivered or installed?",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "card_style": "filled",
+        "columns": 3,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "animations": "inherit"
+      }
+    },
+    "cta": {
+      "type": "hth-cta-banner",
+      "settings": {
+        "eyebrow": "Need a hand?",
+        "heading": "Talk to a real person before you buy",
+        "text": "Call the store or pop in - we'll help you choose the right appliance for your home.",
+        "heading_size": "h3",
+        "alignment": "center",
+        "button_label": "Visit the store",
+        "button_link": "/pages/find-a-store",
+        "button_style": "m-button--primary",
+        "second_button_label": "Contact us",
+        "second_button_link": "/pages/contact",
+        "second_button_style": "m-button--white",
+        "show_phone": true,
+        "overlay_opacity": 45,
+        "min_height": 320,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "animations": "inherit"
       }
     },
     "recent-viewed": {
       "type": "recent-viewed-products",
       "settings": {
-        "container": "container-fluid",
-        "color_scheme": "",
-        "heading": "Recently Viewed Products",
+        "container": "container",
+        "color_scheme": "default",
+        "heading": "Recently viewed",
         "heading_size": "h3",
         "text_align": "left",
         "limit": 8,
-        "columns": 5,
-        "column_gap": 30,
+        "columns": 4,
+        "column_gap": 24,
         "pcard_layout": "",
         "pcard_image_ratio": "",
         "show_vendor": false,
@@ -88,9 +201,9 @@
         "show_navigation": false,
         "mobile_disable_slider": false,
         "use_scroll_mobile": true,
-        "item_gap_mobile": 16,
-        "padding_top": 40,
-        "padding_bottom": 100,
+        "item_gap_mobile": 14,
+        "padding_top": 24,
+        "padding_bottom": 56,
         "custom_class": "",
         "animations": "inherit"
       }
@@ -98,7 +211,10 @@
   },
   "order": [
     "collection-header",
+    "trust_badges",
     "main",
+    "services",
+    "cta",
     "recent-viewed"
   ]
 }

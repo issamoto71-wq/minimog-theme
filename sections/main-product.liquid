@@ -743,6 +743,361 @@
       ]
     },
     {
+      "type": "hth_perk",
+      "name": "Store perk (icon + text)",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Delivery van"
+            },
+            {
+              "value": "store",
+              "label": "Store front"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / warranty"
+            },
+            {
+              "value": "tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "wrench",
+              "label": "Wrench / installation"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle / refresh"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "mail",
+              "label": "Email"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "check",
+              "label": "Tick"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "card",
+              "label": "Payment card"
+            },
+            {
+              "value": "chat",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "users",
+              "label": "People"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "box",
+              "label": "Parcel"
+            },
+            {
+              "value": "thumbs-up",
+              "label": "Thumbs up"
+            },
+            {
+              "value": "flame",
+              "label": "Flame / BBQ"
+            },
+            {
+              "value": "utensils",
+              "label": "Knife & fork"
+            },
+            {
+              "value": "home",
+              "label": "Home"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "percent",
+              "label": "Percent"
+            },
+            {
+              "value": "calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "lock",
+              "label": "Padlock"
+            },
+            {
+              "value": "return",
+              "label": "Returns arrow"
+            },
+            {
+              "value": "coffee",
+              "label": "Coffee cup"
+            },
+            {
+              "value": "sparkle",
+              "label": "Sparkle"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free delivery over \u00a3150"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Description",
+          "default": "Or free Click & Collect from our store"
+        }
+      ]
+    },
+    {
+      "type": "hth_pickup",
+      "name": "Click & Collect card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Delivery van"
+            },
+            {
+              "value": "store",
+              "label": "Store front"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / warranty"
+            },
+            {
+              "value": "tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "wrench",
+              "label": "Wrench / installation"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle / refresh"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "mail",
+              "label": "Email"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "check",
+              "label": "Tick"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "card",
+              "label": "Payment card"
+            },
+            {
+              "value": "chat",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "users",
+              "label": "People"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "box",
+              "label": "Parcel"
+            },
+            {
+              "value": "thumbs-up",
+              "label": "Thumbs up"
+            },
+            {
+              "value": "flame",
+              "label": "Flame / BBQ"
+            },
+            {
+              "value": "utensils",
+              "label": "Knife & fork"
+            },
+            {
+              "value": "home",
+              "label": "Home"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "percent",
+              "label": "Percent"
+            },
+            {
+              "value": "calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "lock",
+              "label": "Padlock"
+            },
+            {
+              "value": "return",
+              "label": "Returns arrow"
+            },
+            {
+              "value": "coffee",
+              "label": "Coffee cup"
+            },
+            {
+              "value": "sparkle",
+              "label": "Sparkle"
+            }
+          ],
+          "default": "store"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "",
+          "info": "Leave blank to use Theme settings > Store details."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "",
+          "info": "Leave blank to use Theme settings > Store details."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_address",
+          "label": "Show store address",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_hours",
+          "label": "Show today's opening hours link",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link text",
+          "default": "See opening hours & directions"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Link to your store or contact page."
+        }
+      ],
+      "limit": 1
+    },
+    {
+      "type": "hth_help",
+      "name": "Need help? box",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Not sure which is right for you?"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Talk to our team in store or by phone - we're happy to help."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_phone",
+          "label": "Show phone number",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button text",
+          "default": "Visit the store"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ],
+      "limit": 1
+    },
+    {
       "type": "trust_badge",
       "name": "Trust badge",
       "limit": 1,
@@ -909,7 +1264,7 @@
           "label": "Required",
           "id": "field_required",
           "default": false,
-          "info": "If you use “Required” with a checkbox, then the checkbox will need to be checked for the customer to add the item to the cart."
+          "info": "If you use \u201cRequired\u201d with a checkbox, then the checkbox will need to be checked for the customer to add the item to the cart."
         },
         {
           "type": "checkbox",
@@ -940,7 +1295,7 @@
           "label": "Required",
           "id": "field_required",
           "default": false,
-          "info": "If you use “Required” with a checkbox, then the checkbox will need to be checked for the customer to add the item to the cart."
+          "info": "If you use \u201cRequired\u201d with a checkbox, then the checkbox will need to be checked for the customer to add the item to the cart."
         },
         {
           "type": "checkbox",

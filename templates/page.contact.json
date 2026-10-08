@@ -1,61 +1,183 @@
 {
+  "name": "Contact",
   "sections": {
-    "main": {
-      "type": "page-contact",
+    "hero": {
+      "type": "hth-page-hero",
       "settings": {
-        "container": "container"
+        "eyebrow": "Get in touch",
+        "heading": "Contact us",
+        "text": "Questions about a product, an order or Click & Collect? We're happy to help.",
+        "heading_size": "h2",
+        "alignment": "left",
+        "show_breadcrumb": true,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "overlay_opacity": 45,
+        "min_height": 240,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "animations": "inherit"
       }
     },
-    "contact-form": {
-      "type": "contact-form",
+    "cards": {
+      "type": "hth-contact-cards",
       "blocks": {
-        "text-block-1": {
-          "type": "textblock",
+        "phone_1": {
+          "type": "phone",
           "settings": {
-            "title": "Address",
-            "content": "<p>7895 Piermont Dr NE Albuquerque, NM 198866, <a href=\"#\">See Our Stores<\/a><\/p>"
+            "title": "",
+            "link_label": "Call now"
           }
         },
-        "text-block-2": {
-          "type": "textblock",
+        "email_2": {
+          "type": "email",
           "settings": {
-            "title": "Information",
-            "content": "<p>+391 (0)35 2568 4593<\/p><p>hello@domain.com<\/p>"
+            "title": "",
+            "link_label": "Send an email"
           }
         },
-        "text-block-3": {
-          "type": "socialmedia",
+        "address_3": {
+          "type": "address",
           "settings": {
-            "title": "Social Media"
+            "title": "",
+            "link_label": ""
           }
         },
-        "text-block-4": {
-          "type": "textblock",
+        "hours_4": {
+          "type": "hours",
           "settings": {
-            "title": "We're Open",
-            "content": "<p>Our store has re-opened for shopping, exchanges<\/p><p>Every day 11am to 7pm<\/p>"
+            "title": "",
+            "link_label": ""
           }
         }
       },
       "block_order": [
-        "text-block-1",
-        "text-block-2",
-        "text-block-3",
-        "text-block-4"
+        "phone_1",
+        "email_2",
+        "address_3",
+        "hours_4"
       ],
       "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "columns": 4,
+        "color_scheme": "default",
         "container": "container",
-        "title": "We would love to hear from you.",
-        "description": "<p>If you’ve got great products your making or looking to work with us then drop us a line.<\/p>",
+        "padding_top": 56,
+        "padding_bottom": 24,
+        "animations": "inherit"
+      }
+    },
+    "contact-form": {
+      "type": "contact-form",
+      "settings": {
+        "container": "container",
+        "title": "Send us a message",
+        "description": "<p>Fill in the form and a member of our team will get back to you, usually within one working day.</p>",
         "show_name": true,
-        "show_phone": false,
-        "show_signup_email": true,
+        "show_phone": true,
+        "show_signup_email": false,
+        "animations": "inherit"
+      }
+    },
+    "visit": {
+      "type": "hth-visit-store",
+      "settings": {
+        "eyebrow": "Visit the store",
+        "heading": "Find us",
+        "text": "Drop in to the showroom - we'd love to meet you.",
+        "heading_size": "h3",
+        "show_address": true,
+        "show_phone": true,
+        "show_email": false,
+        "show_click_collect": true,
+        "show_hours": true,
+        "button_label": "Get directions",
+        "button_style": "m-button--primary",
+        "directions_link": "",
+        "second_button_label": "Call the store",
+        "second_button_style": "m-button--secondary",
+        "media_type": "map",
+        "media_position": "media-right",
+        "map_zoom": 15,
+        "map_height": 480,
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "animations": "inherit"
+      }
+    },
+    "faq": {
+      "type": "hth-faq",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "Can I see products in store before I buy?",
+            "answer": "<p>Yes - most of our range is on display in the showroom, and our team can show you how things work. If there's something specific you'd like to see, give us a call and we'll have it ready for you.</p>",
+            "open": true
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "How does Click & Collect work?",
+            "answer": "<p>Reserve your items online, wait for our confirmation email, then collect from the store during opening hours. Please bring your order confirmation and a form of ID.</p>",
+            "open": false
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Do you deliver and install appliances?",
+            "answer": "<p>We deliver large appliances to your door and can install them and take your old appliance away. Delivery charges and availability are confirmed at checkout.</p>",
+            "open": false
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "What if I find it cheaper somewhere else?",
+            "answer": "<p>Tell us - we're happy to look at matching a comparable local price on the same product. Speak to our team in store or on the phone.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4"
+      ],
+      "settings": {
+        "eyebrow": "FAQs",
+        "heading": "Quick answers",
+        "text": "",
+        "header_alignment": "left",
+        "heading_size": "h3",
+        "layout": "split",
+        "help_text": "<p><strong>Still need help?</strong> Call or visit the store and our team will happily sort it out.</p>",
+        "enable_schema": true,
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 64,
+        "padding_bottom": 64,
         "animations": "inherit"
       }
     }
   },
   "order": [
-    "main",
-    "contact-form"
+    "hero",
+    "cards",
+    "contact-form",
+    "visit",
+    "faq"
   ]
 }

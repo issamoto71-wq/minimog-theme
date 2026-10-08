@@ -1,1238 +1,950 @@
 {
   "sections": {
-    "1621243260e1af0c20": {
-      "type": "slider",
+    "hero": {
+      "type": "hth-hero",
       "blocks": {
-        "1621243260e1af0c20-0": {
-          "type": "slider_item",
+        "bullet_1": {
+          "type": "bullet",
           "settings": {
-            "content_in_container": false,
-            "content_position": "left middle",
-            "text_alignment": "left",
-            "text_size": "large",
-            "text_color": "black",
-            "subheading": "New Arrivals",
-            "title": "Venice Haute <br>\nCouture",
-            "description": "",
-            "image_link": "",
-            "button_text": "Shop Now",
-            "button_style": "sf__btn-secondary",
-            "button_size": "",
-            "second_button_text": "",
-            "second_button_link": "",
-            "second_button_style": "m-button--primary",
-            "second_button_size": "",
-            "show_footer": true,
-            "footer_alignment": "end",
-            "footer_text": "The ReCotton Tee",
-            "footer_button": "Shop Now"
+            "icon": "tag",
+            "text": "Price match promise"
           }
         },
-        "1621243260e1af0c20-1": {
-          "type": "slider_item",
+        "bullet_2": {
+          "type": "bullet",
           "settings": {
-            "content_in_container": false,
-            "content_position": "left middle",
-            "text_alignment": "left",
-            "text_size": "large",
-            "text_color": "black",
-            "subheading": "New Arrivals",
-            "title": "Responsible<br>\nDenim Lab",
-            "description": "",
-            "image_link": "",
-            "button_text": "Shop Now",
-            "button_style": "sf__btn-secondary",
-            "button_size": "",
-            "second_button_text": "",
-            "second_button_link": "",
-            "second_button_style": "m-button--primary",
-            "second_button_size": "",
-            "show_footer": true,
-            "footer_alignment": "end",
-            "footer_text": "The ReCotton Tee",
-            "footer_button": "Shop Now"
+            "icon": "users",
+            "text": "Expert in-store advice"
           }
         },
-        "1621243260e1af0c20-2": {
-          "type": "slider_item",
+        "bullet_3": {
+          "type": "bullet",
           "settings": {
-            "content_in_container": false,
-            "content_position": "left middle",
-            "text_alignment": "left",
-            "text_size": "large",
-            "text_color": "black",
-            "subheading": "New Arrivals",
-            "title": "Ultimate Winter<br>\nWarmer",
-            "description": "",
-            "image_link": "",
-            "button_text": "Shop Now",
-            "button_style": "sf__btn-secondary",
-            "button_size": "",
-            "second_button_text": "",
-            "second_button_link": "",
-            "second_button_style": "m-button--primary",
-            "second_button_size": "",
-            "show_footer": true,
-            "footer_alignment": "end",
-            "footer_text": "The ReCotton Tee",
-            "footer_button": "Shop Now"
+            "icon": "truck",
+            "text": "Delivery & installation"
           }
         }
       },
       "block_order": [
-        "1621243260e1af0c20-0",
-        "1621243260e1af0c20-1",
-        "1621243260e1af0c20-2"
+        "bullet_1",
+        "bullet_2",
+        "bullet_3"
       ],
       "settings": {
-        "container": "w-full",
-        "slideshow_height": "adapt",
-        "show_overlay": false,
-        "dots_position": "right",
-        "dots_color": "dark",
-        "show_dots": true,
-        "show_arrows": false,
-        "autorotate": true,
-        "autorotate_speed": 4,
-        "use_content_above": false,
-        "custom_class": "sf-home__slideshow",
-        "animations": "inherit"
-      }
-    },
-    "16225316461d1cff80": {
-      "type": "collection-list",
-      "blocks": {
-        "65e38235-f03b-43c9-8590-38c9c656e51c": {
-          "type": "collection_block",
-          "settings": {
-            "title": "Glasses"
-          }
-        },
-        "694c01c9-a95f-4c09-9cf0-ec75f0131e98": {
-          "type": "collection_block",
-          "settings": {
-            "title": "Knit Wears"
-          }
-        },
-        "16225316461d1cff80-1": {
-          "type": "collection_block",
-          "settings": {
-            "title": "Summer Bags"
-          }
-        },
-        "6d4abb37-5aa2-4499-a2b0-5d85f0d36eec": {
-          "type": "collection_block",
-          "settings": {
-            "title": "Sneakers"
-          }
-        },
-        "12985deb-0775-45ce-80f6-6be7f3150a91": {
-          "type": "collection_block",
-          "settings": {
-            "title": "Accessories"
-          }
-        }
-      },
-      "block_order": [
-        "65e38235-f03b-43c9-8590-38c9c656e51c",
-        "694c01c9-a95f-4c09-9cf0-ec75f0131e98",
-        "16225316461d1cff80-1",
-        "6d4abb37-5aa2-4499-a2b0-5d85f0d36eec",
-        "12985deb-0775-45ce-80f6-6be7f3150a91"
-      ],
-      "custom_css": [
-        ".m-collection-card__title {font-weight: 400;}",
-        "@media (max-width: 767px) {.m-slider-controls[class*=\"-bottom-left\"], .m-section__header {text-align: center; }}"
-      ],
-      "settings": {
-        "heading": "Shop by Categories",
-        "heading_size": "h3",
-        "subheading": "",
-        "description": "",
-        "button_label": "",
-        "button_link": "",
+        "eyebrow": "Kitchen - Outdoor - Home",
+        "heading": "Appliances you can see, touch & trust",
+        "text": "Visit our showroom or reserve online and collect in store. Friendly advice, fair prices and brands you know.",
+        "button_label": "Shop all products",
+        "button_link": "/collections/all",
         "button_style": "m-button--primary",
-        "header_alignment": "left",
-        "color_scheme": "",
-        "container": "container-fluid",
-        "layout": "grid",
-        "expanded": true,
-        "card_style": "inside",
-        "text_alignment": "left",
-        "hover_effect": "scaling-up",
-        "show_product_count": true,
-        "count_inline_title": true,
-        "image_rounded": false,
-        "items_per_row": 3,
-        "item_gap": 40,
-        "enable_slider": true,
-        "show_pagination": true,
-        "show_navigation": true,
-        "autorotate": false,
-        "autorotate_speed": 4,
-        "mobile_disable_slider": false,
-        "use_scroll_mobile": true,
-        "mobile_gap": 16,
-        "hidden_slide_control_mobile": false,
-        "padding_top": 100,
-        "padding_bottom": 0,
-        "custom_class": "sf-home__collection-list",
+        "second_button_label": "Visit the store",
+        "second_button_link": "/pages/find-a-store",
+        "second_button_style": "m-button--white",
+        "style": "split",
+        "layout": "image-right",
+        "min_height": 560,
+        "overlay_opacity": 55,
+        "float_icon": "store",
+        "float_title": "Free Click & Collect",
+        "float_text": "Ready within 2 hours",
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 56,
+        "padding_bottom": 56,
         "animations": "inherit"
       }
     },
-    "162251092958fcda7c": {
-      "type": "product-tabs",
+    "trust_badges": {
+      "type": "hth-trust-badges",
       "blocks": {
-        "162251092958fcda7c-0": {
-          "type": "tab",
+        "badge_1": {
+          "type": "badge",
           "settings": {
-            "title": "best sellers"
+            "icon": "truck",
+            "title": "Free delivery",
+            "text": "On orders over £150"
           }
         },
-        "162251092958fcda7c-1": {
-          "type": "tab",
+        "badge_2": {
+          "type": "badge",
           "settings": {
-            "title": "new arrivals"
+            "icon": "store",
+            "title": "Free Click & Collect",
+            "text": "Ready in 2 hours"
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "icon": "tag",
+            "title": "Price match promise",
+            "text": "We'll match local prices"
+          }
+        },
+        "badge_4": {
+          "type": "badge",
+          "settings": {
+            "icon": "shield",
+            "title": "Expert advice",
+            "text": "Friendly help in store"
           }
         }
       },
       "block_order": [
-        "162251092958fcda7c-0",
-        "162251092958fcda7c-1"
-      ],
-      "custom_css": [
-        ".m-section__header {--m-section-header-spacing-bottom: 60px;}"
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4"
       ],
       "settings": {
-        "heading": "You are in",
-        "heading_size": "h3",
-        "subheading": "",
-        "description": "",
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "animations": "inherit",
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
         "header_alignment": "center",
-        "container": "container-fluid",
-        "color_scheme": "",
-        "tab_header": "select",
-        "limit": 10,
-        "show_button": true,
-        "button_type": "link",
-        "button_label": "Shop All Products",
-        "button_style": "m-button--secondary",
-        "button_size": "",
+        "heading_size": "h3",
+        "style": "bar",
+        "columns": 4
+      }
+    },
+    "categories": {
+      "type": "hth-category-tiles",
+      "blocks": {
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "collection": "kitchen",
+            "title": "Kitchen",
+            "tagline": "Cook - Brew - Prepare",
+            "link": "/collections/kitchen",
+            "button_label": "Shop kitchen"
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "collection": "outdoor",
+            "title": "Outdoor & BBQ",
+            "tagline": "Grill - Smoke - Bake",
+            "link": "/collections/outdoor",
+            "button_label": "Shop outdoor"
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "collection": "home",
+            "title": "Home",
+            "tagline": "Clean - Cool - Refresh",
+            "link": "/collections/home",
+            "button_label": "Shop home"
+          }
+        }
+      },
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3"
+      ],
+      "settings": {
+        "eyebrow": "Shop by category",
+        "heading": "Everything for your home",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "columns": 3,
+        "image_ratio": "4/5",
+        "text_position": "overlay",
+        "gap": 20,
+        "show_count": true,
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 64,
+        "padding_bottom": 56,
+        "animations": "inherit"
+      }
+    },
+    "best_sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Best sellers",
+        "heading_size": "h3",
+        "subheading": "Most popular",
+        "description": "",
+        "header_alignment": "left",
+        "color_scheme": "default",
+        "container": "container",
+        "collection": "all",
+        "enable_flashsale": false,
+        "show_countdown": false,
+        "product_to_show": 8,
+        "items_per_row": 4,
+        "item_gap": 24,
         "pcard_layout": "",
         "pcard_image_ratio": "",
         "show_vendor": false,
-        "items_per_row": 5,
-        "item_gap": 30,
+        "hide_title": false,
         "enable_slider": false,
-        "show_navigation": false,
         "show_pagination": false,
+        "show_navigation": false,
+        "show_button_on_header": true,
+        "button_type": "link",
+        "button_text": "View all",
+        "button_style": "m-button--secondary",
+        "button_size": "m-button--small",
+        "infinite_load": false,
+        "max_page_load": 3,
         "mobile_disable_slider": false,
         "use_scroll_mobile": true,
-        "item_gap_mobile": 16,
-        "padding_top": 100,
-        "padding_bottom": 10,
-        "custom_class": "sf-home__product-tab",
+        "item_gap_mobile": 14,
+        "padding_top": 24,
+        "padding_bottom": 56,
+        "custom_class": "",
         "animations": "inherit"
       }
     },
-    "7ea56e8d-5794-4708-8812-8ee9604a3a21": {
-      "type": "custom-content",
+    "promos": {
+      "type": "hth-promo-grid",
       "blocks": {
-        "template--15977492021425__7ea56e8d-5794-4708-8812-8ee9604a3a21-1678440566c64de1a8-1": {
-          "type": "image",
+        "promo_1": {
+          "type": "promo",
           "settings": {
-            "link": "",
-            "width": "50%",
-            "alignment": "center",
-            "block_custom_class": "",
-            "animations": "zoom-fade"
+            "color_scheme": "dark",
+            "text_color": "light",
+            "eyebrow": "BBQ season",
+            "title": "Fire up the garden",
+            "text": "Kamado, charcoal and pellet BBQs - ready to collect in store.",
+            "button_label": "Shop BBQs",
+            "link": "/collections/outdoor"
           }
         },
-        "5c5877d5-05b2-4a50-81e3-78c3f6d0d833": {
-          "type": "image_card",
+        "promo_2": {
+          "type": "promo",
           "settings": {
-            "width": "50%",
-            "color_scheme": "",
-            "content_position": "top_center",
-            "content_alignment": "center",
-            "text_size": "medium",
-            "text_color": "black",
-            "title": "The ReLeather Beige<br> Tennis Shoe",
-            "subtitle": "New collection",
-            "description": "",
-            "button_label": "Shop New Collection",
-            "button_style": "m-button--primary",
-            "button_size": "m-button--large",
-            "button_fixed": true,
-            "use_content_above": true,
-            "block_custom_class": "",
-            "animations": "inherit"
+            "color_scheme": "ember",
+            "text_color": "light",
+            "eyebrow": "Kitchen deals",
+            "title": "Air fryers from £89",
+            "text": "",
+            "button_label": "Shop air fryers",
+            "link": "/collections/kitchen"
+          }
+        },
+        "promo_3": {
+          "type": "promo",
+          "settings": {
+            "color_scheme": "sage",
+            "text_color": "dark",
+            "eyebrow": "Fresh home",
+            "title": "Cleaner, calmer air",
+            "text": "",
+            "button_label": "Shop home",
+            "link": "/collections/home"
           }
         }
       },
       "block_order": [
-        "template--15977492021425__7ea56e8d-5794-4708-8812-8ee9604a3a21-1678440566c64de1a8-1",
-        "5c5877d5-05b2-4a50-81e3-78c3f6d0d833"
-      ],
-      "custom_css": [
-        ".container-full {padding-left: 0; padding-right: 0;}",
-        ".m-button--fixed {border-color: #e2e2e2; padding: 24px 0; margin-bottom: 24px;}",
-        "@media (min-width: 1280px) {.m-image-card__content {padding-top: 115px; }}",
-        "@media (max-width: 767px) {.m-button--fixed {border: none; margin-bottom: 0; justify-content: center; column-gap: 12px; } .m-image-card__content {padding-top: 30px; }}"
+        "promo_1",
+        "promo_2",
+        "promo_3"
       ],
       "settings": {
+        "eyebrow": "",
         "heading": "",
-        "heading_size": "h3",
-        "subheading": "",
-        "description": "",
+        "text": "",
         "header_alignment": "center",
-        "container": "w-full",
-        "color_scheme": "",
-        "content_color_scheme": "",
-        "enable_parallax": false,
-        "parallax_direction": "vertical",
-        "gap": 0,
-        "gap_mobile": 0,
-        "use_scroll_mobile": false,
-        "padding_top": 90,
-        "padding_bottom": 0,
-        "custom_class": "sf-custom--collection-banner"
-      }
-    },
-    "lookbook_MB4Mr4": {
-      "type": "lookbook",
-      "blocks": {
-        "shop_this_look_amDhCa": {
-          "type": "shop-this-look",
-          "settings": {
-            "color_scheme": "",
-            "title_text": "Beautifully Functional. Purposefully Designed.",
-            "title_size": "m:text-base",
-            "text_alignment": "center",
-            "title_link": "",
-            "button_label": "Shop this look",
-            "product_list": []
-          }
-        },
-        "shop_this_look_AVdw3f": {
-          "type": "shop-this-look",
-          "settings": {
-            "color_scheme": "",
-            "title_text": "Beautifully Functional. Purposefully Designed.",
-            "title_size": "m:text-base",
-            "text_alignment": "center",
-            "title_link": "",
-            "button_label": "Shop this look",
-            "product_list": []
-          }
-        },
-        "shop_this_look_EcLGgQ": {
-          "type": "shop-this-look",
-          "settings": {
-            "color_scheme": "",
-            "title_text": "The t-shirt is designed with a crewneck collar.",
-            "title_size": "m:text-base",
-            "text_alignment": "center",
-            "title_link": "",
-            "button_label": "Shop this look",
-            "product_list": []
-          }
-        }
-      },
-      "block_order": [
-        "shop_this_look_amDhCa",
-        "shop_this_look_AVdw3f",
-        "shop_this_look_EcLGgQ"
-      ],
-      "settings": {
-        "heading": "Check out mix & match",
         "heading_size": "h3",
-        "subheading": "",
+        "layout": "large-left",
+        "gap": 20,
+        "min_height": 280,
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 24,
+        "padding_bottom": 56,
+        "animations": "inherit"
+      }
+    },
+    "kitchen_products": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Kitchen favourites",
+        "heading_size": "h3",
+        "subheading": "Cook & brew",
         "description": "",
-        "header_alignment": "center",
-        "container": "container-fluid",
-        "color_scheme": "",
-        "image_aspect_ratio": "3/4",
-        "use_scroll_mobile": true,
-        "padding_top": 100,
-        "padding_bottom": 100,
-        "custom_class": "",
-        "animations": "inherit",
-        "enable_bg_zoom_effect": true
-      }
-    },
-    "scrolling_promotion_jjrFyf": {
-      "type": "scrolling-promotion",
-      "blocks": {
-        "image_LqzGfW": {
-          "type": "image",
-          "settings": {
-            "image_height": 80,
-            "image_link": ""
-          }
-        },
-        "announcement_w3tNiH": {
-          "type": "announcement",
-          "settings": {
-            "custom_svg": "",
-            "icon_size": "medium",
-            "text": "New Season Essential",
-            "text_size": 42,
-            "text_link": ""
-          }
-        },
-        "image_HiyPPp": {
-          "type": "image",
-          "settings": {
-            "image_height": 80,
-            "image_link": ""
-          }
-        },
-        "announcement_nafDhJ": {
-          "type": "announcement",
-          "settings": {
-            "custom_svg": "",
-            "icon_size": "medium",
-            "text": "Purposefully Designed",
-            "text_size": 42,
-            "text_link": ""
-          }
-        },
-        "image_YkTdm3": {
-          "type": "image",
-          "settings": {
-            "image_height": 80,
-            "image_link": ""
-          }
-        },
-        "announcement_JfYdTK": {
-          "type": "announcement",
-          "settings": {
-            "custom_svg": "",
-            "icon_size": "medium",
-            "text": "New Season Essential",
-            "text_size": 42,
-            "text_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_LqzGfW",
-        "announcement_w3tNiH",
-        "image_HiyPPp",
-        "announcement_nafDhJ",
-        "image_YkTdm3",
-        "announcement_JfYdTK"
-      ],
-      "custom_css": [
-        ".m-scrolling-promotion-section {border-width: 1px 0 1px 0; border-color: rgb(var(--color-border));}",
-        "@media (max-width: 767px) {.m-promotion__text {font-size: 30px; } .m-promotion__item img {--image-height: 70px; } .m-section-py {padding-top: 15px; padding-bottom: 15px; }}"
-      ],
-      "settings": {
-        "container": "w-full",
-        "direction": "left",
-        "speed": 30,
-        "item_gap": 40,
-        "item_gap_mobile": 20,
-        "color_scheme": "",
-        "padding_top": 26,
-        "padding_bottom": 26,
-        "custom_class": ""
-      }
-    },
-    "collection_tabs_QE4TLj": {
-      "type": "collection-tabs",
-      "blocks": {
-        "collection_Yy3bMf": {
-          "type": "collection",
-          "settings": {
-            "heading": "Sweaters & Cardigans",
-            "heading_size": "h4",
-            "text": "<p>This snuggly soft Cloud Relaxed Cardigan serves a relaxed fit, with saddle shoulders—where the armhole seams curve towards the neckline so that the sleeve seamlessly hugs your shoulder</p>"
-          }
-        },
-        "collection_EhyPJ6": {
-          "type": "collection",
-          "settings": {
-            "heading": "The Bomber Jackets",
-            "heading_size": "h4",
-            "text": "<p>This snuggly soft Cloud Relaxed Cardigan serves a relaxed fit, with saddle shoulders—where the armhole seams curve towards the neckline so that the sleeve seamlessly hugs your shoulder</p>"
-          }
-        },
-        "collection_PEi4at": {
-          "type": "collection",
-          "settings": {
-            "heading": "Corduroy Shirts",
-            "heading_size": "h4",
-            "text": "<p>This snuggly soft Cloud Relaxed Cardigan serves a relaxed fit, with saddle shoulders—where the armhole seams curve towards the neckline so that the sleeve seamlessly hugs your shoulder</p>"
-          }
-        }
-      },
-      "block_order": [
-        "collection_Yy3bMf",
-        "collection_EhyPJ6",
-        "collection_PEi4at"
-      ],
-      "settings": {
-        "container": "container-fluid",
-        "color_scheme": "",
         "header_alignment": "left",
-        "heading": "Beautifully functional <br>consciously crafted",
-        "heading_size": "h2",
-        "subheading": "Hot This Week",
-        "description": "",
-        "image_position": "right",
-        "image_ratio": "1/1",
-        "prefix_header": "ordinal_number",
-        "trigger_behavior": "hover",
-        "autoplay": true,
-        "autoplay_duration": 3,
-        "padding_top": 100,
-        "padding_bottom": 0,
-        "custom_class": "",
-        "animations": "inherit"
-      }
-    },
-    "brands_list_XfN79B": {
-      "type": "brands-list",
-      "blocks": {
-        "image_DRQGaG": {
-          "type": "image",
-          "settings": {
-            "image_by_url": "",
-            "image_link": "",
-            "max_width": "150px"
-          }
-        },
-        "image_iz6arX": {
-          "type": "image",
-          "settings": {
-            "image_by_url": "",
-            "image_link": "",
-            "max_width": "150px"
-          }
-        },
-        "image_mWnYAa": {
-          "type": "image",
-          "settings": {
-            "image_by_url": "",
-            "image_link": "",
-            "max_width": "150px"
-          }
-        },
-        "image_GkqNqL": {
-          "type": "image",
-          "settings": {
-            "image_by_url": "",
-            "image_link": "",
-            "max_width": "150px"
-          }
-        },
-        "image_VKAxfW": {
-          "type": "image",
-          "settings": {
-            "image_by_url": "",
-            "image_link": "",
-            "max_width": "150px"
-          }
-        },
-        "image_9dYQ7c": {
-          "type": "image",
-          "settings": {
-            "image_by_url": "",
-            "image_link": "",
-            "max_width": "150px"
-          }
-        }
-      },
-      "block_order": [
-        "image_DRQGaG",
-        "image_iz6arX",
-        "image_mWnYAa",
-        "image_GkqNqL",
-        "image_VKAxfW",
-        "image_9dYQ7c"
-      ],
-      "custom_css": [
-        ".m-section__heading {font-size: 18px; font-weight: 500;}",
-        "@media (max-width: 767px) {.m-brands-list__inner {grid-template-columns: repeat(3, minmax(0, 1fr)); }}"
-      ],
-      "settings": {
-        "heading": "Featured in Press",
-        "heading_size": "h3",
-        "subheading": "",
-        "header_alignment": "center",
-        "container": "container-fluid",
-        "color_scheme": "",
-        "item_per_row": 6,
-        "column_gap": 0,
-        "row_gap": 30,
-        "column_gap_mobile": 10,
-        "row_gap_mobile": 10,
-        "enable_slider": false,
-        "show_nav": false,
+        "color_scheme": "cream",
+        "container": "container",
+        "collection": "kitchen",
+        "enable_flashsale": false,
+        "show_countdown": false,
+        "product_to_show": 10,
+        "items_per_row": 4,
+        "item_gap": 24,
+        "pcard_layout": "",
+        "pcard_image_ratio": "",
+        "show_vendor": false,
+        "hide_title": false,
+        "enable_slider": true,
         "show_pagination": false,
-        "autorotate": false,
-        "autorotate_speed": 3,
-        "padding_top": 100,
-        "padding_bottom": 80,
+        "show_navigation": true,
+        "show_button_on_header": true,
+        "button_type": "link",
+        "button_text": "Shop kitchen",
+        "button_style": "m-button--secondary",
+        "button_size": "m-button--small",
+        "infinite_load": false,
+        "max_page_load": 3,
+        "mobile_disable_slider": false,
+        "use_scroll_mobile": true,
+        "item_gap_mobile": 14,
+        "padding_top": 56,
+        "padding_bottom": 56,
         "custom_class": "",
         "animations": "inherit"
       }
     },
-    "custom_content_xALaMf": {
-      "type": "custom-content",
+    "why_us": {
+      "type": "hth-why-choose-us",
       "blocks": {
-        "html_gbT3c7": {
-          "type": "html",
+        "reason_1": {
+          "type": "reason",
           "settings": {
-            "code": "<div class=\"m-divider\"></div>",
-            "width": "100%",
-            "block_custom_class": "",
-            "animations": "inherit"
+            "icon": "users",
+            "title": "Expert, friendly advice",
+            "text": "Our team tests the products they sell and will help you pick the right one."
+          }
+        },
+        "reason_2": {
+          "type": "reason",
+          "settings": {
+            "icon": "tag",
+            "title": "Fair, matched prices",
+            "text": "Found it cheaper locally? Tell us and we'll do our best to match it."
+          }
+        },
+        "reason_3": {
+          "type": "reason",
+          "settings": {
+            "icon": "wrench",
+            "title": "Delivery & installation",
+            "text": "We can deliver, install and take your old appliance away."
+          }
+        },
+        "reason_4": {
+          "type": "reason",
+          "settings": {
+            "icon": "shield",
+            "title": "Support after you buy",
+            "text": "Warranty help and advice from the same people who sold it to you."
           }
         }
       },
       "block_order": [
-        "html_gbT3c7"
-      ],
-      "custom_css": [
-        ".m-divider {height: 1px; width: 100%; background: rgb(var(--color-border));}"
+        "reason_1",
+        "reason_2",
+        "reason_3",
+        "reason_4"
       ],
       "settings": {
-        "heading": "",
+        "eyebrow": "Why shop with us",
+        "heading": "A real shop, with real people who know their stuff",
+        "text": "Buying a big appliance is a big decision. Come and see it, touch it, and talk it through with people who use it every day.",
         "heading_size": "h3",
-        "subheading": "",
-        "description": "",
-        "header_alignment": "center",
-        "container": "container-fluid",
-        "color_scheme": "",
-        "content_color_scheme": "",
-        "enable_parallax": false,
-        "parallax_direction": "vertical",
-        "gap": 30,
-        "gap_mobile": 16,
-        "use_scroll_mobile": false,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_class": ""
+        "layout": "image-left",
+        "badge_value": "25+",
+        "badge_label": "years serving local homes",
+        "button_label": "About us",
+        "button_link": "/pages/about-us",
+        "button_style": "m-button--primary",
+        "second_button_label": "",
+        "second_button_link": "",
+        "second_button_style": "m-button--secondary",
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "animations": "inherit"
       }
     },
-    "custom_content_f3reLw": {
-      "type": "custom-content",
+    "stats": {
+      "type": "hth-stats",
       "blocks": {
-        "text_DppTKH": {
-          "type": "text",
+        "stat_1": {
+          "type": "stat",
           "settings": {
-            "title": "The Coastal Edition",
-            "subheading": "",
-            "text": "<p>Our new cozy collection is made with environmentally friendly materials and<br/> simple to care for so you can stay cozy wherever.</p>",
-            "width": "100%",
-            "alignment": "center",
-            "align_text": "center",
-            "text_size": "large",
-            "text_color": "inherit",
-            "button_label": "Shop Now",
-            "button_style": "m-button--secondary",
-            "button_size": "",
-            "block_custom_class": "",
-            "animations": "inherit"
+            "value": 25,
+            "prefix": "",
+            "suffix": "+",
+            "label": "Years in business"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "value": 50,
+            "prefix": "",
+            "suffix": "+",
+            "label": "Brands in store"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "value": 12000,
+            "prefix": "",
+            "suffix": "+",
+            "label": "Happy customers"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "value": 98,
+            "prefix": "",
+            "suffix": "%",
+            "label": "Would recommend us"
           }
         }
       },
       "block_order": [
-        "text_DppTKH"
-      ],
-      "custom_css": [
-        ".m-richtext__description {font-size: 16px;}"
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
       ],
       "settings": {
+        "eyebrow": "",
         "heading": "",
-        "heading_size": "h3",
-        "subheading": "",
-        "description": "",
+        "text": "",
         "header_alignment": "center",
-        "container": "container-fluid",
-        "color_scheme": "",
-        "content_color_scheme": "",
-        "enable_parallax": false,
-        "parallax_direction": "vertical",
-        "gap": 0,
-        "gap_mobile": 16,
-        "use_scroll_mobile": false,
-        "padding_top": 100,
-        "padding_bottom": 100,
-        "custom_class": ""
+        "heading_size": "h3",
+        "columns": 4,
+        "count_up": true,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "animations": "inherit"
       }
     },
-    "custom_content_btgYN3": {
-      "type": "custom-content",
-      "blocks": {
-        "lookbook_XVdfNy": {
-          "type": "lookbook",
-          "settings": {
-            "color_scheme": "",
-            "width": "50%",
-            "top_1": 31,
-            "left_1": 37,
-            "product_1": "",
-            "top_2": 26,
-            "left_2": 50,
-            "product_2": "",
-            "top_3": 61,
-            "left_3": 48,
-            "product_3": "",
-            "top_4": 0,
-            "left_4": 0,
-            "product_4": "",
-            "top_5": 20,
-            "left_5": 0,
-            "product_5": "",
-            "block_custom_class": "m-block-first",
-            "animations": "inherit"
-          }
-        },
-        "lookbook_hDUCNi": {
-          "type": "lookbook",
-          "settings": {
-            "color_scheme": "",
-            "width": "50%",
-            "top_1": 50,
-            "left_1": 36,
-            "product_1": "",
-            "top_2": 26,
-            "left_2": 50,
-            "product_2": "",
-            "top_3": 61,
-            "left_3": 48,
-            "product_3": "",
-            "top_4": 0,
-            "left_4": 0,
-            "product_4": "",
-            "top_5": 20,
-            "left_5": 0,
-            "product_5": "",
-            "block_custom_class": "",
-            "animations": "inherit"
-          }
-        }
-      },
-      "block_order": [
-        "lookbook_XVdfNy",
-        "lookbook_hDUCNi"
-      ],
-      "custom_css": [
-        ".m-custom-content__wrapper,.m-block-first {position: relative; z-index: 1;}"
-      ],
+    "outdoor_products": {
+      "type": "featured-collection",
       "settings": {
-        "heading": "",
+        "heading": "Outdoor & BBQ",
         "heading_size": "h3",
-        "subheading": "",
+        "subheading": "Grill, smoke & bake",
         "description": "",
-        "header_alignment": "center",
-        "container": "container-fluid",
-        "color_scheme": "",
-        "content_color_scheme": "",
-        "enable_parallax": false,
-        "parallax_direction": "vertical",
-        "gap": 0,
-        "gap_mobile": 0,
-        "use_scroll_mobile": false,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_class": ""
+        "header_alignment": "left",
+        "color_scheme": "default",
+        "container": "container",
+        "collection": "outdoor",
+        "enable_flashsale": false,
+        "show_countdown": false,
+        "product_to_show": 10,
+        "items_per_row": 4,
+        "item_gap": 24,
+        "pcard_layout": "",
+        "pcard_image_ratio": "",
+        "show_vendor": false,
+        "hide_title": false,
+        "enable_slider": true,
+        "show_pagination": false,
+        "show_navigation": true,
+        "show_button_on_header": true,
+        "button_type": "link",
+        "button_text": "Shop outdoor",
+        "button_style": "m-button--secondary",
+        "button_size": "m-button--small",
+        "infinite_load": false,
+        "max_page_load": 3,
+        "mobile_disable_slider": false,
+        "use_scroll_mobile": true,
+        "item_gap_mobile": 14,
+        "padding_top": 64,
+        "padding_bottom": 56,
+        "custom_class": "",
+        "animations": "inherit"
       }
     },
-    "custom_content_hh6hmV": {
-      "type": "custom-content",
+    "services": {
+      "type": "hth-services",
       "blocks": {
-        "text_Dxjzb6": {
-          "type": "text",
+        "service_1": {
+          "type": "service",
           "settings": {
-            "title": "Living out every single day and <br> be brave to show off your own true colors",
-            "subheading": "Minimog Store",
-            "text": "<p>Our new cozy collection is made with environmentally friendly materials and <br/> simple to care for so you can stay cozy wherever .</p>",
-            "width": "100%",
-            "alignment": "center",
-            "align_text": "center",
-            "text_size": "medium",
-            "text_color": "inherit",
-            "button_label": "Shop Collection",
-            "button_style": "m-button--link",
-            "button_size": "",
-            "block_custom_class": "",
-            "animations": "inherit"
+            "icon": "truck",
+            "title": "Delivery & installation",
+            "text": "Careful delivery to your door, with installation available on large appliances.",
+            "link_label": "Delivery details",
+            "link": "/pages/delivery"
+          }
+        },
+        "service_2": {
+          "type": "service",
+          "settings": {
+            "icon": "recycle",
+            "title": "Appliance recycling",
+            "text": "We'll take your old appliance away responsibly when we deliver the new one.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "service_3": {
+          "type": "service",
+          "settings": {
+            "icon": "shield",
+            "title": "Warranty & aftercare",
+            "text": "Straightforward help if something goes wrong - just bring it back to us.",
+            "link_label": "Warranty info",
+            "link": "/pages/delivery"
           }
         }
       },
       "block_order": [
-        "text_Dxjzb6"
-      ],
-      "custom_css": [
-        "@media (max-width: 767px) {br {display: none; }}"
+        "service_1",
+        "service_2",
+        "service_3"
       ],
       "settings": {
-        "heading": "",
-        "heading_size": "h3",
-        "subheading": "",
-        "description": "",
+        "eyebrow": "Our services",
+        "heading": "More than just a shop",
+        "text": "",
         "header_alignment": "center",
-        "container": "container-fluid",
-        "color_scheme": "",
-        "content_color_scheme": "",
-        "enable_parallax": false,
-        "parallax_direction": "vertical",
-        "gap": 30,
-        "gap_mobile": 16,
-        "use_scroll_mobile": false,
-        "padding_top": 100,
-        "padding_bottom": 0,
-        "custom_class": ""
-      }
-    },
-    "collection_list_tjXYY7": {
-      "type": "collection-list",
-      "blocks": {
-        "collection_block_jRJk76": {
-          "type": "collection_block",
-          "settings": {
-            "title": "Top"
-          }
-        },
-        "collection_block_F6rPLj": {
-          "type": "collection_block",
-          "settings": {
-            "title": "Shirts"
-          }
-        },
-        "collection_block_rFmir7": {
-          "type": "collection_block",
-          "settings": {
-            "title": "Sunglasses"
-          }
-        },
-        "collection_block_YXwFjp": {
-          "type": "collection_block",
-          "settings": {
-            "title": "Shorts"
-          }
-        },
-        "collection_block_pYgiyF": {
-          "type": "collection_block",
-          "settings": {
-            "title": "Leather Bags"
-          }
-        },
-        "collection_block_i7CRfm": {
-          "type": "collection_block",
-          "settings": {
-            "title": "Sandals"
-          }
-        }
-      },
-      "block_order": [
-        "collection_block_jRJk76",
-        "collection_block_F6rPLj",
-        "collection_block_rFmir7",
-        "collection_block_YXwFjp",
-        "collection_block_pYgiyF",
-        "collection_block_i7CRfm"
-      ],
-      "custom_css": [
-        ".m-collection-list {--mobile-column-width: 40vw;}",
-        ".m-collection-card__image {max-width: 140px; margin: 0 auto;}",
-        ".m-collection-card__title {font-size: 18px;}"
-      ],
-      "settings": {
-        "heading": "",
         "heading_size": "h3",
-        "subheading": "",
-        "description": "",
+        "card_style": "bordered",
+        "columns": 3,
         "button_label": "",
         "button_link": "",
         "button_style": "m-button--primary",
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "animations": "inherit"
+      }
+    },
+    "click_collect": {
+      "type": "hth-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon": "card",
+            "title": "Reserve online",
+            "text": "Choose your products and reserve them in a couple of clicks."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon": "mail",
+            "title": "We get it ready",
+            "text": "We'll email you as soon as your order is picked and ready to go."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon": "store",
+            "title": "Collect in store",
+            "text": "Bring your confirmation and we'll help you load up."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Click & Collect in three simple steps",
+        "text": "",
         "header_alignment": "center",
-        "color_scheme": "",
-        "container": "container-fluid",
-        "layout": "grid",
-        "expanded": true,
-        "card_style": "standard",
-        "text_alignment": "center",
-        "hover_effect": "scaling-up",
-        "show_product_count": true,
-        "count_inline_title": true,
-        "image_rounded": true,
-        "items_per_row": 6,
-        "item_gap": 0,
-        "enable_slider": false,
+        "heading_size": "h3",
+        "button_label": "Learn more about Click & Collect",
+        "button_link": "/pages/click-collect",
+        "button_style": "m-button--primary",
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "animations": "inherit"
+      }
+    },
+    "brands": {
+      "type": "hth-brands",
+      "blocks": {
+        "brand_1": {
+          "type": "brand",
+          "settings": {
+            "name": "Ninja",
+            "link": ""
+          }
+        },
+        "brand_2": {
+          "type": "brand",
+          "settings": {
+            "name": "Shark",
+            "link": ""
+          }
+        },
+        "brand_3": {
+          "type": "brand",
+          "settings": {
+            "name": "De'Longhi",
+            "link": ""
+          }
+        },
+        "brand_4": {
+          "type": "brand",
+          "settings": {
+            "name": "Hisense",
+            "link": ""
+          }
+        },
+        "brand_5": {
+          "type": "brand",
+          "settings": {
+            "name": "Kamado Joe",
+            "link": ""
+          }
+        },
+        "brand_6": {
+          "type": "brand",
+          "settings": {
+            "name": "Gozney",
+            "link": ""
+          }
+        },
+        "brand_7": {
+          "type": "brand",
+          "settings": {
+            "name": "Weber",
+            "link": ""
+          }
+        },
+        "brand_8": {
+          "type": "brand",
+          "settings": {
+            "name": "Morphy Richards",
+            "link": ""
+          }
+        },
+        "brand_9": {
+          "type": "brand",
+          "settings": {
+            "name": "Ooni",
+            "link": ""
+          }
+        },
+        "brand_10": {
+          "type": "brand",
+          "settings": {
+            "name": "DJI",
+            "link": ""
+          }
+        },
+        "brand_11": {
+          "type": "brand",
+          "settings": {
+            "name": "Thule",
+            "link": ""
+          }
+        },
+        "brand_12": {
+          "type": "brand",
+          "settings": {
+            "name": "Cortina",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4",
+        "brand_5",
+        "brand_6",
+        "brand_7",
+        "brand_8",
+        "brand_9",
+        "brand_10",
+        "brand_11",
+        "brand_12"
+      ],
+      "settings": {
+        "eyebrow": "Trusted names",
+        "heading": "Brands we stock",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "style": "grid",
+        "columns": 6,
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 40,
+        "padding_bottom": 56,
+        "animations": "inherit"
+      }
+    },
+    "home_products": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Home essentials",
+        "heading_size": "h3",
+        "subheading": "Clean & cosy",
+        "description": "",
+        "header_alignment": "left",
+        "color_scheme": "cream",
+        "container": "container",
+        "collection": "home",
+        "enable_flashsale": false,
+        "show_countdown": false,
+        "product_to_show": 10,
+        "items_per_row": 4,
+        "item_gap": 24,
+        "pcard_layout": "",
+        "pcard_image_ratio": "",
+        "show_vendor": false,
+        "hide_title": false,
+        "enable_slider": true,
         "show_pagination": false,
-        "show_navigation": false,
-        "autorotate": false,
-        "autorotate_speed": 5,
+        "show_navigation": true,
+        "show_button_on_header": true,
+        "button_type": "link",
+        "button_text": "Shop home",
+        "button_style": "m-button--secondary",
+        "button_size": "m-button--small",
+        "infinite_load": false,
+        "max_page_load": 3,
         "mobile_disable_slider": false,
         "use_scroll_mobile": true,
-        "mobile_gap": 16,
-        "hidden_slide_control_mobile": false,
-        "padding_top": 80,
-        "padding_bottom": 0,
+        "item_gap_mobile": 14,
+        "padding_top": 56,
+        "padding_bottom": 56,
         "custom_class": "",
         "animations": "inherit"
       }
     },
-    "custom_content_KiFzqG": {
-      "type": "custom-content",
-      "blocks": {
-        "image_comparison_fRB8LR": {
-          "type": "image_comparison",
-          "settings": {
-            "width": "50%",
-            "product": "",
-            "subtitle": "",
-            "title": "",
-            "text": "",
-            "text_size": "medium",
-            "content_alignment": "left",
-            "text_color": "black",
-            "layout": "horizontal",
-            "image_height": "adapt",
-            "before_heading": "Before",
-            "after_heading": "After",
-            "block_custom_class": "",
-            "animations": "inherit"
-          }
-        },
-        "text_ADAEHz": {
-          "type": "text",
-          "settings": {
-            "title": "Layer up with <br>\npieces designed",
-            "subheading": "Mix & Match",
-            "text": "<p>Here is your chance to upgrade your wardrobe <br/>with a variation of styles and fits that are both.</p>",
-            "width": "50%",
-            "alignment": "center",
-            "align_text": "center",
-            "text_size": "large",
-            "text_color": "inherit",
-            "button_label": "Shop Mix & Match",
-            "button_style": "m-button--secondary",
-            "button_size": "",
-            "block_custom_class": "",
-            "animations": "inherit"
-          }
-        }
-      },
-      "block_order": [
-        "image_comparison_fRB8LR",
-        "text_ADAEHz"
-      ],
-      "custom_css": [
-        ".m-image-comparison__heading {box-shadow: none; border-radius: 5px; padding: 5px 12px; letter-spacing: 0; min-height: 34px;}",
-        ".m-richtext__description {font-size: 16px;}",
-        ".m-image-comparison__after .m-image-comparison__heading {bottom: 20px; top: auto;}",
-        "@media (max-width: 767px) {.m-image-comparison__heading, .m-richtext__description br {display: none; } .m-custom-content__wrapper {flex-direction: column-reverse; } .m-custom-content__block {padding: 0 15px; }}"
-      ],
-      "settings": {
-        "heading": "",
-        "heading_size": "h3",
-        "subheading": "",
-        "description": "",
-        "header_alignment": "center",
-        "container": "container-fluid",
-        "color_scheme": "",
-        "content_color_scheme": "",
-        "enable_parallax": false,
-        "parallax_direction": "vertical",
-        "gap": 0,
-        "gap_mobile": 48,
-        "use_scroll_mobile": false,
-        "padding_top": 100,
-        "padding_bottom": 100,
-        "custom_class": ""
-      }
-    },
-    "testimonials_pnyUnX": {
+    "reviews": {
       "type": "testimonials",
       "blocks": {
-        "testimonial_7bVRtk": {
+        "testimonial_1": {
           "type": "testimonial",
           "settings": {
-            "title": "Love it so much",
-            "description": "<p>Was I in Hawaii?! No. Did I feel like I was in Hawaii?! No, because it’s snowing outside. But, would I wear this in Hawaii ❤️</p>",
-            "footer": "<p>Jared S.</p>",
-            "image_text": "",
-            "image_link": "",
-            "product": "denim-jacket"
+            "title": "Brilliant advice",
+            "description": "<p>\"Went in not knowing which air fryer to buy. The team talked me through the options and I left with exactly the right one.\"</p>",
+            "footer": "<p>Sarah M.</p>"
           }
         },
-        "testimonial_BaC37W": {
+        "testimonial_2": {
           "type": "testimonial",
           "settings": {
-            "title": "Love it so much",
-            "description": "<p>Always getting compliments from family, friends, and strangers. 🤗 🙌</p>",
-            "footer": "<p>Alyssa A.</p>",
-            "image_text": "",
-            "image_link": ""
+            "title": "Collected in an hour",
+            "description": "<p>\"Reserved a pizza oven online and it was ready when I arrived. Super easy and the staff even helped me load the car.\"</p>",
+            "footer": "<p>Daniel R.</p>"
           }
         },
-        "testimonial_X8q9A4": {
+        "testimonial_3": {
           "type": "testimonial",
           "settings": {
-            "title": "Love it so much",
-            "description": "<p>Hands down one of the best shirts I’ve ever owned.  Fits great, feels amazing, seems to stay cool and is somewhat water resistant. </p>",
-            "footer": "<p>Ben B.</p>",
-            "image_text": "",
-            "image_link": ""
-          }
-        },
-        "testimonial_ef4Etp": {
-          "type": "testimonial",
-          "settings": {
-            "title": "Love it so much",
-            "description": "<p>Was I in Hawaii?! No. Did I feel like I was in Hawaii?! No, because it’s snowing outside. But, would I wear this in Hawaii ❤️</p>",
-            "footer": "<p>Dean D. US</p>",
-            "image_text": "",
-            "image_link": ""
-          }
-        },
-        "testimonial_bUi88K": {
-          "type": "testimonial",
-          "settings": {
-            "title": "Love it so much",
-            "description": "<p>Always getting compliments from family, friends, and strangers. 🤗 🙌</p>",
-            "footer": "<p>John D.</p>",
-            "image_text": "",
-            "image_link": ""
-          }
-        },
-        "testimonial_NMt6Em": {
-          "type": "testimonial",
-          "settings": {
-            "title": "Love it so much",
-            "description": "<p>Hands down one of the best shirts I’ve ever owned.  Fits great, feels amazing, seems to stay cool and is somewhat water resistant. </p>",
-            "footer": "<p>Dean J.</p>",
-            "image_text": "",
-            "image_link": ""
+            "title": "Fair price, great service",
+            "description": "<p>\"They matched a price I found elsewhere and delivered the washing machine the next day. Couldn't ask for more.\"</p>",
+            "footer": "<p>Priya K.</p>"
           }
         }
       },
       "block_order": [
-        "testimonial_7bVRtk",
-        "testimonial_BaC37W",
-        "testimonial_X8q9A4",
-        "testimonial_ef4Etp",
-        "testimonial_bUi88K",
-        "testimonial_NMt6Em"
-      ],
-      "custom_css": [
-        ".m-svg-icon {width: 12px; height: 12px;}",
-        ".m-stars {column-gap: 2px;}",
-        "@media (min-width: 1280px) {.m-testimonials__header {margin-bottom: 40px; }}",
-        "@media (max-width: 767px) {.m-testimonials__header {margin-bottom: 24px; } .m-section__header {text-align: center; }}"
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3"
       ],
       "settings": {
-        "heading": "Happy Customers",
+        "heading": "What our customers say",
         "heading_size": "h3",
-        "subheading": "",
+        "subheading": "Reviews",
         "description": "",
-        "header_alignment": "left",
-        "container": "container-fluid",
-        "color_scheme": "scheme-cee058e4-58e3-46aa-9af9-219dadc79066",
-        "design": "testimonials-6",
+        "header_alignment": "center",
+        "container": "container",
+        "color_scheme": "default",
+        "design": "testimonials-1",
         "show_stars": true,
         "autorotate": false,
         "show_navigation": true,
         "show_pagination": true,
-        "star_color": "#000000",
-        "item_color_scheme": "",
-        "padding_top": 100,
-        "padding_bottom": 100,
+        "star_color": "#D9531E",
+        "item_color_scheme": "default",
+        "padding_top": 64,
+        "padding_bottom": 64,
         "custom_class": "",
         "animations": "inherit"
       }
     },
-    "gallery_LXcceh": {
-      "type": "gallery",
-      "blocks": {
-        "image_yb7PAy": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        },
-        "image_E3BVEF": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        },
-        "image_hUUEhL": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        },
-        "image_thHpC7": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        },
-        "image_hnD8wM": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_yb7PAy",
-        "image_E3BVEF",
-        "image_hUUEhL",
-        "image_thHpC7",
-        "image_hnD8wM"
-      ],
-      "custom_css": [
-        ".container-full {padding-inline: 0;}"
-      ],
+    "visit": {
+      "type": "hth-visit-store",
       "settings": {
-        "heading": "Follow us Instagram",
+        "eyebrow": "Visit us",
+        "heading": "Come and see it in store",
+        "text": "Our showroom is full of working displays. Pop in, ask questions and see the difference for yourself.",
         "heading_size": "h3",
-        "subheading": "",
-        "description": "Tag <span class=\"text-black\">@minimog</span> in your Instagram photos for a chance to be featured here.<br>\nFind more inspiration on <a href=\"#\">our Instagram.</a>",
-        "button_label": "",
-        "button_link": "",
+        "show_address": true,
+        "show_phone": true,
+        "show_email": false,
+        "show_click_collect": true,
+        "show_hours": true,
+        "button_label": "Get directions",
         "button_style": "m-button--primary",
-        "header_alignment": "center",
-        "container": "container-full",
-        "color_scheme": "",
-        "color_scheme_content": "",
-        "icon": "none",
-        "layout": "grid",
-        "grid_columns": 5,
-        "column_gap": 0,
-        "row_gap": 0,
-        "columns_mobile": "2",
-        "mobile_gap": 10,
-        "use_scroll_mobile": true,
-        "padding_top": 100,
-        "padding_bottom": 0,
-        "custom_class": "",
+        "directions_link": "",
+        "second_button_label": "Call the store",
+        "second_button_style": "m-button--secondary",
+        "media_type": "map",
+        "media_position": "media-right",
+        "map_zoom": 15,
+        "map_height": 480,
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 64,
+        "padding_bottom": 64,
         "animations": "inherit"
       }
     },
-    "16225125199f82d8fe": {
-      "type": "icon-box",
+    "faq": {
+      "type": "hth-faq",
       "blocks": {
-        "16225125199f82d8fe-0": {
-          "type": "iconbox",
+        "question_1": {
+          "type": "question",
           "settings": {
-            "card_color_scheme": "",
-            "image_by_url": "",
-            "title": "Free Shipping",
-            "description": "<p>Free Shipping for orders over £130</p>",
-            "link": "",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "sf__btn-link",
-            "button_size": ""
+            "question": "Can I see products in store before I buy?",
+            "answer": "<p>Yes - most of our range is on display in the showroom, and our team can show you how things work. If there's something specific you'd like to see, give us a call and we'll have it ready for you.</p>",
+            "open": true
           }
         },
-        "16225125199f82d8fe-1": {
-          "type": "iconbox",
+        "question_2": {
+          "type": "question",
           "settings": {
-            "card_color_scheme": "",
-            "image_by_url": "",
-            "title": "Money Guarantee",
-            "description": "<p>Within 30 days for an exchange.</p>",
-            "link": "",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "sf__btn-link",
-            "button_size": ""
+            "question": "How does Click & Collect work?",
+            "answer": "<p>Reserve your items online, wait for our confirmation email, then collect from the store during opening hours. Please bring your order confirmation and a form of ID.</p>",
+            "open": false
           }
         },
-        "16225125199f82d8fe-2": {
-          "type": "iconbox",
+        "question_3": {
+          "type": "question",
           "settings": {
-            "card_color_scheme": "",
-            "image_by_url": "",
-            "title": "Online Support",
-            "description": "<p>24 hours a day, 7 days a week</p>",
-            "link": "",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "sf__btn-link",
-            "button_size": ""
+            "question": "Do you deliver and install appliances?",
+            "answer": "<p>We deliver large appliances to your door and can install them and take your old appliance away. Delivery charges and availability are confirmed at checkout.</p>",
+            "open": false
           }
         },
-        "71deafbb-3baf-443a-a087-3f7b8af7b9fa": {
-          "type": "iconbox",
+        "question_4": {
+          "type": "question",
           "settings": {
-            "card_color_scheme": "",
-            "image_by_url": "",
-            "title": "Flexible Payment",
-            "description": "<p>Pay with Multiple Credit Cards</p>",
-            "link": "",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "sf__btn-link",
-            "button_size": ""
+            "question": "What if I find it cheaper somewhere else?",
+            "answer": "<p>Tell us - we're happy to look at matching a comparable local price on the same product. Speak to our team in store or on the phone.</p>",
+            "open": false
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "What warranty do products come with?",
+            "answer": "<p>Every product comes with the manufacturer's warranty. If something goes wrong, bring it back to us and we'll help you get it sorted.</p>",
+            "open": false
           }
         }
       },
       "block_order": [
-        "16225125199f82d8fe-0",
-        "16225125199f82d8fe-1",
-        "16225125199f82d8fe-2",
-        "71deafbb-3baf-443a-a087-3f7b8af7b9fa"
-      ],
-      "custom_css": [
-        ".m-icon-box__icon {margin-right: 12px;}",
-        ".m-icon-box--small {border-top-width: 0;}"
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5"
       ],
       "settings": {
-        "container": "container-fluid",
-        "color_scheme": "",
-        "heading": "",
+        "eyebrow": "Questions",
+        "heading": "Good to know",
+        "text": "",
+        "header_alignment": "left",
         "heading_size": "h3",
-        "subheading": "",
-        "description": "",
-        "header_alignment": "center",
-        "item_per_row": 4,
-        "item_gap": 30,
-        "item_gap_mobile": 10,
-        "card_style": "horizontal",
-        "image_max_width": "60px",
-        "content_alignment": "start",
-        "hover_effect": "none",
-        "enable_slider": false,
-        "show_pagination": true,
-        "show_navigation": true,
-        "use_scroll_mobile": false,
-        "use_grid_column_mb": false,
-        "padding_top": 46,
-        "padding_bottom": 46,
-        "custom_class": "m-icon-box--small",
+        "layout": "split",
+        "help_text": "<p><strong>Still need help?</strong> Call or visit the store and our team will happily sort it out.</p>",
+        "enable_schema": true,
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "animations": "inherit"
+      }
+    },
+    "cta": {
+      "type": "hth-cta-banner",
+      "settings": {
+        "eyebrow": "Need a hand?",
+        "heading": "Talk to a real person before you buy",
+        "text": "Call the store or pop in - we'll help you choose the right appliance for your home.",
+        "heading_size": "h3",
+        "alignment": "center",
+        "button_label": "Visit the store",
+        "button_link": "/pages/find-a-store",
+        "button_style": "m-button--primary",
+        "second_button_label": "Contact us",
+        "second_button_link": "/pages/contact",
+        "second_button_style": "m-button--white",
+        "show_phone": true,
+        "overlay_opacity": 45,
+        "min_height": 320,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 24,
+        "padding_bottom": 48,
+        "animations": "inherit"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "container": "container",
+        "color_scheme": "cream",
+        "form_layout": "vertical",
+        "form_design": "1",
+        "heading": "Get offers, new arrivals<br>and BBQ-season tips",
+        "description": "<p>Join our mailing list - no spam, just the good stuff.</p>",
+        "text_size": "h3",
+        "email_placeholder": "Your email address",
+        "submit_button": "Sign up",
+        "text_color": "inherit",
+        "show_icon": false,
+        "icon_img_width": "30",
+        "show_agreement": false,
+        "padding_top": 56,
+        "padding_bottom": 56,
         "animations": "inherit"
       }
     }
   },
   "order": [
-    "1621243260e1af0c20",
-    "16225316461d1cff80",
-    "162251092958fcda7c",
-    "7ea56e8d-5794-4708-8812-8ee9604a3a21",
-    "lookbook_MB4Mr4",
-    "scrolling_promotion_jjrFyf",
-    "collection_tabs_QE4TLj",
-    "brands_list_XfN79B",
-    "custom_content_xALaMf",
-    "custom_content_f3reLw",
-    "custom_content_btgYN3",
-    "custom_content_hh6hmV",
-    "collection_list_tjXYY7",
-    "custom_content_KiFzqG",
-    "testimonials_pnyUnX",
-    "gallery_LXcceh",
-    "16225125199f82d8fe"
+    "hero",
+    "trust_badges",
+    "categories",
+    "best_sellers",
+    "promos",
+    "kitchen_products",
+    "why_us",
+    "stats",
+    "outdoor_products",
+    "services",
+    "click_collect",
+    "brands",
+    "home_products",
+    "reviews",
+    "visit",
+    "faq",
+    "cta",
+    "newsletter"
   ]
 }

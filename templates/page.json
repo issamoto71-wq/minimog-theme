@@ -1,11 +1,65 @@
 {
   "name": "Page",
   "sections": {
+    "hero": {
+      "type": "hth-page-hero",
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "heading_size": "h2",
+        "alignment": "left",
+        "show_breadcrumb": true,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "overlay_opacity": 45,
+        "min_height": 240,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "animations": "inherit"
+      }
+    },
     "main": {
-      "type": "page"
+      "type": "page",
+      "settings": {
+        "color_scheme": "default",
+        "container": "container-narrow",
+        "show_title": false,
+        "padding_top": 48,
+        "padding_bottom": 64
+      }
+    },
+    "cta": {
+      "type": "hth-cta-banner",
+      "settings": {
+        "eyebrow": "Need a hand?",
+        "heading": "Talk to a real person before you buy",
+        "text": "Call the store or pop in - we'll help you choose the right appliance for your home.",
+        "heading_size": "h3",
+        "alignment": "center",
+        "button_label": "Visit the store",
+        "button_link": "/pages/find-a-store",
+        "button_style": "m-button--primary",
+        "second_button_label": "Contact us",
+        "second_button_link": "/pages/contact",
+        "second_button_style": "m-button--white",
+        "show_phone": true,
+        "overlay_opacity": 45,
+        "min_height": 320,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 24,
+        "padding_bottom": 48,
+        "animations": "inherit"
+      }
     }
   },
   "order": [
-    "main"
+    "hero",
+    "main",
+    "cta"
   ]
 }

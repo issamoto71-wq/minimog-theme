@@ -1,0 +1,657 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+  assign image_alt = section.settings.heading | strip_html
+  assign is_background = false
+  if section.settings.style == 'background'
+    assign is_background = true
+  endif
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-homehero hth-homehero--{{ section.settings.style }} hth-homehero--{{ section.settings.layout }} m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --hth-min-height: {{ section.settings.min_height }}px; --hth-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+  data-section-id="{{ section.id }}"
+>
+  {%- if is_background and section.settings.image != blank -%}
+    <div class="hth-homehero__bg">
+      {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '800, 1200, 1600, 2000, 2400', sizes: '100vw', alt: '', class: 'hth-homehero__bg-img' }}
+    </div>
+  {%- endif -%}
+  <div class="{{ section.settings.container }} m-section-py">
+    <div class="hth-homehero__grid">
+      <div class="hth-homehero__content{{ anim }}">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="hth-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h1 class="hth-heading h1">{{ section.settings.heading }}</h1>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="hth-lead">{{ section.settings.text | escape | newline_to_br }}</p>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank or section.settings.second_button_label != blank -%}
+          <div class="hth-btn-row">
+            {%- if section.settings.button_label != blank -%}
+              <a class="m-button {{ section.settings.button_style }} m-button--large" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label | escape }}</a>
+            {%- endif -%}
+            {%- if section.settings.second_button_label != blank -%}
+              <a class="m-button {{ section.settings.second_button_style }} m-button--large" href="{{ section.settings.second_button_link | default: '#' }}">{{ section.settings.second_button_label | escape }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <ul class="hth-homehero__bullets" role="list">
+            {%- for block in section.blocks -%}
+              <li class="hth-homehero__bullet" {{ block.shopify_attributes }}>
+                {%- render 'hth-icon', name: block.settings.icon, size: 22 -%}
+                <span>{{ block.settings.text | escape }}</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      {%- unless is_background -%}
+        <div class="hth-homehero__visual{{ anim }}">
+          <div class="hth-homehero__frame">
+            {%- if section.settings.image != blank -%}
+              {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '500, 800, 1200', sizes: '(min-width: 1024px) 48vw, 100vw', alt: image_alt, class: 'hth-homehero__img' }}
+            {%- else -%}
+              {{ 'hero-apparel-1' | placeholder_svg_tag: 'hth-homehero__img hth-placeholder' }}
+            {%- endif -%}
+          </div>
+          {%- if section.settings.image_2 != blank -%}
+            <div class="hth-homehero__frame hth-homehero__frame--small">
+              {{ section.settings.image_2 | image_url: width: 600 | image_tag: loading: 'eager', widths: '300, 450, 600', sizes: '260px', alt: '', class: 'hth-homehero__img' }}
+            </div>
+          {%- endif -%}
+          {%- if section.settings.float_title != blank -%}
+            <div class="hth-homehero__float">
+              <span class="hth-homehero__float-icon">{%- render 'hth-icon', name: section.settings.float_icon, size: 26 -%}</span>
+              <span class="hth-homehero__float-text">
+                <strong>{{ section.settings.float_title | escape }}</strong>
+                {%- if section.settings.float_text != blank -%}
+                  <span>{{ section.settings.float_text | escape }}</span>
+                {%- endif -%}
+              </span>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endunless -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Home hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Kitchen - Outdoor - Home"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Appliances you can see, touch & trust"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Visit our showroom or reserve online and collect in store. Friendly advice, fair prices and brands you know."
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop all products"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "m-button--primary",
+          "label": "Solid"
+        },
+        {
+          "value": "m-button--secondary",
+          "label": "Outline"
+        },
+        {
+          "value": "m-button--white",
+          "label": "White"
+        },
+        {
+          "value": "m-button--link",
+          "label": "Link"
+        }
+      ],
+      "default": "m-button--primary"
+    },
+    {
+      "type": "text",
+      "id": "second_button_label",
+      "label": "Button label",
+      "default": "Visit the store"
+    },
+    {
+      "type": "url",
+      "id": "second_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "second_button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "m-button--primary",
+          "label": "Solid"
+        },
+        {
+          "value": "m-button--secondary",
+          "label": "Outline"
+        },
+        {
+          "value": "m-button--white",
+          "label": "White"
+        },
+        {
+          "value": "m-button--link",
+          "label": "Link"
+        }
+      ],
+      "default": "m-button--white"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "split",
+          "label": "Text + image side by side"
+        },
+        {
+          "value": "background",
+          "label": "Full background image"
+        }
+      ],
+      "default": "split"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image position (side by side)",
+      "options": [
+        {
+          "value": "image-right",
+          "label": "Right"
+        },
+        {
+          "value": "image-left",
+          "label": "Left"
+        }
+      ],
+      "default": "image-right"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum height",
+      "min": 360,
+      "max": 800,
+      "step": 20,
+      "default": 560,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main image",
+      "info": "Used as the main picture, or as the background in Full background style."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Small overlapping image",
+      "info": "Side by side style only."
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Background darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "default": 55,
+      "unit": "%",
+      "info": "Full background style only."
+    },
+    {
+      "type": "header",
+      "content": "Floating card (side by side style)"
+    },
+    {
+      "type": "select",
+      "id": "float_icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "truck",
+          "label": "Delivery van"
+        },
+        {
+          "value": "store",
+          "label": "Store front"
+        },
+        {
+          "value": "shield",
+          "label": "Shield / warranty"
+        },
+        {
+          "value": "tag",
+          "label": "Price tag"
+        },
+        {
+          "value": "wrench",
+          "label": "Wrench / installation"
+        },
+        {
+          "value": "recycle",
+          "label": "Recycle / refresh"
+        },
+        {
+          "value": "phone",
+          "label": "Phone"
+        },
+        {
+          "value": "mail",
+          "label": "Email"
+        },
+        {
+          "value": "pin",
+          "label": "Location pin"
+        },
+        {
+          "value": "clock",
+          "label": "Clock"
+        },
+        {
+          "value": "star",
+          "label": "Star"
+        },
+        {
+          "value": "heart",
+          "label": "Heart"
+        },
+        {
+          "value": "check",
+          "label": "Tick"
+        },
+        {
+          "value": "gift",
+          "label": "Gift"
+        },
+        {
+          "value": "card",
+          "label": "Payment card"
+        },
+        {
+          "value": "chat",
+          "label": "Chat bubble"
+        },
+        {
+          "value": "users",
+          "label": "People"
+        },
+        {
+          "value": "award",
+          "label": "Award"
+        },
+        {
+          "value": "box",
+          "label": "Parcel"
+        },
+        {
+          "value": "thumbs-up",
+          "label": "Thumbs up"
+        },
+        {
+          "value": "flame",
+          "label": "Flame / BBQ"
+        },
+        {
+          "value": "utensils",
+          "label": "Knife & fork"
+        },
+        {
+          "value": "home",
+          "label": "Home"
+        },
+        {
+          "value": "leaf",
+          "label": "Leaf"
+        },
+        {
+          "value": "percent",
+          "label": "Percent"
+        },
+        {
+          "value": "calendar",
+          "label": "Calendar"
+        },
+        {
+          "value": "lock",
+          "label": "Padlock"
+        },
+        {
+          "value": "return",
+          "label": "Returns arrow"
+        },
+        {
+          "value": "coffee",
+          "label": "Coffee cup"
+        },
+        {
+          "value": "sparkle",
+          "label": "Sparkle"
+        }
+      ],
+      "default": "store"
+    },
+    {
+      "type": "text",
+      "id": "float_title",
+      "label": "Title",
+      "default": "Free Click & Collect"
+    },
+    {
+      "type": "text",
+      "id": "float_text",
+      "label": "Text",
+      "default": "Ready within 2 hours"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "dark"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Bullet point",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Delivery van"
+            },
+            {
+              "value": "store",
+              "label": "Store front"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / warranty"
+            },
+            {
+              "value": "tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "wrench",
+              "label": "Wrench / installation"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle / refresh"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "mail",
+              "label": "Email"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "check",
+              "label": "Tick"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "card",
+              "label": "Payment card"
+            },
+            {
+              "value": "chat",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "users",
+              "label": "People"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "box",
+              "label": "Parcel"
+            },
+            {
+              "value": "thumbs-up",
+              "label": "Thumbs up"
+            },
+            {
+              "value": "flame",
+              "label": "Flame / BBQ"
+            },
+            {
+              "value": "utensils",
+              "label": "Knife & fork"
+            },
+            {
+              "value": "home",
+              "label": "Home"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "percent",
+              "label": "Percent"
+            },
+            {
+              "value": "calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "lock",
+              "label": "Padlock"
+            },
+            {
+              "value": "return",
+              "label": "Returns arrow"
+            },
+            {
+              "value": "coffee",
+              "label": "Coffee cup"
+            },
+            {
+              "value": "sparkle",
+              "label": "Sparkle"
+            }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Price match promise"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Home hero",
+      "settings": {
+        "color_scheme": "dark"
+      },
+      "blocks": [
+        {
+          "type": "bullet",
+          "settings": {
+            "icon": "tag",
+            "text": "Price match promise"
+          }
+        },
+        {
+          "type": "bullet",
+          "settings": {
+            "icon": "users",
+            "text": "Expert in-store advice"
+          }
+        },
+        {
+          "type": "bullet",
+          "settings": {
+            "icon": "truck",
+            "text": "Delivery & installation"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

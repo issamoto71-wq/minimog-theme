@@ -1,0 +1,21 @@
+{% comment %}
+  Outputs the scroll-animation classes for a Hearth section, honouring the theme-wide
+  animation setting and the optional per-section override.
+
+  Accepts:
+  - section_animation: {String} section.settings.animations (optional)
+
+  Usage:
+  {%- capture anim -%}{%- render 'hth-anim', section_animation: section.settings.animations -%}{%- endcapture -%}
+  <div class="my-block{{ anim }}">
+{% endcomment %}
+{%- liquid
+  assign animation_effect = settings.animations
+  if animation_effect != 'none'
+    if section_animation != blank and section_animation != 'inherit'
+      assign animation_effect = section_animation
+    endif
+    echo ' m-scroll-trigger animate--'
+    echo animation_effect
+  endif
+-%}

@@ -1,0 +1,28 @@
+{% comment %}
+  Shared eyebrow + heading + intro block used by the Hearth store sections.
+
+  Accepts:
+  - eyebrow: {String} Small label above the heading (optional)
+  - heading: {String} Heading, from an inline_richtext setting (optional)
+  - text: {String} Intro text, plain text with line breaks (optional)
+  - alignment: {String} left | center. Default: center (optional)
+  - heading_size: {String} h2 | h3. Default: h3 (optional)
+  - anim: {String} Animation classes from the hth-anim snippet (optional)
+  - extra_class: {String} Extra CSS classes (optional)
+
+  Usage:
+  {% render 'hth-section-header', eyebrow: section.settings.eyebrow, heading: section.settings.heading, text: section.settings.text %}
+{% endcomment %}
+{%- if eyebrow != blank or heading != blank or text != blank -%}
+  <div class="hth-head hth-head--{{ alignment | default: 'center' }}{{ anim }} {{ extra_class }}">
+    {%- if eyebrow != blank -%}
+      <p class="hth-eyebrow">{{ eyebrow | escape }}</p>
+    {%- endif -%}
+    {%- if heading != blank -%}
+      <h2 class="hth-heading {{ heading_size | default: 'h3' }}">{{ heading }}</h2>
+    {%- endif -%}
+    {%- if text != blank -%}
+      <p class="hth-lead">{{ text | escape | newline_to_br }}</p>
+    {%- endif -%}
+  </div>
+{%- endif -%}

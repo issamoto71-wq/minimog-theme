@@ -2,10 +2,73 @@
   "name": "404-template",
   "sections": {
     "main": {
-      "type": "404-template"
+      "type": "404-template",
+      "settings": {
+        "bg_color": "#F5F0E6",
+        "t1_color": "#10202F",
+        "t2_color": "#10202F"
+      }
+    },
+    "categories": {
+      "type": "hth-category-tiles",
+      "blocks": {
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "collection": "kitchen",
+            "title": "Kitchen",
+            "tagline": "",
+            "link": "/collections/kitchen",
+            "button_label": "Shop kitchen"
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "collection": "outdoor",
+            "title": "Outdoor & BBQ",
+            "tagline": "",
+            "link": "/collections/outdoor",
+            "button_label": "Shop outdoor"
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "collection": "home",
+            "title": "Home",
+            "tagline": "",
+            "link": "/collections/home",
+            "button_label": "Shop home"
+          }
+        }
+      },
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3"
+      ],
+      "settings": {
+        "eyebrow": "Keep browsing",
+        "heading": "Try one of our categories",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "columns": 3,
+        "image_ratio": "4/3",
+        "text_position": "overlay",
+        "gap": 20,
+        "show_count": false,
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "animations": "inherit"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "categories"
   ]
 }

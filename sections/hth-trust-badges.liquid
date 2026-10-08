@@ -1,0 +1,439 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-trust hth-trust--{{ section.settings.style }} m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --hth-cols: {{ section.settings.columns }};"
+  data-section-id="{{ section.id }}"
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    {%- render 'hth-section-header',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text,
+      alignment: section.settings.header_alignment,
+      heading_size: section.settings.heading_size,
+      anim: anim
+    -%}
+    {%- if section.blocks.size > 0 -%}
+      <ul class="hth-trust__list" role="list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign tag = 'div'
+            if block.settings.link != blank
+              assign tag = 'a'
+            endif
+          -%}
+          <li
+            class="hth-trust__item{{ anim }}"
+            {% if anim != blank %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <{{ tag }}
+              class="hth-trust__inner"
+              {% if tag == 'a' %}
+                href="{{ block.settings.link }}"
+              {% endif %}
+            >
+              <span class="hth-trust__icon">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 120 | image_tag: loading: 'lazy', width: 48, height: 48, alt: block.settings.title }}
+                {%- else -%}
+                  {%- render 'hth-icon', name: block.settings.icon, size: 30 -%}
+                {%- endif -%}
+              </span>
+              <span class="hth-trust__text">
+                {%- if block.settings.title != blank -%}
+                  <strong class="hth-trust__title">{{ block.settings.title | escape }}</strong>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <span class="hth-trust__desc">{{ block.settings.text | escape }}</span>
+                {%- endif -%}
+              </span>
+            </{{ tag }}>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Trust badges",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": ""
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": ""
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro text",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "header",
+      "content": "Badges"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "bar",
+          "label": "Bar with dividers"
+        },
+        {
+          "value": "cards",
+          "label": "Cards"
+        },
+        {
+          "value": "minimal",
+          "label": "Minimal"
+        }
+      ],
+      "default": "bar"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Badges per row (desktop)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "cream"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Delivery van"
+            },
+            {
+              "value": "store",
+              "label": "Store front"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / warranty"
+            },
+            {
+              "value": "tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "wrench",
+              "label": "Wrench / installation"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle / refresh"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "mail",
+              "label": "Email"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "check",
+              "label": "Tick"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "card",
+              "label": "Payment card"
+            },
+            {
+              "value": "chat",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "users",
+              "label": "People"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "box",
+              "label": "Parcel"
+            },
+            {
+              "value": "thumbs-up",
+              "label": "Thumbs up"
+            },
+            {
+              "value": "flame",
+              "label": "Flame / BBQ"
+            },
+            {
+              "value": "utensils",
+              "label": "Knife & fork"
+            },
+            {
+              "value": "home",
+              "label": "Home"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "percent",
+              "label": "Percent"
+            },
+            {
+              "value": "calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "lock",
+              "label": "Padlock"
+            },
+            {
+              "value": "return",
+              "label": "Returns arrow"
+            },
+            {
+              "value": "coffee",
+              "label": "Coffee cup"
+            },
+            {
+              "value": "sparkle",
+              "label": "Sparkle"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom icon image",
+          "info": "Overrides the icon. Square PNG or SVG works best."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free delivery"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Description",
+          "default": "On orders over £150"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Trust badges",
+      "settings": {
+        "color_scheme": "cream"
+      },
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "truck",
+            "title": "Free delivery",
+            "text": "On orders over £150"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "store",
+            "title": "Click & Collect",
+            "text": "Ready in 2 hours"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "tag",
+            "title": "Price match",
+            "text": "We'll match any local price"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "shield",
+            "title": "Expert advice",
+            "text": "Friendly help in store"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

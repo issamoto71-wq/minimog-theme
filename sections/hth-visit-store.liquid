@@ -1,0 +1,428 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+  assign store_name = settings.store_name | default: shop.name
+  assign directions_url = section.settings.directions_link
+  if directions_url == blank
+    assign directions_url = settings.store_directions_url
+  endif
+  if directions_url == blank and settings.store_map_query != blank
+    assign encoded_query = settings.store_map_query | url_encode
+    assign directions_url = 'https://www.google.com/maps/search/?api=1&query=' | append: encoded_query
+  endif
+  assign hours_lines = settings.store_opening_hours | newline_to_br | split: '<br />'
+  assign phone = settings.contact_phone_number
+  assign email = settings.contact_email
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-visit hth-visit--{{ section.settings.media_position }} m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --hth-map-height: {{ section.settings.map_height }}px;"
+  data-section-id="{{ section.id }}"
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    <div class="hth-visit__grid{% if section.settings.media_type == 'none' %} hth-visit__grid--single{% endif %}">
+      <div class="hth-visit__card{{ anim }}">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="hth-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="hth-heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="hth-lead">{{ section.settings.text | escape | newline_to_br }}</p>
+        {%- endif -%}
+
+        <ul class="hth-visit__facts" role="list">
+          {%- if section.settings.show_address and settings.store_address != blank -%}
+            <li class="hth-visit__fact">
+              <span class="hth-visit__fact-icon">{%- render 'hth-icon', name: 'pin', size: 22 -%}</span>
+              <span>
+                <strong>{{ store_name | escape }}</strong>
+                <span class="hth-visit__fact-text">{{ settings.store_address | escape | newline_to_br }}</span>
+              </span>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.show_phone and phone != blank -%}
+            <li class="hth-visit__fact">
+              <span class="hth-visit__fact-icon">{%- render 'hth-icon', name: 'phone', size: 22 -%}</span>
+              <span>
+                <strong>{{ 'hearth.call_us' | t }}</strong>
+                <a class="hth-visit__fact-text" href="tel:{{ phone | replace: ' ', '' }}">{{ phone | escape }}</a>
+              </span>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.show_email and email != blank -%}
+            <li class="hth-visit__fact">
+              <span class="hth-visit__fact-icon">{%- render 'hth-icon', name: 'mail', size: 22 -%}</span>
+              <span>
+                <strong>{{ 'hearth.email_us' | t }}</strong>
+                <a class="hth-visit__fact-text" href="mailto:{{ email }}">{{ email | escape }}</a>
+              </span>
+            </li>
+          {%- endif -%}
+          {%- if section.settings.show_click_collect -%}
+            <li class="hth-visit__fact">
+              <span class="hth-visit__fact-icon">{%- render 'hth-icon', name: 'box', size: 22 -%}</span>
+              <span>
+                <strong>{{ settings.click_collect_title | escape }}</strong>
+                <span class="hth-visit__fact-text">{{ settings.click_collect_text | escape }}</span>
+              </span>
+            </li>
+          {%- endif -%}
+        </ul>
+
+        {%- if section.settings.show_hours and hours_lines.size > 0 and settings.store_opening_hours != blank -%}
+          <div class="hth-visit__hours" data-hth-hours>
+            <h3 class="hth-visit__hours-title">
+              {%- render 'hth-icon', name: 'clock', size: 20 -%}
+              {{ 'hearth.opening_hours' | t }}
+            </h3>
+            <table class="hth-hours">
+              <tbody>
+                {%- for line in hours_lines -%}
+                  {%- assign parts = line | strip | split: '|' -%}
+                  {%- if parts.size > 1 -%}
+                    <tr data-day="{{ parts[0] | strip | downcase | escape }}">
+                      <th scope="row">{{ parts[0] | strip | escape }}</th>
+                      <td>{{ parts[1] | strip | escape }}</td>
+                    </tr>
+                  {%- endif -%}
+                {%- endfor -%}
+              </tbody>
+            </table>
+          </div>
+        {%- endif -%}
+
+        <div class="hth-btn-row">
+          {%- if section.settings.button_label != blank and directions_url != blank -%}
+            <a class="m-button {{ section.settings.button_style }}" href="{{ directions_url }}" target="_blank" rel="noopener">{{ section.settings.button_label | escape }}</a>
+          {%- endif -%}
+          {%- if section.settings.second_button_label != blank and phone != blank -%}
+            <a class="m-button {{ section.settings.second_button_style }}" href="tel:{{ phone | replace: ' ', '' }}">{{ section.settings.second_button_label | escape }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if section.settings.media_type != 'none' -%}
+        <div class="hth-visit__media{{ anim }}">
+          {%- if section.settings.media_type == 'map' and settings.store_map_query != blank -%}
+            <iframe
+              class="hth-visit__map"
+              title="{{ store_name | escape }}"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q={{ settings.store_map_query | url_encode }}&z={{ section.settings.map_zoom }}&output=embed"
+            ></iframe>
+          {%- elsif section.settings.image != blank -%}
+            {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '500, 800, 1000', sizes: '(min-width: 1024px) 50vw, 100vw', alt: store_name, class: 'hth-visit__img' }}
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'hth-visit__img hth-placeholder' }}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Visit our store",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Visit us"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Come and see it in store"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro text",
+      "default": "Our showroom is full of working displays. Pop in, ask questions and see the difference for yourself."
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "header",
+      "content": "Details to show"
+    },
+    {
+      "type": "paragraph",
+      "content": "The address, phone, email, hours and Click & Collect text come from Theme settings > Store details."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_address",
+      "label": "Show address",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Show phone number",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_email",
+      "label": "Show email",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_click_collect",
+      "label": "Show Click & Collect note",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hours",
+      "label": "Show opening hours",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Directions button text",
+      "default": "Get directions"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Directions button style",
+      "options": [
+        {
+          "value": "m-button--primary",
+          "label": "Solid"
+        },
+        {
+          "value": "m-button--secondary",
+          "label": "Outline"
+        },
+        {
+          "value": "m-button--white",
+          "label": "White"
+        },
+        {
+          "value": "m-button--link",
+          "label": "Link"
+        }
+      ],
+      "default": "m-button--primary"
+    },
+    {
+      "type": "url",
+      "id": "directions_link",
+      "label": "Directions link",
+      "info": "Leave blank to use the link from Theme settings > Store details."
+    },
+    {
+      "type": "text",
+      "id": "second_button_label",
+      "label": "Call button text",
+      "default": "Call the store"
+    },
+    {
+      "type": "select",
+      "id": "second_button_style",
+      "label": "Call button style",
+      "options": [
+        {
+          "value": "m-button--primary",
+          "label": "Solid"
+        },
+        {
+          "value": "m-button--secondary",
+          "label": "Outline"
+        },
+        {
+          "value": "m-button--white",
+          "label": "White"
+        },
+        {
+          "value": "m-button--link",
+          "label": "Link"
+        }
+      ],
+      "default": "m-button--secondary"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "Show",
+      "options": [
+        {
+          "value": "map",
+          "label": "Map"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "none",
+          "label": "Nothing"
+        }
+      ],
+      "default": "map"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Media position",
+      "options": [
+        {
+          "value": "media-right",
+          "label": "Right"
+        },
+        {
+          "value": "media-left",
+          "label": "Left"
+        }
+      ],
+      "default": "media-right"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Used when Show is set to Image."
+    },
+    {
+      "type": "range",
+      "id": "map_zoom",
+      "label": "Map zoom",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "map_height",
+      "label": "Media height",
+      "min": 320,
+      "max": 700,
+      "step": 20,
+      "default": 480,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "cream"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Visit our store"
+    }
+  ]
+}
+{% endschema %}

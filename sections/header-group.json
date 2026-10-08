@@ -5,82 +5,83 @@
     "annoucement": {
       "type": "annoucement",
       "blocks": {
-        "item_dGj4GU": {
+        "item_1": {
           "type": "item",
           "settings": {
-            "message": "Free shipping for all orders from $60+",
-            "message_link": ""
+            "message": "Free Click & Collect - ready in 2 hours",
+            "message_link": "/pages/click-collect"
           }
         },
-        "item_6Ycmkw": {
+        "item_2": {
           "type": "item",
           "settings": {
-            "message": "Free shipping for all orders from $60+",
-            "message_link": ""
+            "message": "Free delivery on orders over £150",
+            "message_link": "/pages/delivery"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "message": "Price match promise - found it cheaper? Tell us",
+            "message_link": "/pages/contact"
           }
         }
       },
       "block_order": [
-        "item_dGj4GU",
-        "item_6Ycmkw"
-      ],
-      "custom_css": [
-        ".m-announcement-bar__container {--container-width: 600px;}"
+        "item_1",
+        "item_2",
+        "item_3"
       ],
       "settings": {
         "container": "container",
-        "color_scheme": "badge-sale",
+        "color_scheme": "ember",
         "show_announcement": true,
-        "homepage_only": true,
-        "show_close": true,
+        "homepage_only": false,
+        "show_close": false,
         "show_divider": false,
-        "show_nav": true,
+        "show_nav": false,
         "autorotate": true,
-        "autorotate_speed": 3
+        "autorotate_speed": 4
       }
     },
     "header": {
       "type": "header",
       "blocks": {
-        "5e153016-a9d7-46c9-a10e-30d16446793d": {
+        "topbar": {
           "type": "topbar",
           "settings": {
-            "color_scheme": "",
-            "show_divider": true,
+            "color_scheme": "dark",
+            "show_divider": false,
             "transparent_on_top": false,
-            "show_phone_numb": false,
-            "show_email": false,
-            "show_social_links": true,
-            "show_stores_page": false,
+            "show_phone_numb": true,
+            "show_email": true,
+            "show_social_links": false,
+            "show_stores_page": true,
             "show_currency_switcher": false,
-            "show_country_selector": true,
-            "show_language_switcher": true,
-            "alert_message": "<span>Open Doors To A World Of Fashion  |  <a class=\"m-link-underline\" href=\"#\">Discover More<\/a><span><\/span><\/span>"
+            "show_country_selector": false,
+            "show_language_switcher": false,
+            "alert_message": "Open 7 days - <a class=\"m-link-underline\" href=\"/pages/find-a-store\">see opening hours</a>"
           }
         }
       },
       "block_order": [
-        "5e153016-a9d7-46c9-a10e-30d16446793d"
-      ],
-      "custom_css": [
-        ".m-topbar a[href*=\"facebook\"] {order: 2;}",
-        ".social-media-links {column-gap: 30px;}"
+        "topbar"
       ],
       "settings": {
-        "color_scheme": "",
-        "color_scheme_menu": "",
-        "header_design": "logo-center-menu-left",
-        "container": "container-fluid",
+        "color_scheme": "default",
+        "color_scheme_menu": "default",
+        "header_design": "logo-left-menu-center",
+        "container": "container",
         "sticky_header": "on_scroll_up",
         "transparent_on_top": false,
         "transparent_text_color": "#ffffff",
-        "logo_text": "MINIMOG",
+        "logo_text": "",
         "logo_svg": "",
         "logo_mobile_svg": "",
         "logo_transparent_svg": "",
-        "logo_max_width": 145,
-        "sticky_logo_max_width": 145,
-        "mobile_logo_max_width": 110,
+        "logo_max_width": 170,
+        "sticky_logo_max_width": 140,
+        "mobile_logo_max_width": 120,
         "secondary_menu": "",
         "mobile_menu": "",
         "uppercase_parent_level": false,
@@ -89,13 +90,13 @@
         "show_account_icon": true,
         "show_cart_icon": true,
         "show_wishlist_icon": true,
-        "show_compare_icon": false,
+        "show_compare_icon": true,
         "show_currency_switcher": false,
         "show_country_selector": false,
         "show_language_switcher": false,
         "mb_show_currency_switcher": false,
-        "mb_show_country_selector": true,
-        "mb_show_language_switcher": true
+        "mb_show_country_selector": false,
+        "mb_show_language_switcher": false
       }
     }
   },

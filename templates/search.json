@@ -1,11 +1,48 @@
 {
-  "name": "Page search",
   "sections": {
     "main": {
-      "type": "page-search"
+      "type": "page-search",
+      "settings": {
+        "container": "container",
+        "results_per_page": 24,
+        "show_sorting": true,
+        "show_filter": true,
+        "show_product_count": true,
+        "change_product_variant_on_fitlering": true,
+        "sidebar_title": "Filter",
+        "collapsed_groups": "Vendor, Product type",
+        "color_swatches": "color,colour,couleur,farbe",
+        "limit_height_widget": true,
+        "limit_height": 300
+      }
+    },
+    "cta": {
+      "type": "hth-cta-banner",
+      "settings": {
+        "eyebrow": "Ask the team",
+        "heading": "Can't find what you're looking for?",
+        "text": "Call or visit the store - if we don't have it on the shelf, we can usually get it in.",
+        "heading_size": "h3",
+        "alignment": "center",
+        "button_label": "Visit the store",
+        "button_link": "/pages/find-a-store",
+        "button_style": "m-button--primary",
+        "second_button_label": "Contact us",
+        "second_button_link": "/pages/contact",
+        "second_button_style": "m-button--white",
+        "show_phone": true,
+        "overlay_opacity": 45,
+        "min_height": 320,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "animations": "inherit"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "cta"
   ]
 }

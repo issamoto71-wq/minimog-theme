@@ -1,0 +1,240 @@
+{
+  "name": "Delivery & returns",
+  "sections": {
+    "hero": {
+      "type": "hth-page-hero",
+      "settings": {
+        "eyebrow": "Help centre",
+        "heading": "Delivery & returns",
+        "text": "How we get your order to you - and what to do if you change your mind.",
+        "heading_size": "h2",
+        "alignment": "left",
+        "show_breadcrumb": true,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "overlay_opacity": 45,
+        "min_height": 240,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "animations": "inherit"
+      }
+    },
+    "trust_badges": {
+      "type": "hth-trust-badges",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "icon": "truck",
+            "title": "Free delivery over £150",
+            "text": "Local delivery by our own team"
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "icon": "store",
+            "title": "Free Click & Collect",
+            "text": "Ready in 2 hours"
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "icon": "wrench",
+            "title": "Installation available",
+            "text": "Ask for a quote"
+          }
+        },
+        "badge_4": {
+          "type": "badge",
+          "settings": {
+            "icon": "return",
+            "title": "14-day returns",
+            "text": "On unused items"
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4"
+      ],
+      "settings": {
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "animations": "inherit",
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "style": "bar",
+        "columns": 4
+      }
+    },
+    "main": {
+      "type": "page",
+      "settings": {
+        "color_scheme": "default",
+        "container": "container-narrow",
+        "show_title": false,
+        "padding_top": 48,
+        "padding_bottom": 40
+      }
+    },
+    "services": {
+      "type": "hth-services",
+      "blocks": {
+        "service_1": {
+          "type": "service",
+          "settings": {
+            "icon": "truck",
+            "title": "Delivery & installation",
+            "text": "Careful delivery to your door, with installation available on large appliances.",
+            "link_label": "Delivery details",
+            "link": "/pages/delivery"
+          }
+        },
+        "service_2": {
+          "type": "service",
+          "settings": {
+            "icon": "recycle",
+            "title": "Appliance recycling",
+            "text": "We'll take your old appliance away responsibly when we deliver the new one.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "service_3": {
+          "type": "service",
+          "settings": {
+            "icon": "shield",
+            "title": "Warranty & aftercare",
+            "text": "Straightforward help if something goes wrong - just bring it back to us.",
+            "link_label": "Warranty info",
+            "link": "/pages/delivery"
+          }
+        }
+      },
+      "block_order": [
+        "service_1",
+        "service_2",
+        "service_3"
+      ],
+      "settings": {
+        "eyebrow": "Our services",
+        "heading": "More than just a shop",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "card_style": "bordered",
+        "columns": 3,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "animations": "inherit"
+      }
+    },
+    "faq": {
+      "type": "hth-faq",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "Do you deliver and install appliances?",
+            "answer": "<p>We deliver large appliances to your door and can install them and take your old appliance away. Delivery charges and availability are confirmed at checkout.</p>",
+            "open": true
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "What if I find it cheaper somewhere else?",
+            "answer": "<p>Tell us - we're happy to look at matching a comparable local price on the same product. Speak to our team in store or on the phone.</p>",
+            "open": false
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "What warranty do products come with?",
+            "answer": "<p>Every product comes with the manufacturer's warranty. If something goes wrong, bring it back to us and we'll help you get it sorted.</p>",
+            "open": false
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return something I've changed my mind about?",
+            "answer": "<p>Unused items in their original packaging can be returned for a refund within 14 days. Some items, such as made-to-order products, may be excluded - ask us if you're unsure.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4"
+      ],
+      "settings": {
+        "eyebrow": "Help",
+        "heading": "Delivery & returns FAQs",
+        "text": "",
+        "header_alignment": "left",
+        "heading_size": "h3",
+        "layout": "split",
+        "help_text": "<p><strong>Still need help?</strong> Call or visit the store and our team will happily sort it out.</p>",
+        "enable_schema": true,
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "animations": "inherit"
+      }
+    },
+    "cta": {
+      "type": "hth-cta-banner",
+      "settings": {
+        "eyebrow": "Need a hand?",
+        "heading": "Talk to a real person before you buy",
+        "text": "Call the store or pop in - we'll help you choose the right appliance for your home.",
+        "heading_size": "h3",
+        "alignment": "center",
+        "button_label": "Visit the store",
+        "button_link": "/pages/find-a-store",
+        "button_style": "m-button--primary",
+        "second_button_label": "Contact us",
+        "second_button_link": "/pages/contact",
+        "second_button_style": "m-button--white",
+        "show_phone": true,
+        "overlay_opacity": 45,
+        "min_height": 320,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 24,
+        "padding_bottom": 48,
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust_badges",
+    "main",
+    "services",
+    "faq",
+    "cta"
+  ]
+}

@@ -1,200 +1,486 @@
 {
+  "name": "About us",
   "sections": {
-    "main": {
-      "type": "page-about-us",
+    "hero": {
+      "type": "hth-page-hero",
       "settings": {
+        "eyebrow": "Our story",
+        "heading": "About us",
+        "text": "Your local kitchen, outdoor and home specialists.",
+        "heading_size": "h2",
+        "alignment": "left",
+        "show_breadcrumb": true,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "overlay_opacity": 45,
+        "min_height": 280,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "animations": "inherit"
       }
     },
-    "custom-content": {
-      "type": "custom-content",
+    "story": {
+      "type": "hth-story",
       "blocks": {
-        "be5d2488-3c71-471f-bb75-dbccb6970cb0": {
-          "type": "image",
+        "point_1": {
+          "type": "point",
           "settings": {
-            "link": "",
-            "width": "100%",
-            "alignment": "center",
-            "block_custom_class": "",
-            "animations": "inherit"
+            "text": "Independent and locally run"
           }
         },
-        "f5e88f1f-ff68-4d03-b686-0cb9fe62fab1": {
-          "type": "text",
+        "point_2": {
+          "type": "point",
           "settings": {
-            "title": "<h4 class=\"about__block-heading\">It pains me physically to see woman victimized,<br> rendered pathetic by fashion.<\/h4>\n<p class=\"about__block-subheading\">Awkwardness gives me great comfort. I’ve never been cool, but I’ve felt cool. I’ve been in the<br> cool place, but I wasn’t really cool – I was trying to pass for hip or cool.<\/p>",
-            "subheading": "",
-            "text": "<p>A girl should be two things: classy and fabulous. I am convinced that there can be luxury in simplicity. I wanted to dress the woman who lives and works, not the woman in a painting. It’s hard to balance everything. It’s always challenging. My relationships with producers or photographers – these are relationships that took years. I can’t get sucked into that celebrity thing, because I think it’s just crass. My aim is to make the poor look rich and the rich look poor. Vanity is the healthiest thing in life. I believe that my clothes can give people a better image of themselves – that it can increase their feelings of confidence and happiness. You can hide so much behind theatrics, and I don’t need to do that any more. I don’t really know how to do casual clothes.<\/p>",
-            "width": "100%",
-            "alignment": "center",
-            "align_text": "center",
-            "text_size": "medium",
-            "text_color": "black",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "block_custom_class": "sf__about-block sf__about-block-text sf__about-block-text-1",
-            "animations": "inherit"
+            "text": "Products you can see and try in store"
           }
         },
-        "4e1fb14f-ef60-4693-b6a2-2b26063e1b70": {
-          "type": "image",
+        "point_3": {
+          "type": "point",
           "settings": {
-            "link": "",
-            "width": "50%",
-            "alignment": "center",
-            "block_custom_class": "",
-            "animations": "inherit"
-          }
-        },
-        "9a3a8077-de29-4141-9162-b9484d4a85f8": {
-          "type": "html",
-          "settings": {
-            "code": "<div class=\"sf__about-custom-list\">\n  <h3>We are proudly<br> Australian.<\/h3>\n  <ul>\n    <li>\n      <span><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0561\/2742\/2636\/files\/icon1.svg?v=1627616411\"><\/span>\n      <div class=\"rte\">\n          <h4>Soft Fabric<\/h4>\n          <p class=\"text-color-subtext\">Get complimentary ground shipping on every<br> order.Don’t love it? Send it back, on us.<\/p>\n      <\/div>\n    <\/li>\n    <li>\n      <span><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0561\/2742\/2636\/files\/icon2_daf1b6c2-ef2e-416c-ae6a-a7ddd145b6c5.svg?v=1627616411\"><\/span>\n      <div class=\"rte\">\n          <h4>Lightweight<\/h4>\n          <p class=\"text-color-subtext\">Join Minimog Rewards to earn gift cards<br>\nand enjoy exclusive member benefits.<\/p>\n      <\/div>\n    <\/li>\n    <li>\n      <span><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0561\/2742\/2636\/files\/icon3.svg?v=1627616411\"><\/span>\n      <div class=\"rte\">\n          <h4>All Day Comfort<\/h4>\n          <p class=\"text-color-subtext\">We believe getting dressed should be the<br> easiest part of your day.<\/p>\n      <\/div>\n    <\/li>\n  <\/ul>\n<\/div>",
-            "width": "50%",
-            "block_custom_class": "sf__about-custom-html",
-            "animations": "inherit"
-          }
-        },
-        "28e3ce35-e364-43f3-ba87-18b633233063": {
-          "type": "text",
-          "settings": {
-            "title": "<h4 class=\"about__block-heading\">The world needs to move fast to make a meaningful<br> difference in the fight against climate change.<\/h4>",
-            "subheading": "",
-            "text": "<p>A girl should be two things: classy and fabulous. I am convinced that there can be luxury in simplicity. I wanted to dress the woman who lives and works, not the woman in a painting. It’s hard to balance everything. It’s always challenging. My relationships with producers or photographers – these are relationships that took years. I can’t get sucked into that celebrity thing, because I think it’s just crass. My aim is to make the poor look rich and the rich look poor. Vanity is the healthiest thing in life. I believe that my clothes can give people a better image of themselves – that it can increase their feelings of confidence and happiness. You can hide so much behind theatrics, and I don’t need to do that any more. I don’t really know how to do casual clothes.<\/p>",
-            "width": "100%",
-            "alignment": "center",
-            "align_text": "center",
-            "text_size": "medium",
-            "text_color": "black",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "block_custom_class": "sf__about-block sf__about-block-text sf__about-block-text-2",
-            "animations": "inherit"
-          }
-        },
-        "c6a8b57f-c54c-43f1-9771-9ea5d88a2f36": {
-          "type": "text",
-          "settings": {
-            "title": "Our Team",
-            "subheading": "",
-            "text": "",
-            "width": "100%",
-            "alignment": "center",
-            "align_text": "center",
-            "text_size": "medium",
-            "text_color": "black",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "block_custom_class": "sf__about-custom-heading",
-            "animations": "inherit"
-          }
-        },
-        "859f4ef2-676f-4587-9ae8-3a19ffa439dd": {
-          "type": "image_card",
-          "settings": {
-            "width": "33%",
-            "color_scheme": "",
-            "content_position": "bottom_left",
-            "content_alignment": "left",
-            "text_size": "medium",
-            "text_color": "black",
-            "link": "",
-            "title": "Edward Lindgren",
-            "subtitle": "<span class=\"text-color-subtext\">CHIEF OPERATING OFFICER<\/span>",
-            "description": "",
-            "button_label": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "button_fixed": false,
-            "use_content_above": false,
-            "block_custom_class": "sf__about-card-custom",
-            "animations": "inherit"
-          }
-        },
-        "a1a4a67f-c83f-4629-a006-e44f56c80bf5": {
-          "type": "image_card",
-          "settings": {
-            "width": "33%",
-            "color_scheme": "",
-            "content_position": "bottom_left",
-            "content_alignment": "left",
-            "text_size": "medium",
-            "text_color": "black",
-            "link": "",
-            "title": "Chineze Afamefuna",
-            "subtitle": "<span class=\"text-color-subtext\">MARKETING<\/span>",
-            "description": "",
-            "button_label": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "button_fixed": false,
-            "use_content_above": false,
-            "block_custom_class": "sf__about-card-custom",
-            "animations": "inherit"
-          }
-        },
-        "dc4597e9-ca80-4d0f-9e30-ff28c96dd3aa": {
-          "type": "image_card",
-          "settings": {
-            "width": "33%",
-            "color_scheme": "",
-            "content_position": "bottom_left",
-            "content_alignment": "left",
-            "text_size": "medium",
-            "text_color": "black",
-            "link": "",
-            "title": "Nado Husa",
-            "subtitle": "<span class=\"text-color-subtext\">CO-FOUNDER<\/span>",
-            "description": "",
-            "button_label": "",
-            "button_style": "m-button--primary",
-            "button_size": "",
-            "button_fixed": false,
-            "use_content_above": false,
-            "block_custom_class": "sf__about-card-custom",
-            "animations": "inherit"
+            "text": "Help before and after you buy"
           }
         }
       },
       "block_order": [
-        "be5d2488-3c71-471f-bb75-dbccb6970cb0",
-        "f5e88f1f-ff68-4d03-b686-0cb9fe62fab1",
-        "4e1fb14f-ef60-4693-b6a2-2b26063e1b70",
-        "9a3a8077-de29-4141-9162-b9484d4a85f8",
-        "28e3ce35-e364-43f3-ba87-18b633233063",
-        "c6a8b57f-c54c-43f1-9771-9ea5d88a2f36",
-        "859f4ef2-676f-4587-9ae8-3a19ffa439dd",
-        "a1a4a67f-c83f-4629-a006-e44f56c80bf5",
-        "dc4597e9-ca80-4d0f-9e30-ff28c96dd3aa"
-      ],
-      "custom_css": [
-        "@media (min-width: 1280px) {#m-custom__block--9a3a8077-de29-4141-9162-b9484d4a85f8 {padding-left: 100px; }}"
+        "point_1",
+        "point_2",
+        "point_3"
       ],
       "settings": {
-        "heading": "",
+        "eyebrow": "Who we are",
+        "heading": "Independent, local and passionate about the home",
+        "body": "<p>We opened our doors with a simple idea: buying appliances should be easy, honest and friendly. Today we're still a real shop, with real people who test the products we sell and are always happy to help.</p><p>From a first air fryer to a full outdoor kitchen, come and see the range in person - or reserve online and collect when it suits you.</p>",
         "heading_size": "h3",
-        "subheading": "",
-        "description": "",
-        "header_alignment": "center",
+        "signature": "The team",
+        "signature_role": "Your local store",
+        "layout": "image-right",
+        "button_label": "Visit the store",
+        "button_link": "/pages/find-a-store",
+        "button_style": "m-button--primary",
+        "color_scheme": "default",
         "container": "container",
-        "color_scheme": "",
-        "content_color_scheme": "",
-        "gap": 30,
-        "use_scroll_mobile": false,
-        "gap_mobile": 16,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_class": "m-about-page"
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "animations": "inherit"
+      }
+    },
+    "stats": {
+      "type": "hth-stats",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "value": 25,
+            "prefix": "",
+            "suffix": "+",
+            "label": "Years in business"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "value": 50,
+            "prefix": "",
+            "suffix": "+",
+            "label": "Brands in store"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "value": 12000,
+            "prefix": "",
+            "suffix": "+",
+            "label": "Happy customers"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "value": 98,
+            "prefix": "",
+            "suffix": "%",
+            "label": "Would recommend us"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "columns": 4,
+        "count_up": true,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "animations": "inherit"
+      }
+    },
+    "why_us": {
+      "type": "hth-why-choose-us",
+      "blocks": {
+        "reason_1": {
+          "type": "reason",
+          "settings": {
+            "icon": "users",
+            "title": "Expert, friendly advice",
+            "text": "Our team tests the products they sell and will help you pick the right one."
+          }
+        },
+        "reason_2": {
+          "type": "reason",
+          "settings": {
+            "icon": "tag",
+            "title": "Fair, matched prices",
+            "text": "Found it cheaper locally? Tell us and we'll do our best to match it."
+          }
+        },
+        "reason_3": {
+          "type": "reason",
+          "settings": {
+            "icon": "wrench",
+            "title": "Delivery & installation",
+            "text": "We can deliver, install and take your old appliance away."
+          }
+        },
+        "reason_4": {
+          "type": "reason",
+          "settings": {
+            "icon": "shield",
+            "title": "Support after you buy",
+            "text": "Warranty help and advice from the same people who sold it to you."
+          }
+        }
+      },
+      "block_order": [
+        "reason_1",
+        "reason_2",
+        "reason_3",
+        "reason_4"
+      ],
+      "settings": {
+        "eyebrow": "Why shop with us",
+        "heading": "A real shop, with real people who know their stuff",
+        "text": "Buying a big appliance is a big decision. Come and see it, touch it, and talk it through with people who use it every day.",
+        "heading_size": "h3",
+        "layout": "image-left",
+        "badge_value": "25+",
+        "badge_label": "years serving local homes",
+        "button_label": "About us",
+        "button_link": "/pages/about-us",
+        "button_style": "m-button--primary",
+        "second_button_label": "",
+        "second_button_link": "",
+        "second_button_style": "m-button--secondary",
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "animations": "inherit"
+      }
+    },
+    "timeline": {
+      "type": "hth-timeline",
+      "blocks": {
+        "milestone_1": {
+          "type": "milestone",
+          "settings": {
+            "year": "2000",
+            "title": "The first shop",
+            "text": "We opened our doors with a handful of cookers and a lot of enthusiasm."
+          }
+        },
+        "milestone_2": {
+          "type": "milestone",
+          "settings": {
+            "year": "2012",
+            "title": "A bigger showroom",
+            "text": "More space for working displays of kitchen and outdoor appliances."
+          }
+        },
+        "milestone_3": {
+          "type": "milestone",
+          "settings": {
+            "year": "2020",
+            "title": "Online, too",
+            "text": "We launched our webshop so customers could browse from home."
+          }
+        },
+        "milestone_4": {
+          "type": "milestone",
+          "settings": {
+            "year": "Today",
+            "title": "Click & Collect",
+            "text": "Reserve online, collect in store - the best of both worlds."
+          }
+        }
+      },
+      "block_order": [
+        "milestone_1",
+        "milestone_2",
+        "milestone_3",
+        "milestone_4"
+      ],
+      "settings": {
+        "eyebrow": "Our journey",
+        "heading": "How we got here",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "animations": "inherit"
+      }
+    },
+    "team": {
+      "type": "hth-team",
+      "blocks": {
+        "member_1": {
+          "type": "member",
+          "settings": {
+            "name": "Alex",
+            "role": "Store manager",
+            "bio": "Knows every product on the shop floor."
+          }
+        },
+        "member_2": {
+          "type": "member",
+          "settings": {
+            "name": "Sam",
+            "role": "Kitchen specialist",
+            "bio": "Ask about coffee machines and air fryers."
+          }
+        },
+        "member_3": {
+          "type": "member",
+          "settings": {
+            "name": "Jo",
+            "role": "Outdoor specialist",
+            "bio": "BBQ and pizza oven expert."
+          }
+        },
+        "member_4": {
+          "type": "member",
+          "settings": {
+            "name": "Chris",
+            "role": "Delivery & installs",
+            "bio": "Gets it home and plugged in."
+          }
+        }
+      },
+      "block_order": [
+        "member_1",
+        "member_2",
+        "member_3",
+        "member_4"
+      ],
+      "settings": {
+        "eyebrow": "The people behind the counter",
+        "heading": "Meet the team",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "columns": 4,
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "animations": "inherit"
+      }
+    },
+    "brands": {
+      "type": "hth-brands",
+      "blocks": {
+        "brand_1": {
+          "type": "brand",
+          "settings": {
+            "name": "Ninja",
+            "link": ""
+          }
+        },
+        "brand_2": {
+          "type": "brand",
+          "settings": {
+            "name": "Shark",
+            "link": ""
+          }
+        },
+        "brand_3": {
+          "type": "brand",
+          "settings": {
+            "name": "De'Longhi",
+            "link": ""
+          }
+        },
+        "brand_4": {
+          "type": "brand",
+          "settings": {
+            "name": "Hisense",
+            "link": ""
+          }
+        },
+        "brand_5": {
+          "type": "brand",
+          "settings": {
+            "name": "Kamado Joe",
+            "link": ""
+          }
+        },
+        "brand_6": {
+          "type": "brand",
+          "settings": {
+            "name": "Gozney",
+            "link": ""
+          }
+        },
+        "brand_7": {
+          "type": "brand",
+          "settings": {
+            "name": "Weber",
+            "link": ""
+          }
+        },
+        "brand_8": {
+          "type": "brand",
+          "settings": {
+            "name": "Morphy Richards",
+            "link": ""
+          }
+        },
+        "brand_9": {
+          "type": "brand",
+          "settings": {
+            "name": "Ooni",
+            "link": ""
+          }
+        },
+        "brand_10": {
+          "type": "brand",
+          "settings": {
+            "name": "DJI",
+            "link": ""
+          }
+        },
+        "brand_11": {
+          "type": "brand",
+          "settings": {
+            "name": "Thule",
+            "link": ""
+          }
+        },
+        "brand_12": {
+          "type": "brand",
+          "settings": {
+            "name": "Cortina",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4",
+        "brand_5",
+        "brand_6",
+        "brand_7",
+        "brand_8",
+        "brand_9",
+        "brand_10",
+        "brand_11",
+        "brand_12"
+      ],
+      "settings": {
+        "eyebrow": "Trusted names",
+        "heading": "Brands we stock",
+        "text": "",
+        "header_alignment": "center",
+        "heading_size": "h3",
+        "style": "grid",
+        "columns": 6,
+        "color_scheme": "cream",
+        "container": "container",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "animations": "inherit"
+      }
+    },
+    "visit": {
+      "type": "hth-visit-store",
+      "settings": {
+        "eyebrow": "Visit us",
+        "heading": "Come and see it in store",
+        "text": "Our showroom is full of working displays. Pop in, ask questions and see the difference for yourself.",
+        "heading_size": "h3",
+        "show_address": true,
+        "show_phone": true,
+        "show_email": false,
+        "show_click_collect": true,
+        "show_hours": true,
+        "button_label": "Get directions",
+        "button_style": "m-button--primary",
+        "directions_link": "",
+        "second_button_label": "Call the store",
+        "second_button_style": "m-button--secondary",
+        "media_type": "map",
+        "media_position": "media-right",
+        "map_zoom": 15,
+        "map_height": 480,
+        "color_scheme": "default",
+        "container": "container",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "animations": "inherit"
+      }
+    },
+    "cta": {
+      "type": "hth-cta-banner",
+      "settings": {
+        "eyebrow": "Need a hand?",
+        "heading": "Talk to a real person before you buy",
+        "text": "Call the store or pop in - we'll help you choose the right appliance for your home.",
+        "heading_size": "h3",
+        "alignment": "center",
+        "button_label": "Visit the store",
+        "button_link": "/pages/find-a-store",
+        "button_style": "m-button--primary",
+        "second_button_label": "Contact us",
+        "second_button_link": "/pages/contact",
+        "second_button_style": "m-button--white",
+        "show_phone": true,
+        "overlay_opacity": 45,
+        "min_height": 320,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 24,
+        "padding_bottom": 48,
+        "animations": "inherit"
       }
     }
   },
   "order": [
-    "main",
-    "custom-content"
+    "hero",
+    "story",
+    "stats",
+    "why_us",
+    "timeline",
+    "team",
+    "brands",
+    "visit",
+    "cta"
   ]
 }

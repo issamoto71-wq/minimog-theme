@@ -1,0 +1,66 @@
+{% comment %}
+  Hearth product-page blocks (store perk, Click & Collect card, help box).
+
+  Accepts:
+  - block: {Object} The main-product section block (required)
+
+  Usage:
+  {% render 'hth-product-block', block: block %}
+{% endcomment %}
+{%- case block.type -%}
+{%- when 'hth_perk' -%}
+  <div class="hth-product-perk">
+    <span class="hth-product-perk__icon">{%- render 'hth-icon', name: block.settings.icon, size: 26 -%}</span>
+    <span class="hth-product-perk__text">
+      {%- if block.settings.title != blank -%}
+        <strong>{{ block.settings.title | escape }}</strong>
+      {%- endif -%}
+      {%- if block.settings.text != blank -%}
+        <span>{{ block.settings.text | escape }}</span>
+      {%- endif -%}
+    </span>
+  </div>
+{%- when 'hth_pickup' -%}
+  {%- liquid
+    assign pickup_title = block.settings.title | default: settings.click_collect_title
+    assign pickup_text = block.settings.text | default: settings.click_collect_text
+    assign pickup_link = block.settings.link
+  -%}
+  <div class="hth-product-pickup">
+    <span class="hth-product-pickup__icon">{%- render 'hth-icon', name: block.settings.icon, size: 28 -%}</span>
+    <div class="hth-product-pickup__body">
+      <strong class="hth-product-pickup__title">{{ pickup_title | escape }}</strong>
+      <p class="hth-product-pickup__text">{{ pickup_text | escape }}</p>
+      {%- if block.settings.show_address and settings.store_address != blank -%}
+        <p class="hth-product-pickup__address">
+          {%- render 'hth-icon', name: 'pin', size: 16 -%}
+          <span>{{ settings.store_name | default: shop.name | escape }}, {{ settings.store_address | escape | newline_to_br | strip_newlines | replace: '<br />', ', ' }}</span>
+        </p>
+      {%- endif -%}
+      {%- if block.settings.link_label != blank and pickup_link != blank -%}
+        <a class="hth-link" href="{{ pickup_link }}">
+          {{- block.settings.link_label | escape -}}
+          {%- render 'hth-icon', name: 'arrow-right', size: 16, stroke: 2 -%}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+{%- when 'hth_help' -%}
+  <div class="hth-product-help">
+    <strong class="hth-product-help__heading">{{ block.settings.heading | escape }}</strong>
+    {%- if block.settings.text != blank -%}
+      <p class="hth-product-help__text">{{ block.settings.text | escape }}</p>
+    {%- endif -%}
+    <div class="hth-product-help__actions">
+      {%- if block.settings.show_phone and settings.contact_phone_number != blank -%}
+        <a class="hth-product-help__phone" href="tel:{{ settings.contact_phone_number | replace: ' ', '' }}">
+          {%- render 'hth-icon', name: 'phone', size: 18 -%}
+          <span>{{ settings.contact_phone_number | escape }}</span>
+        </a>
+      {%- endif -%}
+      {%- if block.settings.button_label != blank -%}
+        <a class="m-button m-button--secondary m-button--small" href="{{ block.settings.button_link | default: settings.store_directions_url | default: routes.root_url }}">{{ block.settings.button_label | escape }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endcase -%}

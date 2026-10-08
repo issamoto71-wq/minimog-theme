@@ -1,0 +1,298 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+  assign image_alt = section.settings.heading | strip_html
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-story hth-story--{{ section.settings.layout }} m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  data-section-id="{{ section.id }}"
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    <div class="hth-story__grid">
+      <div class="hth-story__media{{ anim }}">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '500, 800, 1000', sizes: '(min-width: 1024px) 45vw, 100vw', alt: image_alt, class: 'hth-story__img' }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'hth-story__img hth-placeholder' }}
+        {%- endif -%}
+      </div>
+      <div class="hth-story__content">
+        {%- render 'hth-section-header',
+          eyebrow: section.settings.eyebrow,
+          heading: section.settings.heading,
+          alignment: 'left',
+          heading_size: section.settings.heading_size,
+          anim: anim
+        -%}
+        {%- if section.settings.body != blank -%}
+          <div class="hth-story__body rte{{ anim }}">{{ section.settings.body }}</div>
+        {%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <ul class="hth-story__points" role="list">
+            {%- for block in section.blocks -%}
+              <li class="hth-story__point" {{ block.shopify_attributes }}>
+                <span class="hth-story__tick">{%- render 'hth-icon', name: 'check', size: 22 -%}</span>
+                <span>{{ block.settings.text | escape }}</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {%- if section.settings.signature != blank -%}
+          <p class="hth-story__signature">
+            <strong>{{ section.settings.signature | escape }}</strong>
+            {%- if section.settings.signature_role != blank -%}
+              <span>{{ section.settings.signature_role | escape }}</span>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <div class="hth-btn-row{{ anim }}">
+            <a class="m-button {{ section.settings.button_style }}" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label | escape }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Our story",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Our story"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your local home, kitchen & outdoor specialists"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Story text",
+      "default": "<p>Tell customers how the shop started, what you stand for and why locals keep coming back.</p>"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "text",
+      "id": "signature",
+      "label": "Signature name",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "signature_role",
+      "label": "Signature role",
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "image-left",
+          "label": "Left"
+        },
+        {
+          "value": "image-right",
+          "label": "Right"
+        }
+      ],
+      "default": "image-right"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": ""
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "m-button--primary",
+          "label": "Solid"
+        },
+        {
+          "value": "m-button--secondary",
+          "label": "Outline"
+        },
+        {
+          "value": "m-button--white",
+          "label": "White"
+        },
+        {
+          "value": "m-button--link",
+          "label": "Link"
+        }
+      ],
+      "default": "m-button--primary"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Highlight",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "A short highlight"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Our story",
+      "blocks": [
+        {
+          "type": "point",
+          "settings": {
+            "text": "Family run and independent"
+          }
+        },
+        {
+          "type": "point",
+          "settings": {
+            "text": "Products you can see and try in store"
+          }
+        },
+        {
+          "type": "point",
+          "settings": {
+            "text": "Help before and after you buy"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

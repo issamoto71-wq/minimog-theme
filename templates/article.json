@@ -1,4 +1,4 @@
- {
+{
   "sections": {
     "main": {
       "type": "article",
@@ -54,9 +54,31 @@
         "article_show_excerpt": false,
         "article_show_button": false
       }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "container": "container",
+        "color_scheme": "cream",
+        "form_layout": "vertical",
+        "form_design": "1",
+        "heading": "Get offers, new arrivals<br>and BBQ-season tips",
+        "description": "<p>Join our mailing list - no spam, just the good stuff.</p>",
+        "text_size": "h3",
+        "email_placeholder": "Your email address",
+        "submit_button": "Sign up",
+        "text_color": "inherit",
+        "show_icon": false,
+        "icon_img_width": "30",
+        "show_agreement": false,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "animations": "inherit"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "newsletter"
   ]
 }

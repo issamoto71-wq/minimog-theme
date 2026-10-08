@@ -1,0 +1,270 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-team m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --hth-cols: {{ section.settings.columns }};"
+  data-section-id="{{ section.id }}"
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    {%- render 'hth-section-header',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text,
+      alignment: section.settings.header_alignment,
+      heading_size: section.settings.heading_size,
+      anim: anim
+    -%}
+    {%- if section.blocks.size > 0 -%}
+      <ul class="hth-team__list" role="list">
+        {%- for block in section.blocks -%}
+          <li
+            class="hth-team__item{{ anim }}"
+            {% if anim != blank %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <div class="hth-team__photo">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '350, 500, 700', sizes: '(min-width: 1024px) 25vw, 50vw', alt: block.settings.name, class: 'hth-team__img' }}
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'hth-team__img hth-placeholder' }}
+              {%- endif -%}
+            </div>
+            <div class="hth-team__body">
+              {%- if block.settings.name != blank -%}
+                <h3 class="hth-team__name">{{ block.settings.name | escape }}</h3>
+              {%- endif -%}
+              {%- if block.settings.role != blank -%}
+                <p class="hth-team__role">{{ block.settings.role | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.bio != blank -%}
+                <p class="hth-team__bio">{{ block.settings.bio | escape }}</p>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Meet the team",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "The people behind the counter"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Meet the team"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro text",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "header",
+      "content": "Team"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "People per row (desktop)",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Team member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role",
+          "default": "Role"
+        },
+        {
+          "type": "textarea",
+          "id": "bio",
+          "label": "Short bio",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Meet the team",
+      "blocks": [
+        {
+          "type": "member",
+          "settings": {
+            "name": "Alex",
+            "role": "Store manager",
+            "bio": "Knows every product on the shop floor."
+          }
+        },
+        {
+          "type": "member",
+          "settings": {
+            "name": "Sam",
+            "role": "Kitchen specialist",
+            "bio": "Ask about coffee machines and air fryers."
+          }
+        },
+        {
+          "type": "member",
+          "settings": {
+            "name": "Jo",
+            "role": "Outdoor specialist",
+            "bio": "BBQ and pizza oven expert."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

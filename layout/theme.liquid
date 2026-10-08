@@ -16,9 +16,6 @@
   if settings.page_transition
     assign body_classes = body_classes | append: ' m:overflow-hidden'
   endif
-  if template.suffix == 'about-us'
-    assign body_classes = body_classes | append: ' sf__page-about'
-  endif
 %}
 <!doctype html>
 <html
@@ -67,10 +64,13 @@
       echo 'main.css' | asset_url | stylesheet_tag: preload: true
 
       render 'style-tags'
+
+      echo 'store.css' | asset_url | stylesheet_tag
     -%}
 
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme-global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'store.js' | asset_url }}" defer="defer"></script>
     {%- if settings.animations != 'none' -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}

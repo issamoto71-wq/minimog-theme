@@ -5,11 +5,82 @@
     assign animated = true
   endif
 -%}
-{% render 'page-title', title: page.title, container: 'container' %}
-{%- if page.content != blank -%}
-  <div class="container">
-    <div class="m-page-content rte{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
-      {{ page.content }}
-    </div>
-  </div>
+{%- if section.settings.show_title -%}
+  {% render 'page-title', title: page.title, container: 'container' %}
 {%- endif -%}
+{%- if page.content != blank -%}
+  <section
+    class="m-section hth-section hth-page m-gradient m-color-{{ section.settings.color_scheme }}"
+    style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  >
+    <div class="{{ section.settings.container }} m-section-py">
+      <div class="m-page-content rte{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
+        {{ page.content }}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Page content",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container-narrow",
+          "label": "Narrow reading width"
+        },
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        }
+      ],
+      "default": "container-narrow"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show page title above the content",
+      "default": false,
+      "info": "Turn this on when the page doesn't have a Page banner section."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    }
+  ]
+}
+{% endschema %}

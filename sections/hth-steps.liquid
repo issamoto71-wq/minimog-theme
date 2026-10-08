@@ -1,0 +1,408 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-steps m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --hth-cols: {{ section.blocks.size }};"
+  data-section-id="{{ section.id }}"
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    {%- render 'hth-section-header',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text,
+      alignment: section.settings.header_alignment,
+      heading_size: section.settings.heading_size,
+      anim: anim
+    -%}
+    {%- if section.blocks.size > 0 -%}
+      <ol class="hth-steps__list" role="list">
+        {%- for block in section.blocks -%}
+          <li
+            class="hth-steps__item{{ anim }}"
+            {% if anim != blank %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <span class="hth-steps__number">{{ forloop.index }}</span>
+            <span class="hth-steps__icon">{%- render 'hth-icon', name: block.settings.icon, size: 28 -%}</span>
+            {%- if block.settings.title != blank -%}
+              <h3 class="hth-steps__title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p class="hth-steps__text">{{ block.settings.text | escape }}</p>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ol>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <div class="hth-btn-row hth-btn-row--center{{ anim }}">
+        <a class="m-button {{ section.settings.button_style }}" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label | escape }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Step by step",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "How it works"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Click & Collect in three steps"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro text",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": ""
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "m-button--primary",
+          "label": "Solid"
+        },
+        {
+          "value": "m-button--secondary",
+          "label": "Outline"
+        },
+        {
+          "value": "m-button--white",
+          "label": "White"
+        },
+        {
+          "value": "m-button--link",
+          "label": "Link"
+        }
+      ],
+      "default": "m-button--primary"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "cream"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Delivery van"
+            },
+            {
+              "value": "store",
+              "label": "Store front"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / warranty"
+            },
+            {
+              "value": "tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "wrench",
+              "label": "Wrench / installation"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle / refresh"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "mail",
+              "label": "Email"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "check",
+              "label": "Tick"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "card",
+              "label": "Payment card"
+            },
+            {
+              "value": "chat",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "users",
+              "label": "People"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "box",
+              "label": "Parcel"
+            },
+            {
+              "value": "thumbs-up",
+              "label": "Thumbs up"
+            },
+            {
+              "value": "flame",
+              "label": "Flame / BBQ"
+            },
+            {
+              "value": "utensils",
+              "label": "Knife & fork"
+            },
+            {
+              "value": "home",
+              "label": "Home"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "percent",
+              "label": "Percent"
+            },
+            {
+              "value": "calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "lock",
+              "label": "Padlock"
+            },
+            {
+              "value": "return",
+              "label": "Returns arrow"
+            },
+            {
+              "value": "coffee",
+              "label": "Coffee cup"
+            },
+            {
+              "value": "sparkle",
+              "label": "Sparkle"
+            }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Step title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Explain this step."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Step by step",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "icon": "card",
+            "title": "Reserve online",
+            "text": "Choose your products and reserve them in a couple of clicks."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "mail",
+            "title": "We get it ready",
+            "text": "We'll email you as soon as your order is picked and ready."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "store",
+            "title": "Collect in store",
+            "text": "Bring your confirmation and we'll help you load up."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

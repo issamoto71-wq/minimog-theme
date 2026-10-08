@@ -19,8 +19,8 @@
 {%- capture page_title -%}
     {{ 'cart.general.title' | t }}
 {%- endcapture -%}
-{% render 'page-title', title: page_title, container: 'container' %}
-<div class="container">
+{% render 'page-title', title: page_title, container: section.settings.container %}
+<div class="{{ section.settings.container }}">
   <m-cart
     class="m-cart"
     id="MinimogCart"
@@ -66,6 +66,7 @@
 
       <div class="m-cart__footer m:flex m:justify-end" id="MinimogCartFooter">
         <div class="m-cart__footer--wrapper{% if cart == empty %} m:hidden{% else %} m:block{% endif %}">
+          {% render 'hth-cart-extras', part: 'bar' %}
           {% render 'cart-addons' %}
           {%- assign cart_discounts = 'template ' | split: ' ' -%}
           {%- if cart.cart_level_discount_applications.size > 0 -%}
@@ -220,6 +221,7 @@
               </div>
             {%- endif -%}
           </div>
+          {% render 'hth-cart-extras', part: 'assurance' %}
           {% if settings.cart_drawer_trust_badge %}
             <div class="m-cart__trust-badge">
               <img
@@ -236,4 +238,249 @@
       </div>
     </form>
   </m-cart>
+  {%- if section.blocks.size > 0 -%}
+    <div class="hth-cart-blocks">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'assurance' -%}
+            <div class="hth-cart-blocks__item" {{ block.shopify_attributes }}>
+              <span class="hth-cart-blocks__icon">{%- render 'hth-icon', name: block.settings.icon, size: 28 -%}</span>
+              <span class="hth-cart-blocks__text">
+                <strong>{{ block.settings.title | escape }}</strong>
+                {%- if block.settings.text != blank -%}
+                  <span>{{ block.settings.text | escape }}</span>
+                {%- endif -%}
+              </span>
+            </div>
+          {%- when 'help' -%}
+            <div class="hth-cart-blocks__item hth-cart-blocks__item--help" {{ block.shopify_attributes }}>
+              <span class="hth-cart-blocks__icon">{%- render 'hth-icon', name: 'chat', size: 28 -%}</span>
+              <span class="hth-cart-blocks__text">
+                <strong>{{ block.settings.heading | escape }}</strong>
+                {%- if block.settings.text != blank -%}
+                  <span>{{ block.settings.text | escape }}</span>
+                {%- endif -%}
+                {%- if block.settings.button_label != blank -%}
+                  <a class="m-button m-button--secondary m-button--small" href="{{ block.settings.button_link | default: routes.root_url }}">{{ block.settings.button_label | escape }}</a>
+                {%- endif -%}
+              </span>
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
 </div>
+{% schema %}
+{
+  "name": "Cart page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "paragraph",
+      "content": "The free delivery bar, reassurance ticks and help text are edited in Theme settings > Cart & slide cart messaging. They also show in the slide cart."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "assurance",
+      "name": "Reassurance",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Delivery van"
+            },
+            {
+              "value": "store",
+              "label": "Store front"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / warranty"
+            },
+            {
+              "value": "tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "wrench",
+              "label": "Wrench / installation"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle / refresh"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "mail",
+              "label": "Email"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "check",
+              "label": "Tick"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "card",
+              "label": "Payment card"
+            },
+            {
+              "value": "chat",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "users",
+              "label": "People"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "box",
+              "label": "Parcel"
+            },
+            {
+              "value": "thumbs-up",
+              "label": "Thumbs up"
+            },
+            {
+              "value": "flame",
+              "label": "Flame / BBQ"
+            },
+            {
+              "value": "utensils",
+              "label": "Knife & fork"
+            },
+            {
+              "value": "home",
+              "label": "Home"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "percent",
+              "label": "Percent"
+            },
+            {
+              "value": "calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "lock",
+              "label": "Padlock"
+            },
+            {
+              "value": "return",
+              "label": "Returns arrow"
+            },
+            {
+              "value": "coffee",
+              "label": "Coffee cup"
+            },
+            {
+              "value": "sparkle",
+              "label": "Sparkle"
+            }
+          ],
+          "default": "shield"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Price match promise"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Description",
+          "default": "Found it cheaper? Tell us."
+        }
+      ]
+    },
+    {
+      "type": "help",
+      "name": "Help box",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Need a hand?"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Our team is happy to help before you check out."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button text",
+          "default": "Contact us"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ],
+      "limit": 1
+    }
+  ],
+  "max_blocks": 6
+}
+{% endschema %}

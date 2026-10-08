@@ -1,0 +1,71 @@
+{% comment %}
+  Hearth cart extras shared by the slide cart and the cart page.
+  Everything is driven by Theme settings > Cart & slide cart messaging, so it is the same
+  everywhere and re-renders correctly whenever the cart changes.
+
+  Accepts:
+  - part: {String} 'bar' = free delivery progress bar, 'assurance' = tick list + help text (required)
+
+  Usage:
+  {% render 'hth-cart-extras', part: 'bar' %}
+{% endcomment %}
+{%- liquid
+  if part == 'bar'
+    assign threshold = settings.free_shipping_threshold | times: 100
+    if settings.cart_show_free_shipping_bar and threshold > 0 and cart.item_count > 0
+      assign remaining = threshold | minus: cart.total_price
+      assign progress = cart.total_price | times: 100 | divided_by: threshold
+      if progress > 100
+        assign progress = 100
+      endif
+      assign amount_text = remaining | money
+      assign progress_message = settings.free_shipping_progress_text | escape | replace: '{amount}', amount_text
+      echo '<div class="hth-freeship'
+      if remaining <= 0
+        echo ' is-complete'
+      endif
+      echo '"><p class="hth-freeship__text">'
+      render 'hth-icon', name: 'truck', size: 20
+      echo '<span>'
+      if remaining <= 0
+        echo settings.free_shipping_success_text | escape
+      else
+        echo progress_message
+      endif
+      echo '</span></p><div class="hth-freeship__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'
+      echo progress
+      echo '"><span class="hth-freeship__fill" style="width: '
+      echo progress
+      echo '%"></span></div></div>'
+    endif
+  endif
+-%}
+{%- if part == 'assurance' -%}
+  {%- assign assurance_lines = settings.cart_assurance_lines | newline_to_br | split: '<br />' -%}
+  {%- if settings.cart_assurance_lines != blank -%}
+    <ul class="hth-cart-assure" role="list">
+      {%- for line in assurance_lines -%}
+        {%- assign assurance_text = line | strip -%}
+        {%- if assurance_text != blank -%}
+          <li>
+            {%- render 'hth-icon', name: 'check', size: 18, stroke: 2 -%}
+            <span>{{ assurance_text | escape }}</span>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+  {%- if settings.cart_help_text != blank or settings.contact_phone_number != blank -%}
+    <div class="hth-cart-help">
+      {%- if settings.cart_help_text != blank -%}
+        <div class="hth-cart-help__text rte">{{ settings.cart_help_text }}</div>
+      {%- endif -%}
+      {%- if settings.contact_phone_number != blank -%}
+        <a class="hth-cart-help__phone" href="tel:{{ settings.contact_phone_number | replace: ' ', '' }}">
+          {%- render 'hth-icon', name: 'phone', size: 18 -%}
+          <span>{{ settings.contact_phone_number | escape }}</span>
+        </a>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+{%- endif -%}

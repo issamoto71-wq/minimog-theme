@@ -1,0 +1,765 @@
+{%- liquid
+  assign store_name = settings.store_name | default: shop.name
+  assign year = 'now' | date: '%Y'
+  assign copyright = section.settings.copyright | replace: '{year}', year | replace: '{store}', store_name
+  assign perks = section.blocks | where: 'type', 'perk'
+  assign phone = settings.contact_phone_number
+  assign email = settings.contact_email
+  assign show_follow_on_shop = false
+  if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop
+    assign show_follow_on_shop = true
+  endif
+-%}
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.show_currency_selector or section.settings.show_country_selector or section.settings.show_language_selector -%}
+  <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+<footer class="hth-footer m-gradient m-color-{{ section.settings.color_scheme }}" data-section-id="{{ section.id }}">
+  {%- if perks.size > 0 -%}
+    <div class="hth-footer__perks m-gradient m-color-{{ section.settings.perks_color_scheme }}">
+      <div class="{{ section.settings.container }}">
+        <ul class="hth-footer__perks-list" role="list">
+          {%- for block in perks -%}
+            <li class="hth-footer__perk" {{ block.shopify_attributes }}>
+              <span class="hth-footer__perk-icon">{%- render 'hth-icon', name: block.settings.icon, size: 30 -%}</span>
+              <span class="hth-footer__perk-text">
+                <strong>{{ block.settings.title | escape }}</strong>
+                {%- if block.settings.text != blank -%}
+                  <span>{{ block.settings.text | escape }}</span>
+                {%- endif -%}
+              </span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="hth-footer__main">
+    <div class="{{ section.settings.container }}">
+      <div class="hth-footer__grid">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'about' -%}
+              <div class="hth-footer__block hth-footer__block--about hth-span-{{ block.settings.width }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.logo != blank -%}
+                  <a class="hth-footer__logo" href="{{ routes.root_url }}">
+                    {{ block.settings.logo | image_url: width: 480 | image_tag: loading: 'lazy', width: block.settings.logo_width, alt: store_name, style: 'max-width: 100%; height: auto;' }}
+                  </a>
+                {%- else -%}
+                  <a class="hth-footer__logo hth-footer__logo--text" href="{{ routes.root_url }}">{{ store_name | escape }}</a>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="hth-footer__about-text rte">{{ block.settings.text }}</div>
+                {%- endif -%}
+                {%- if block.settings.show_contact -%}
+                  <ul class="hth-footer__contact" role="list">
+                    {%- if phone != blank -%}
+                      <li>{%- render 'hth-icon', name: 'phone', size: 18 -%}<a href="tel:{{ phone | replace: ' ', '' }}">{{ phone | escape }}</a></li>
+                    {%- endif -%}
+                    {%- if email != blank -%}
+                      <li>{%- render 'hth-icon', name: 'mail', size: 18 -%}<a href="mailto:{{ email }}">{{ email | escape }}</a></li>
+                    {%- endif -%}
+                  </ul>
+                {%- endif -%}
+                {%- if block.settings.show_social -%}
+                  {%- render 'social-media-links', size: 'm-svg-icon--medium', extra_classes: 'hth-footer__social' -%}
+                {%- endif -%}
+              </div>
+
+            {%- when 'menu' -%}
+              {%- assign menu = linklists[block.settings.menu] -%}
+              <nav class="hth-footer__block hth-footer__block--menu hth-span-{{ block.settings.width }}" aria-label="{{ block.settings.heading | default: menu.title | escape }}" {{ block.shopify_attributes }}>
+                <h3 class="hth-footer__title">{{ block.settings.heading | default: menu.title | escape }}</h3>
+                {%- if menu.links.size > 0 -%}
+                  <ul class="hth-footer__links" role="list">
+                    {%- for link in menu.links -%}
+                      <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </nav>
+
+            {%- when 'store' -%}
+              {%- assign hours_lines = settings.store_opening_hours | newline_to_br | split: '<br />' -%}
+              <div class="hth-footer__block hth-footer__block--store hth-span-{{ block.settings.width }}" {{ block.shopify_attributes }}>
+                <h3 class="hth-footer__title">{{ block.settings.heading | escape }}</h3>
+                {%- if block.settings.show_address and settings.store_address != blank -%}
+                  <p class="hth-footer__address">
+                    {%- render 'hth-icon', name: 'pin', size: 18 -%}
+                    <span>{{ settings.store_address | escape | newline_to_br }}</span>
+                  </p>
+                {%- endif -%}
+                {%- if block.settings.show_hours and settings.store_opening_hours != blank -%}
+                  <table class="hth-hours hth-hours--footer" data-hth-hours>
+                    <tbody>
+                      {%- for line in hours_lines -%}
+                        {%- assign parts = line | strip | split: '|' -%}
+                        {%- if parts.size > 1 -%}
+                          <tr data-day="{{ parts[0] | strip | downcase | escape }}">
+                            <th scope="row">{{ parts[0] | strip | escape }}</th>
+                            <td>{{ parts[1] | strip | escape }}</td>
+                          </tr>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </tbody>
+                  </table>
+                {%- endif -%}
+                {%- if block.settings.button_label != blank -%}
+                  {%- liquid
+                    assign directions_url = settings.store_directions_url
+                    if directions_url == blank and settings.store_map_query != blank
+                      assign encoded_query = settings.store_map_query | url_encode
+                      assign directions_url = 'https://www.google.com/maps/search/?api=1&query=' | append: encoded_query
+                    endif
+                  -%}
+                  {%- if directions_url != blank -%}
+                    <a class="hth-footer__button m-button m-button--primary" href="{{ directions_url }}" target="_blank" rel="noopener">{{ block.settings.button_label | escape }}</a>
+                  {%- endif -%}
+                {%- endif -%}
+              </div>
+
+            {%- when 'newsletter' -%}
+              <div class="hth-footer__block hth-footer__block--newsletter hth-span-{{ block.settings.width }}" {{ block.shopify_attributes }}>
+                <h3 class="hth-footer__title">{{ block.settings.heading | escape }}</h3>
+                {%- if block.settings.text != blank -%}
+                  <p class="hth-footer__newsletter-text">{{ block.settings.text | escape }}</p>
+                {%- endif -%}
+                {%- render 'newsletter-form',
+                  custom_id: block.id,
+                  style: 'bordered',
+                  button_type: 'text',
+                  button_label: block.settings.button_label,
+                  placeholder: block.settings.placeholder,
+                  show_agreement: false,
+                  has_icon: false,
+                  button_position: 'inline',
+                  button_style: 'm-button--primary'
+                -%}
+              </div>
+
+            {%- when 'text' -%}
+              <div class="hth-footer__block hth-footer__block--text hth-span-{{ block.settings.width }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.heading != blank -%}
+                  <h3 class="hth-footer__title">{{ block.settings.heading | escape }}</h3>
+                {%- endif -%}
+                <div class="hth-footer__richtext rte">{{ block.settings.text }}</div>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="hth-footer__bottom m-gradient m-color-{{ section.settings.bottom_color_scheme }}">
+    <div class="{{ section.settings.container }}">
+      <div class="hth-footer__bottom-inner">
+        <div class="hth-footer__bottom-left">
+          {%- if copyright != blank -%}
+            <span class="hth-footer__copyright">{{ copyright }}</span>
+          {%- endif -%}
+          {%- if section.settings.footer_bottom_menu != blank -%}
+            <ul class="hth-footer__legal" role="list">
+              {%- for link in linklists[section.settings.footer_bottom_menu].links -%}
+                <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+        <div class="hth-footer__bottom-right">
+          {%- if section.settings.show_country_selector or section.settings.show_currency_selector or section.settings.show_language_selector -%}
+            <div class="hth-footer__localization">
+              {%- liquid
+                if section.settings.show_country_selector
+                  render 'country-selector', pos: 'top'
+                endif
+                if section.settings.show_currency_selector
+                  render 'currency-switcher', pos: 'top'
+                endif
+                if section.settings.show_language_selector
+                  render 'language-switcher', pos: 'top'
+                endif
+              -%}
+            </div>
+          {%- endif -%}
+          {%- if show_follow_on_shop -%}
+            <div class="m-follow-on-shop">
+              {% # theme-check-disable %}
+              {{ shop | login_button: action: 'follow' }}
+              {% # theme-check-enable %}
+            </div>
+          {%- endif -%}
+          {%- if section.settings.show_payment_icons -%}
+            {%- render 'payment-icons', section: section -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "footer"
+    },
+    {
+      "type": "color_scheme",
+      "id": "perks_color_scheme",
+      "label": "Top strip colour scheme",
+      "default": "dark"
+    },
+    {
+      "type": "color_scheme",
+      "id": "bottom_color_scheme",
+      "label": "Bottom bar colour scheme",
+      "default": "footer"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "header",
+      "content": "Bottom bar"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright text",
+      "default": "&copy; {year} {store}. All rights reserved.",
+      "info": "Use {year} for the current year and {store} for your store name."
+    },
+    {
+      "type": "link_list",
+      "id": "footer_bottom_menu",
+      "label": "Legal links menu",
+      "info": "Privacy policy, terms, etc."
+    },
+    {
+      "type": "header",
+      "content": "Payment methods"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image_custom_payment",
+      "label": "Custom payment image",
+      "info": "Leave blank to show the payment methods enabled in your store."
+    },
+    {
+      "type": "number",
+      "id": "payment_icons_width",
+      "label": "Custom image width (px)",
+      "default": 300
+    },
+    {
+      "type": "header",
+      "content": "Extras"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_selector",
+      "label": "Show country/region selector",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency_selector",
+      "label": "Show currency selector",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_language_selector",
+      "label": "Show language selector",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_follow_on_shop",
+      "label": "Show Follow on Shop button",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "perk",
+      "name": "Top strip: perk",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Delivery van"
+            },
+            {
+              "value": "store",
+              "label": "Store front"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / warranty"
+            },
+            {
+              "value": "tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "wrench",
+              "label": "Wrench / installation"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle / refresh"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "mail",
+              "label": "Email"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "check",
+              "label": "Tick"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "card",
+              "label": "Payment card"
+            },
+            {
+              "value": "chat",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "users",
+              "label": "People"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "box",
+              "label": "Parcel"
+            },
+            {
+              "value": "thumbs-up",
+              "label": "Thumbs up"
+            },
+            {
+              "value": "flame",
+              "label": "Flame / BBQ"
+            },
+            {
+              "value": "utensils",
+              "label": "Knife & fork"
+            },
+            {
+              "value": "home",
+              "label": "Home"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "percent",
+              "label": "Percent"
+            },
+            {
+              "value": "calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "lock",
+              "label": "Padlock"
+            },
+            {
+              "value": "return",
+              "label": "Returns arrow"
+            },
+            {
+              "value": "coffee",
+              "label": "Coffee cup"
+            },
+            {
+              "value": "sparkle",
+              "label": "Sparkle"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free Click & Collect"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Description",
+          "default": "Ready in 2 hours"
+        }
+      ]
+    },
+    {
+      "type": "about",
+      "name": "About & logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo",
+          "info": "Leave blank to show your store name as text."
+        },
+        {
+          "type": "range",
+          "id": "logo_width",
+          "label": "Logo width",
+          "min": 80,
+          "max": 320,
+          "step": 10,
+          "default": 180,
+          "unit": "px"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Your local kitchen, outdoor and home specialists. Come and see our full range in store.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_contact",
+          "label": "Show phone and email",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social",
+          "label": "Show social icons",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width on desktop",
+          "options": [
+            {
+              "value": "2",
+              "label": "2 of 12 columns"
+            },
+            {
+              "value": "3",
+              "label": "3 of 12 columns"
+            },
+            {
+              "value": "4",
+              "label": "4 of 12 columns"
+            },
+            {
+              "value": "5",
+              "label": "5 of 12 columns"
+            },
+            {
+              "value": "6",
+              "label": "6 of 12 columns"
+            },
+            {
+              "value": "12",
+              "label": "Full width"
+            }
+          ],
+          "default": "4"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Shop"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "footer"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width on desktop",
+          "options": [
+            {
+              "value": "2",
+              "label": "2 of 12 columns"
+            },
+            {
+              "value": "3",
+              "label": "3 of 12 columns"
+            },
+            {
+              "value": "4",
+              "label": "4 of 12 columns"
+            },
+            {
+              "value": "5",
+              "label": "5 of 12 columns"
+            },
+            {
+              "value": "6",
+              "label": "6 of 12 columns"
+            },
+            {
+              "value": "12",
+              "label": "Full width"
+            }
+          ],
+          "default": "2"
+        }
+      ]
+    },
+    {
+      "type": "store",
+      "name": "Store info & hours",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Visit the store"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_address",
+          "label": "Show address",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_hours",
+          "label": "Show opening hours",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Directions button text",
+          "default": "Get directions"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width on desktop",
+          "options": [
+            {
+              "value": "2",
+              "label": "2 of 12 columns"
+            },
+            {
+              "value": "3",
+              "label": "3 of 12 columns"
+            },
+            {
+              "value": "4",
+              "label": "4 of 12 columns"
+            },
+            {
+              "value": "5",
+              "label": "5 of 12 columns"
+            },
+            {
+              "value": "6",
+              "label": "6 of 12 columns"
+            },
+            {
+              "value": "12",
+              "label": "Full width"
+            }
+          ],
+          "default": "4"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Offers & news"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Sign up for deals, new arrivals and BBQ-season tips."
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Email placeholder",
+          "default": "Your email address"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button text",
+          "default": "Sign up"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width on desktop",
+          "options": [
+            {
+              "value": "2",
+              "label": "2 of 12 columns"
+            },
+            {
+              "value": "3",
+              "label": "3 of 12 columns"
+            },
+            {
+              "value": "4",
+              "label": "4 of 12 columns"
+            },
+            {
+              "value": "5",
+              "label": "5 of 12 columns"
+            },
+            {
+              "value": "6",
+              "label": "6 of 12 columns"
+            },
+            {
+              "value": "12",
+              "label": "Full width"
+            }
+          ],
+          "default": "12"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Add your text here.</p>"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width on desktop",
+          "options": [
+            {
+              "value": "2",
+              "label": "2 of 12 columns"
+            },
+            {
+              "value": "3",
+              "label": "3 of 12 columns"
+            },
+            {
+              "value": "4",
+              "label": "4 of 12 columns"
+            },
+            {
+              "value": "5",
+              "label": "5 of 12 columns"
+            },
+            {
+              "value": "6",
+              "label": "6 of 12 columns"
+            },
+            {
+              "value": "12",
+              "label": "Full width"
+            }
+          ],
+          "default": "3"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 14,
+  "enabled_on": {
+    "groups": [
+      "footer"
+    ]
+  }
+}
+{% endschema %}

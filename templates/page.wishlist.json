@@ -1,11 +1,35 @@
 {
-  "name": "Page wishlist",
   "sections": {
     "main": {
       "type": "page-wishlist"
+    },
+    "cta": {
+      "type": "hth-cta-banner",
+      "settings": {
+        "eyebrow": "Not sure?",
+        "heading": "Need help choosing?",
+        "text": "Compare products here, then pop in or call - we'll talk you through the differences.",
+        "heading_size": "h3",
+        "alignment": "center",
+        "button_label": "Visit the store",
+        "button_link": "/pages/find-a-store",
+        "button_style": "m-button--primary",
+        "second_button_label": "Contact us",
+        "second_button_link": "/pages/contact",
+        "second_button_style": "m-button--white",
+        "show_phone": true,
+        "overlay_opacity": 45,
+        "min_height": 320,
+        "color_scheme": "dark",
+        "container": "container",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "animations": "inherit"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "cta"
   ]
 }

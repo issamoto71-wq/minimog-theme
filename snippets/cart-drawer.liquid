@@ -49,6 +49,7 @@
       >
         <form action="{{ routes.cart_url }}" method="post" id="cart-drawer-form" class="m:w-full" novalidate>
           {%- if cart.items.size > 0 -%}
+            {% render 'hth-cart-extras', part: 'bar' %}
             <div class="m-cart-drawer__items">
               {% for item in cart.items %}
                 {% render 'cart-drawer-item',
@@ -203,6 +204,7 @@
               {{ 'cart.general.viewcart' | t }}
             </a>
           </div>
+          {% render 'hth-cart-extras', part: 'assurance' %}
           {% if settings.cart_drawer_trust_badge %}
             <div class="m-cart__trust-badge">
               <img

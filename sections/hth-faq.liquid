@@ -1,0 +1,291 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-faq hth-faq--{{ section.settings.layout }} m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  data-section-id="{{ section.id }}"
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    <div class="hth-faq__grid">
+      <div class="hth-faq__intro">
+        {%- render 'hth-section-header',
+          eyebrow: section.settings.eyebrow,
+          heading: section.settings.heading,
+          text: section.settings.text,
+          alignment: section.settings.header_alignment,
+          heading_size: section.settings.heading_size,
+          anim: anim
+        -%}
+        {%- if section.settings.help_text != blank -%}
+          <div class="hth-faq__help{{ anim }}">
+            <span class="hth-faq__help-icon">{%- render 'hth-icon', name: 'chat', size: 24 -%}</span>
+            <div class="hth-faq__help-text rte">{{ section.settings.help_text }}</div>
+          </div>
+        {%- endif -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+        <div class="hth-faq__list{{ anim }}">
+          {%- for block in section.blocks -%}
+            <details class="hth-faq__item" {{ block.shopify_attributes }}{% if block.settings.open %} open{% endif %}>
+              <summary class="hth-faq__question">
+                <span>{{ block.settings.question | escape }}</span>
+                <span class="hth-faq__toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="hth-faq__answer rte">{{ block.settings.answer }}</div>
+            </details>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- if section.settings.enable_schema and section.blocks.size > 0 -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {%- for block in section.blocks -%}
+            {
+              "@type": "Question",
+              "name": {{ block.settings.question | strip_html | json }},
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": {{ block.settings.answer | strip_html | json }}
+              }
+            }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+      }
+    </script>
+  {%- endif -%}
+</section>
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Questions"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro text",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "split",
+          "label": "Heading beside questions"
+        },
+        {
+          "value": "stacked",
+          "label": "Stacked"
+        }
+      ],
+      "default": "split"
+    },
+    {
+      "type": "richtext",
+      "id": "help_text",
+      "label": "Help box text",
+      "default": "<p><strong>Still need help?</strong> Call or visit the store and we'll sort it out.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_schema",
+      "label": "Add FAQ structured data for search engines",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Answer.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "Can I see the product in store before I buy?",
+            "answer": "<p>Yes - most products are on display. Call ahead if you'd like us to have something ready to show you.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How does Click & Collect work?",
+            "answer": "<p>Reserve online, wait for our confirmation email, then collect from the store at a time that suits you.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Do you deliver and install?",
+            "answer": "<p>We deliver locally and can install and recycle your old appliance.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

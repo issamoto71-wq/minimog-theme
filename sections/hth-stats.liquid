@@ -1,0 +1,281 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-stats m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --hth-cols: {{ section.settings.columns }};"
+  data-section-id="{{ section.id }}"
+  {% if section.settings.count_up %}
+    data-hth-count-up
+  {% endif %}
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    {%- render 'hth-section-header',
+      eyebrow: section.settings.eyebrow,
+      heading: section.settings.heading,
+      text: section.settings.text,
+      alignment: section.settings.header_alignment,
+      heading_size: section.settings.heading_size,
+      anim: anim
+    -%}
+    {%- if section.blocks.size > 0 -%}
+      <ul class="hth-stats__list" role="list">
+        {%- for block in section.blocks -%}
+          <li
+            class="hth-stats__item{{ anim }}"
+            {% if anim != blank %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <span class="hth-stats__value">
+              {%- if block.settings.prefix != blank -%}<span class="hth-stats__affix">{{ block.settings.prefix | escape }}</span>{%- endif -%}
+              <span class="hth-stats__number"{% if section.settings.count_up %} data-hth-target="{{ block.settings.value }}"{% endif %}>{{ block.settings.value }}</span>
+              {%- if block.settings.suffix != blank -%}<span class="hth-stats__affix">{{ block.settings.suffix | escape }}</span>{%- endif -%}
+            </span>
+            {%- if block.settings.label != blank -%}
+              <span class="hth-stats__label">{{ block.settings.label | escape }}</span>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Numbers & stats",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": ""
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": ""
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro text",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "header",
+      "content": "Stats"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Stats per row (desktop)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "count_up",
+      "label": "Count up when scrolled into view",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "dark"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 56,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "number",
+          "id": "value",
+          "label": "Number",
+          "default": 100
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Before number",
+          "default": ""
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "After number",
+          "default": "+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Happy customers"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Numbers & stats",
+      "settings": {
+        "color_scheme": "dark"
+      },
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "value": 25,
+            "suffix": "+",
+            "label": "Years in business"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": 50,
+            "suffix": "+",
+            "label": "Brands in store"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": 12000,
+            "suffix": "+",
+            "label": "Happy customers"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": 98,
+            "suffix": "%",
+            "label": "Would recommend us"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

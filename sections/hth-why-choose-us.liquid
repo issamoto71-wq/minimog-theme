@@ -1,0 +1,510 @@
+{%- liquid
+  capture anim
+    render 'hth-anim', section_animation: section.settings.animations
+  endcapture
+  assign image_alt = section.settings.heading | strip_html
+-%}
+<section
+  id="m-section--{{ section.id }}"
+  class="m-section hth-section hth-why hth-why--{{ section.settings.layout }} m-gradient m-color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+  data-section-id="{{ section.id }}"
+>
+  <div class="{{ section.settings.container }} m-section-py">
+    <div class="hth-why__grid">
+      <div class="hth-why__media{{ anim }}">
+        <div class="hth-why__frame">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.image | image_url: width: 1100 | image_tag: loading: 'lazy', widths: '500, 800, 1100', sizes: '(min-width: 1024px) 45vw, 100vw', alt: image_alt, class: 'hth-why__img' }}
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'hth-why__img hth-placeholder' }}
+          {%- endif -%}
+        </div>
+        {%- if section.settings.image_2 != blank -%}
+          <div class="hth-why__frame hth-why__frame--small">
+            {{ section.settings.image_2 | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 450, 600', sizes: '280px', alt: '', class: 'hth-why__img' }}
+          </div>
+        {%- endif -%}
+        {%- if section.settings.badge_value != blank -%}
+          <div class="hth-why__badge">
+            <strong class="hth-why__badge-value">{{ section.settings.badge_value | escape }}</strong>
+            {%- if section.settings.badge_label != blank -%}
+              <span class="hth-why__badge-label">{{ section.settings.badge_label | escape }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="hth-why__content">
+        {%- render 'hth-section-header',
+          eyebrow: section.settings.eyebrow,
+          heading: section.settings.heading,
+          text: section.settings.text,
+          alignment: 'left',
+          heading_size: section.settings.heading_size,
+          anim: anim
+        -%}
+        {%- if section.blocks.size > 0 -%}
+          <ul class="hth-why__list" role="list">
+            {%- for block in section.blocks -%}
+              <li
+                class="hth-why__item{{ anim }}"
+                {% if anim != blank %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                {% endif %}
+                {{ block.shopify_attributes }}
+              >
+                <span class="hth-why__icon">{%- render 'hth-icon', name: block.settings.icon, size: 26 -%}</span>
+                <span class="hth-why__text">
+                  {%- if block.settings.title != blank -%}
+                    <strong class="hth-why__title">{{ block.settings.title | escape }}</strong>
+                  {%- endif -%}
+                  {%- if block.settings.text != blank -%}
+                    <span class="hth-why__desc">{{ block.settings.text | escape }}</span>
+                  {%- endif -%}
+                </span>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank or section.settings.second_button_label != blank -%}
+          <div class="hth-btn-row{{ anim }}">
+            {%- if section.settings.button_label != blank -%}
+              <a class="m-button {{ section.settings.button_style }}" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label | escape }}</a>
+            {%- endif -%}
+            {%- if section.settings.second_button_label != blank -%}
+              <a class="m-button {{ section.settings.second_button_style }}" href="{{ section.settings.second_button_link | default: '#' }}">{{ section.settings.second_button_label | escape }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Why choose us",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Why shop with us"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A real shop, with real people who know their stuff"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Intro text",
+      "default": "Buying a big appliance is a big decision. Come and see it, touch it, and talk it through with people who use it every day."
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Large"
+        },
+        {
+          "value": "h2",
+          "label": "Extra large"
+        }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "image-left",
+          "label": "Left"
+        },
+        {
+          "value": "image-right",
+          "label": "Right"
+        }
+      ],
+      "default": "image-left"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Small overlapping image"
+    },
+    {
+      "type": "text",
+      "id": "badge_value",
+      "label": "Badge number",
+      "default": "25+"
+    },
+    {
+      "type": "text",
+      "id": "badge_label",
+      "label": "Badge label",
+      "default": "years serving local homes"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Meet the team"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "m-button--primary",
+          "label": "Solid"
+        },
+        {
+          "value": "m-button--secondary",
+          "label": "Outline"
+        },
+        {
+          "value": "m-button--white",
+          "label": "White"
+        },
+        {
+          "value": "m-button--link",
+          "label": "Link"
+        }
+      ],
+      "default": "m-button--primary"
+    },
+    {
+      "type": "text",
+      "id": "second_button_label",
+      "label": "Button label",
+      "default": ""
+    },
+    {
+      "type": "url",
+      "id": "second_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "second_button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "m-button--primary",
+          "label": "Solid"
+        },
+        {
+          "value": "m-button--secondary",
+          "label": "Outline"
+        },
+        {
+          "value": "m-button--white",
+          "label": "White"
+        },
+        {
+          "value": "m-button--link",
+          "label": "Link"
+        }
+      ],
+      "default": "m-button--secondary"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Boxed"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Wide"
+        },
+        {
+          "value": "container-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "animations",
+      "label": "Animation",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Use theme setting"
+        },
+        {
+          "value": "fade-in",
+          "label": "Fade in"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade in up"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade in right"
+        }
+      ],
+      "default": "inherit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Delivery van"
+            },
+            {
+              "value": "store",
+              "label": "Store front"
+            },
+            {
+              "value": "shield",
+              "label": "Shield / warranty"
+            },
+            {
+              "value": "tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "wrench",
+              "label": "Wrench / installation"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle / refresh"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            },
+            {
+              "value": "mail",
+              "label": "Email"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "clock",
+              "label": "Clock"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "check",
+              "label": "Tick"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "card",
+              "label": "Payment card"
+            },
+            {
+              "value": "chat",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "users",
+              "label": "People"
+            },
+            {
+              "value": "award",
+              "label": "Award"
+            },
+            {
+              "value": "box",
+              "label": "Parcel"
+            },
+            {
+              "value": "thumbs-up",
+              "label": "Thumbs up"
+            },
+            {
+              "value": "flame",
+              "label": "Flame / BBQ"
+            },
+            {
+              "value": "utensils",
+              "label": "Knife & fork"
+            },
+            {
+              "value": "home",
+              "label": "Home"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "percent",
+              "label": "Percent"
+            },
+            {
+              "value": "calendar",
+              "label": "Calendar"
+            },
+            {
+              "value": "lock",
+              "label": "Padlock"
+            },
+            {
+              "value": "return",
+              "label": "Returns arrow"
+            },
+            {
+              "value": "coffee",
+              "label": "Coffee cup"
+            },
+            {
+              "value": "sparkle",
+              "label": "Sparkle"
+            }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Reason title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Short supporting sentence."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Why choose us",
+      "blocks": [
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "users",
+            "title": "Expert, friendly advice",
+            "text": "Our team tests the products they sell and will help you pick the right one."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "tag",
+            "title": "Fair, matched prices",
+            "text": "Found it cheaper locally? Tell us and we'll do our best to match it."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "wrench",
+            "title": "Delivery & installation",
+            "text": "We can deliver, install and take your old appliance away."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "shield",
+            "title": "Support after you buy",
+            "text": "Warranty help and advice from the same people who sold it to you."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

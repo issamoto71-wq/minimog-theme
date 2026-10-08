@@ -3,93 +3,111 @@
   "name": "Footer",
   "sections": {
     "footer": {
-      "type": "footer",
+      "type": "hth-footer",
       "blocks": {
-        "7b0bf4c6-3873-4222-b8d6-ce009e710078": {
+        "perk_1": {
+          "type": "perk",
+          "settings": {
+            "icon": "store",
+            "title": "Free Click & Collect",
+            "text": "Ready in 2 hours"
+          }
+        },
+        "perk_2": {
+          "type": "perk",
+          "settings": {
+            "icon": "truck",
+            "title": "Free delivery over £150",
+            "text": "Installation available"
+          }
+        },
+        "perk_3": {
+          "type": "perk",
+          "settings": {
+            "icon": "tag",
+            "title": "Price match promise",
+            "text": "Found it cheaper? Ask us"
+          }
+        },
+        "perk_4": {
+          "type": "perk",
+          "settings": {
+            "icon": "users",
+            "title": "Expert advice",
+            "text": "In store and by phone"
+          }
+        },
+        "about_1": {
+          "type": "about",
+          "settings": {
+            "logo_width": 180,
+            "text": "<p>Your local kitchen, outdoor and home specialists. Come and see our full range in store, or reserve online and collect.</p>",
+            "show_contact": true,
+            "show_social": true,
+            "width": "4"
+          }
+        },
+        "menu_shop": {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": "main-menu",
+            "width": "2"
+          }
+        },
+        "menu_help": {
+          "type": "menu",
+          "settings": {
+            "heading": "Help & info",
+            "menu": "footer",
+            "width": "2"
+          }
+        },
+        "store_1": {
+          "type": "store",
+          "settings": {
+            "heading": "Visit the store",
+            "show_address": true,
+            "show_hours": true,
+            "button_label": "Get directions",
+            "width": "4"
+          }
+        },
+        "newsletter_1": {
           "type": "newsletter",
           "settings": {
-            "title": "Let’s get in touch",
-            "description": "Sign up for our newsletter and receive 10% off your first order",
-            "email_placeholder": "Enter your email",
-            "show_icon_input": false,
-            "button_label": "Subscribe now",
-            "button_position": "below",
-            "button_style": "m-button--primary",
-            "form_style": "bordered",
-            "show_social": false,
-            "show_agree_checkbox": false,
-            "width": "50%",
-            "order_first": true,
-            "open_default": true
-          }
-        },
-        "spacing_4d6agY": {
-          "type": "spacing",
-          "settings": {
-            "width": "16%"
-          }
-        },
-        "7ebc2f78-975b-4a81-b874-103c3355a866": {
-          "type": "menu",
-          "settings": {
-            "title": "Quick link",
-            "width": "25%",
-            "order_first": false,
-            "open_default": false
-          }
-        },
-        "49e72833-c68f-4a7b-ab64-3ef0cae99bcb": {
-          "type": "menu",
-          "settings": {
-            "title": "Company",
-            "width": "25%",
-            "order_first": false,
-            "open_default": false
-          }
-        },
-        "93571032-b171-4c66-8b3e-96cd91946363": {
-          "type": "our_store",
-          "settings": {
-            "title": "Our store",
-            "description": "",
-            "show_email": false,
-            "show_phone": false,
-            "show_socials_link": true,
-            "width": "33%",
-            "order_first": false,
-            "open_default": false
+            "heading": "Offers & news",
+            "text": "Sign up for deals, new arrivals and BBQ-season tips.",
+            "placeholder": "Your email address",
+            "button_label": "Sign up",
+            "width": "12"
           }
         }
       },
       "block_order": [
-        "7b0bf4c6-3873-4222-b8d6-ce009e710078",
-        "spacing_4d6agY",
-        "7ebc2f78-975b-4a81-b874-103c3355a866",
-        "49e72833-c68f-4a7b-ab64-3ef0cae99bcb",
-        "93571032-b171-4c66-8b3e-96cd91946363"
-      ],
-      "custom_css": [
-        ".m-footer--block-spacing {width: 10%;}",
-        ".m-newsletter-form {margin-top: 24px;}",
-        ".m-footer--block-newsletter .m-footer--block-title {font-weight: 400; font-size: 25px;}",
-        "@media (min-width: 1280px) {.m-footer--block-newsletter .m-footer--block-title {font-size: 36px; margin-bottom: 12px; } .m-footer__copyright, .m-footer--bottom-menu {font-size: 14px; }}"
+        "perk_1",
+        "perk_2",
+        "perk_3",
+        "perk_4",
+        "about_1",
+        "menu_shop",
+        "menu_help",
+        "store_1",
+        "newsletter_1"
       ],
       "settings": {
-        "color_scheme": "",
-        "design": "footer-1",
-        "container": "container-fluid",
-        "bordered": false,
-        "copyright": "© MINIMOG 2024",
+        "color_scheme": "footer",
+        "perks_color_scheme": "dark",
+        "bottom_color_scheme": "footer",
+        "container": "container",
+        "copyright": "&copy; {year} {store}. All rights reserved.",
+        "footer_bottom_menu": "",
+        "show_payment_icons": true,
+        "payment_icons_width": 300,
         "show_country_selector": false,
         "show_currency_selector": false,
         "show_language_selector": false,
-        "show_social_links": false,
-        "enable_follow_on_shop": true,
-        "show_payment_icons": true,
-        "payment_icons_width": 300,
-        "footer_bottom_color_scheme": "",
-        "footer_bottom_menu": "footer-bottom",
-        "show_menu_item_divider": true
+        "enable_follow_on_shop": true
       }
     },
     "mobile-sticky-bar": {
@@ -103,48 +121,10 @@
         "show_account_icon": false,
         "show_wishlist_icon": false
       }
-    },
-    "age-verifier-popup": {
-      "type": "age-verifier-popup",
-      "blocks": {
-        "block-1": {
-          "type": "heading",
-          "settings": {
-            "heading": "Confirm your age"
-          }
-        },
-        "block-2": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Are you 18 years old or older?<\/p>"
-          }
-        },
-        "block-3": {
-          "type": "buttons",
-          "settings": {
-            "decline_button": "No, I'm not",
-            "approve_button": "Yes, I am"
-          }
-        }
-      },
-      "block_order": [
-        "block-1",
-        "block-2",
-        "block-3"
-      ],
-      "settings": {
-        "design_mode": false,
-        "enable": false,
-        "bg_blur": true,
-        "decline_heading": "Come back when you're older",
-        "decline_content": "<p>Sorry, the content of this store can't be seen by a younger audience. Come back when you're older.<\/p>",
-        "return_button": "Oops, I entered incorrectly"
-      }
     }
   },
   "order": [
     "footer",
-    "mobile-sticky-bar",
-    "age-verifier-popup"
+    "mobile-sticky-bar"
   ]
 }

@@ -2,14 +2,113 @@
   "name": "Cart template",
   "sections": {
     "main": {
-      "type": "cart-template"
+      "type": "cart-template",
+      "blocks": {
+        "assurance_1": {
+          "type": "assurance",
+          "settings": {
+            "icon": "store",
+            "title": "Free Click & Collect",
+            "text": "Reserve online and collect from our store."
+          }
+        },
+        "assurance_2": {
+          "type": "assurance",
+          "settings": {
+            "icon": "tag",
+            "title": "Price match promise",
+            "text": "Found it cheaper locally? Tell us."
+          }
+        },
+        "help_3": {
+          "type": "help",
+          "settings": {
+            "heading": "Need a hand?",
+            "text": "Our team can help before you check out.",
+            "button_label": "Contact us",
+            "button_link": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "assurance_1",
+        "assurance_2",
+        "help_3"
+      ],
+      "settings": {
+        "container": "container"
+      }
+    },
+    "popular": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "You might also like",
+        "heading_size": "h3",
+        "subheading": "Popular right now",
+        "description": "",
+        "header_alignment": "left",
+        "color_scheme": "default",
+        "container": "container",
+        "collection": "all",
+        "enable_flashsale": false,
+        "show_countdown": false,
+        "product_to_show": 8,
+        "items_per_row": 4,
+        "item_gap": 24,
+        "pcard_layout": "",
+        "pcard_image_ratio": "",
+        "show_vendor": false,
+        "hide_title": false,
+        "enable_slider": true,
+        "show_pagination": false,
+        "show_navigation": true,
+        "show_button_on_header": true,
+        "button_type": "link",
+        "button_text": "View all",
+        "button_style": "m-button--secondary",
+        "button_size": "m-button--small",
+        "infinite_load": false,
+        "max_page_load": 3,
+        "mobile_disable_slider": false,
+        "use_scroll_mobile": true,
+        "item_gap_mobile": 14,
+        "padding_top": 24,
+        "padding_bottom": 56,
+        "custom_class": "",
+        "animations": "inherit"
+      }
     },
     "recent-viewed-products": {
-      "type": "recent-viewed-products"
+      "type": "recent-viewed-products",
+      "settings": {
+        "container": "container",
+        "color_scheme": "cream",
+        "heading": "Recently viewed",
+        "heading_size": "h3",
+        "text_align": "left",
+        "limit": 8,
+        "columns": 4,
+        "column_gap": 24,
+        "pcard_layout": "",
+        "pcard_image_ratio": "",
+        "show_vendor": false,
+        "hide_title": false,
+        "enable_slider": true,
+        "show_pagination": false,
+        "show_navigation": false,
+        "mobile_disable_slider": false,
+        "use_scroll_mobile": true,
+        "item_gap_mobile": 14,
+        "padding_top": 48,
+        "padding_bottom": 56,
+        "custom_class": "",
+        "animations": "inherit"
+      }
     }
   },
   "order": [
     "main",
+    "popular",
     "recent-viewed-products"
   ]
 }
