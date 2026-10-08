@@ -279,7 +279,7 @@
       "forgot_password": "Zapomniałeś hasła?",
       "sign_in": "Zalogować się",
       "new_customer": "Nowy klient",
-      "alternate_provider_separator":"Lub"
+      "alternate_provider_separator": "Lub"
     },
     "orders": {
       "title": "Historia zamówień",
@@ -504,5 +504,14 @@
         "error_heading": "Dostosuj następujące elementy:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

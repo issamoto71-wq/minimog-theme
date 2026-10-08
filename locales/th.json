@@ -279,7 +279,7 @@
       "forgot_password": "ลืมรหัสผ่านหรือไม่?",
       "sign_in": "เข้าสู่ระบบ",
       "new_customer": "ลูกค้าใหม่",
-      "alternate_provider_separator":"หรือ"
+      "alternate_provider_separator": "หรือ"
     },
     "orders": {
       "title": "ประวัติการสั่งซื้อ",
@@ -504,5 +504,14 @@
         "error_heading": "กรุณาปรับดังต่อไปนี้:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

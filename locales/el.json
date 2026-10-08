@@ -279,7 +279,7 @@
       "forgot_password": "Ξεχάσατε τον κωδικό σας;",
       "sign_in": "Συνδεθείτε",
       "new_customer": "Νέος πελάτης",
-      "alternate_provider_separator":"ή"
+      "alternate_provider_separator": "ή"
     },
     "orders": {
       "title": "Ιστορικό παραγγελιών",
@@ -504,5 +504,14 @@
         "error_heading": "Προσαρμόστε τα ακόλουθα:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

@@ -279,7 +279,7 @@
       "forgot_password": "忘记密码了吗？",
       "sign_in": "登入",
       "new_customer": "新客户",
-      "alternate_provider_separator":"或者"
+      "alternate_provider_separator": "或者"
     },
     "orders": {
       "title": "订单历史",
@@ -504,5 +504,14 @@
         "error_heading": "请调整以下内容："
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

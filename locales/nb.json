@@ -279,7 +279,7 @@
       "forgot_password": "Glemt passordet?",
       "sign_in": "Logg inn",
       "new_customer": "Ny kunde",
-      "alternate_provider_separator":"eller"
+      "alternate_provider_separator": "eller"
     },
     "orders": {
       "title": "Ordrehistorikk",
@@ -504,5 +504,14 @@
         "error_heading": "Vennligst juster følgende:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

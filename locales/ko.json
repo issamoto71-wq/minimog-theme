@@ -279,7 +279,7 @@
       "forgot_password": "비밀번호를 잊어 버렸습니까?",
       "sign_in": "로그인",
       "new_customer": "신규 고객",
-      "alternate_provider_separator":"또는"
+      "alternate_provider_separator": "또는"
     },
     "orders": {
       "title": "주문 내역",
@@ -504,5 +504,14 @@
         "error_heading": "다음을 조정해 주세요:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

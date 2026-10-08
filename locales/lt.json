@@ -279,7 +279,7 @@
       "forgot_password": "Pamiršai slaptažodį?",
       "sign_in": "Prisijungti",
       "new_customer": "Naujas klientas",
-      "alternate_provider_separator":"arba"
+      "alternate_provider_separator": "arba"
     },
     "orders": {
       "title": "Užsakymų Istorija",
@@ -504,5 +504,14 @@
         "error_heading": "Pakoreguokite šiuos dalykus:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

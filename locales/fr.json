@@ -279,7 +279,7 @@
       "forgot_password": "Mot de passe oublié?",
       "sign_in": "Se connecter",
       "new_customer": "Nouveau client",
-      "alternate_provider_separator":"ou"
+      "alternate_provider_separator": "ou"
     },
     "orders": {
       "title": "Historique des commandes",
@@ -504,5 +504,14 @@
         "error_heading": "Veuillez ajuster les éléments suivants :"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

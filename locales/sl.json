@@ -279,7 +279,7 @@
       "forgot_password": "Ste pozabili geslo?",
       "sign_in": "Prijava",
       "new_customer": "Nova stranka",
-      "alternate_provider_separator":"ali"
+      "alternate_provider_separator": "ali"
     },
     "orders": {
       "title": "Zgodovina naročil",
@@ -504,5 +504,14 @@
         "error_heading": "Prilagodite naslednje:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

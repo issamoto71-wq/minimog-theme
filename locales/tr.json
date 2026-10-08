@@ -279,7 +279,7 @@
       "forgot_password": "Parolanızı mı unuttunuz?",
       "sign_in": "Kayıt olmak",
       "new_customer": "Yeni müşteri",
-      "alternate_provider_separator":"veya"
+      "alternate_provider_separator": "veya"
     },
     "orders": {
       "title": "Sipariş Geçmişi",
@@ -504,5 +504,14 @@
         "error_heading": "Lütfen aşağıdakileri ayarlayın:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

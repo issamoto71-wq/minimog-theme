@@ -279,7 +279,7 @@
       "forgot_password": "パスワードをお忘れですか？",
       "sign_in": "サインイン",
       "new_customer": "新規顧客",
-      "alternate_provider_separator":"または"
+      "alternate_provider_separator": "または"
     },
     "orders": {
       "title": "注文履歴",
@@ -504,5 +504,14 @@
         "error_heading": "以下を調整してください。"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

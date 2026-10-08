@@ -279,7 +279,7 @@
       "forgot_password": "Unohditko salasanasi?",
       "sign_in": "Kirjaudu sisään",
       "new_customer": "Uusi asiakas",
-      "alternate_provider_separator":"tai"
+      "alternate_provider_separator": "tai"
     },
     "orders": {
       "title": "tilaushistoria",
@@ -504,5 +504,14 @@
         "error_heading": "Säädä seuraavaa:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

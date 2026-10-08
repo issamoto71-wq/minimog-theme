@@ -279,7 +279,7 @@
       "forgot_password": "Quên mật khẩu?",
       "sign_in": "Đăng nhập",
       "new_customer": "Khách hàng mới",
-      "alternate_provider_separator":"hoặc"
+      "alternate_provider_separator": "hoặc"
     },
     "orders": {
       "title": "lịch sử đơn hàng",
@@ -504,5 +504,14 @@
         "error_heading": "Vui lòng điều chỉnh như sau:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

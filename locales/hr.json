@@ -279,7 +279,7 @@
       "forgot_password": "Zaboravili ste zaporku?",
       "sign_in": "Prijaviti se",
       "new_customer": "Novi kupac",
-      "alternate_provider_separator":"ili"
+      "alternate_provider_separator": "ili"
     },
     "orders": {
       "title": "Povijest Reda",
@@ -504,5 +504,14 @@
         "error_heading": "Molimo prilagodite sljedeće:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

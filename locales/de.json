@@ -279,7 +279,7 @@
       "forgot_password": "Haben Sie Ihr Passwort vergessen?",
       "sign_in": "Anmelden",
       "new_customer": "Neukunde",
-      "alternate_provider_separator":"oder"
+      "alternate_provider_separator": "oder"
     },
     "orders": {
       "title": "Bestellverlauf",
@@ -504,5 +504,14 @@
         "error_heading": "Bitte passen Sie Folgendes an:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

@@ -279,7 +279,7 @@
       "forgot_password": "Je wachtwoord vergeten?",
       "sign_in": "Aanmelden",
       "new_customer": "Nieuwe klant",
-      "alternate_provider_separator":"of"
+      "alternate_provider_separator": "of"
     },
     "orders": {
       "title": "Bestelgeschiedenis",
@@ -504,5 +504,14 @@
         "error_heading": "Pas het volgende aan:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

@@ -279,7 +279,7 @@
       "forgot_password": "Hai dimenticato la password?",
       "sign_in": "Registrazione",
       "new_customer": "Nuovo cliente",
-      "alternate_provider_separator":"O"
+      "alternate_provider_separator": "O"
     },
     "orders": {
       "title": "Cronologia ordini",
@@ -504,5 +504,14 @@
         "error_heading": "Si prega di modificare quanto segue:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

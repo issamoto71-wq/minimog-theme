@@ -279,7 +279,7 @@
       "forgot_password": "忘記密碼了嗎？",
       "sign_in": "登入",
       "new_customer": "新客戶",
-      "alternate_provider_separator":"或者"
+      "alternate_provider_separator": "或者"
     },
     "orders": {
       "title": "訂單歷史",
@@ -504,5 +504,14 @@
         "error_heading": "請調整以下內容："
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

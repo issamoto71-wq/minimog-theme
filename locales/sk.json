@@ -279,7 +279,7 @@
       "forgot_password": "zabudol si heslo?",
       "sign_in": "Prihlásiť sa",
       "new_customer": "Nový zákazník",
-      "alternate_provider_separator":"alebo"
+      "alternate_provider_separator": "alebo"
     },
     "orders": {
       "title": "História objednávok",
@@ -504,5 +504,14 @@
         "error_heading": "Upravte nasledovné:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

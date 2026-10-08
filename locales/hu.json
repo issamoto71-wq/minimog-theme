@@ -279,7 +279,7 @@
       "forgot_password": "Elfelejtette a jelszavát?",
       "sign_in": "Bejelentkezés",
       "new_customer": "Új vevő",
-      "alternate_provider_separator":"vagy"
+      "alternate_provider_separator": "vagy"
     },
     "orders": {
       "title": "Rendelési előzmények",
@@ -504,5 +504,14 @@
         "error_heading": "Kérjük, állítsa be a következőket:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }

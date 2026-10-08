@@ -512,10 +512,6 @@
     },
     "call_us": "Call us",
     "email_us": "Email us",
-    "opening_hours": "Opening hours",
-    "click_collect": "Click & Collect",
-    "free_delivery": "Free delivery",
-    "reserve": "Reserve",
-    "store_hours_today": "Today"
+    "opening_hours": "Opening hours"
   }
 }

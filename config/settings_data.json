@@ -3,11 +3,11 @@
     "container_width": 1280,
     "container_fluid_width": 1620,
     "container_fluid_offset": 40,
-    "type_base_font": "inter_n4",
+    "type_base_font": "roboto_n4",
     "use_custom_font_body": false,
     "custom_body_font": "",
     "custom_body_weight": "400",
-    "type_header_font": "barlow_condensed_n7",
+    "type_header_font": "roboto_condensed_n7",
     "use_custom_font_heading": false,
     "custom_heading_font": "",
     "custom_heading_weight": "700",
@@ -321,7 +321,8 @@
     "cart_help_text": "<p>Need a hand? Call our team or pop into the store.</p>",
     "enable_predictive_search": true,
     "popular_search_queries": "Air fryer, Pizza oven, BBQ, Coffee machine, Washing machine",
-    "product_colors": "black: #1B1B1D,\nwhite: #FFFFFF,\nsilver: #C4C8CC,\ngrey: #8A9199,\ngray: #8A9199,\ncharcoal: #3B4046,\nstone: #CBBFA9,\ngold: #C9A24B,\ncopper: #B87333,\nred: #C2331A,\norange: #D9531E,\nblue: #2F5D8C,\ngreen: #2F6B55,\nolive: #6B7048,\ncream: #F5F0E6,\nbone: #E8E1D2,\nnavy: #10202F,\nsteel: #9AA3AB"
+    "product_colors": "black: #1B1B1D,\nwhite: #FFFFFF,\nsilver: #C4C8CC,\ngrey: #8A9199,\ngray: #8A9199,\ncharcoal: #3B4046,\nstone: #CBBFA9,\ngold: #C9A24B,\ncopper: #B87333,\nred: #C2331A,\norange: #D9531E,\nblue: #2F5D8C,\ngreen: #2F6B55,\nolive: #6B7048,\ncream: #F5F0E6,\nbone: #E8E1D2,\nnavy: #10202F,\nsteel: #9AA3AB",
+    "find_store": "find-a-store"
   },
   "platform_customizations": {
     "custom_css": []

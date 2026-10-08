@@ -54,7 +54,7 @@
             "show_divider": false,
             "transparent_on_top": false,
             "show_phone_numb": true,
-            "show_email": true,
+            "show_email": false,
             "show_social_links": false,
             "show_stores_page": true,
             "show_currency_switcher": false,

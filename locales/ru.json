@@ -279,7 +279,7 @@
       "forgot_password": "Забыли пароль?",
       "sign_in": "Войти",
       "new_customer": "Новый клиент",
-      "alternate_provider_separator":"или"
+      "alternate_provider_separator": "или"
     },
     "orders": {
       "title": "История заказов",
@@ -504,5 +504,14 @@
         "error_heading": "Пожалуйста, отрегулируйте следующее:"
       }
     }
+  },
+  "hearth": {
+    "products": {
+      "one": "product",
+      "other": "products"
+    },
+    "call_us": "Call us",
+    "email_us": "Email us",
+    "opening_hours": "Opening hours"
   }
 }
